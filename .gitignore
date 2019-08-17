@@ -38,3 +38,6 @@ __generated__
 .eslintcache
 .yarn-integrity
 backup.sql
+
+# this is temporary until we have a log-in system
+public/keys.json
