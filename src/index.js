@@ -25,6 +25,19 @@ setHistory(history);
 
 //TODO: put this in a proper place
 const run = new Run();
+
+// class SimpleStore extends Jig {
+//   set(value) {
+//     this.value = value
+//   }
+// }
+//
+// const jig = new SimpleStore()
+// jig.set('Satoshi Nakamoto')
+//
+// console.log(jig.owner)
+// console.log(jig.value)
+
 console.log(run.owner.address.toString());
 //
 
