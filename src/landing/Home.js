@@ -9,6 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
+import Button from '@material-ui/core/Button';
+
 import HomeSponsors from './HomeSponsors';
 import HomeStack from './HomeStack';
 
@@ -41,35 +43,14 @@ function Home() {
     <React.Fragment>
       <HomeSponsors />
       <div className={s.content}>
+         <Button variant="contained">
+           Default
+         </Button>
         <Typography className={s.title} variant="h4" gutterBottom>
-          Getting Started
-        </Typography>
-        <Typography paragraph>
-          Just clone the{' '}
-          <a
-            href="https://github.com/kriasoft/react-firebase-starter"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            repository
-          </a>
-          , tweak environment variables found in .env.* files in the root of the
-          project and start hacking.
-        </Typography>
-        <Paper className={s.code} elevation={2}>
-          $ git clone https://github.com/kriasoft/react-firebase-starter.git
-          example
-          <br />
-          $ cd ./example
-          <br />
-          $ yarn setup
-          <br />$ yarn start
-        </Paper>
-        <Typography className={s.title} variant="h4" gutterBottom>
-          Tech Stack
+          Hive
         </Typography>
         <Typography className={s.subTitle} paragraph>
-          Save time. Create with confidence.
+          Create and Explore the world.
         </Typography>
         <HomeStack />
       </div>

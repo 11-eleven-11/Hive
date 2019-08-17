@@ -56,11 +56,10 @@ function HomeHero() {
   return (
     <div className={s.root}>
       <Typography className={s.title} variant="h3">
-        Flying start for makers
+        Hive - A BSV Metanet Project
       </Typography>
       <Typography className={s.subTitle} variant="h5">
-        Quickly bootstrap new web application projects on a solid
-        JavaScript-based tech stack and serverless architecture
+        Connect media, links, explore and comment the internet.
       </Typography>
       <div className={s.actions}>
         <LoginButton className={s.button} provider="google" />

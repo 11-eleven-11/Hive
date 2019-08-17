@@ -41,17 +41,7 @@ function HomeSponsors() {
 
   return (
     <div className={s.root}>
-      {sponsors.map(x => (
-        <a
-          key={x.name}
-          className={s.link}
-          href={x.link}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img {...x.image} alt={x.name} />
-        </a>
-      ))}
+      
     </div>
   );
 }
