@@ -1,0 +1,6 @@
+{
+  "name": "run-browser",
+  "version": "0.3.0",
+  "private": true,
+  "main": "./run.browser.min.js"
+}

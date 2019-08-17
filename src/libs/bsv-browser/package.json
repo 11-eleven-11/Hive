@@ -1,0 +1,6 @@
+{
+  "name": "bsv-browser",
+  "version": "0.3.0",
+  "private": true,
+  "main": "./bsv.browser.min.js"
+}
