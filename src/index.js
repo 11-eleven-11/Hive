@@ -14,6 +14,10 @@ import createRelay from './createRelay';
 import * as serviceWorker from './serviceWorker';
 import router from './router';
 import { setHistory } from './utils/scrolling';
+import bsv from 'bsv';
+import * as bsvBrowser from 'bsv-browser';
+import * as Run from 'run-node';
+import * as starNode from 'star-node';
 
 const container = document.getElementById('root');
 const history = createBrowserHistory();
@@ -21,6 +25,8 @@ const history = createBrowserHistory();
 let relay = createRelay();
 
 setHistory(history);
+
+const run = new Run();
 
 function reset() {
   relay = createRelay();
