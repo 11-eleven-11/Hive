@@ -12,6 +12,7 @@ import theme from '../theme';
 import ErrorPage from './ErrorPage';
 import { gtag, getScrollPosition } from '../utils';
 import { ConfigContext, HistoryContext, ResetContext } from '../hooks';
+import Run from 'run-node';
 
 class App extends React.PureComponent {
   static getDerivedStateFromError(error) {
@@ -20,6 +21,23 @@ class App extends React.PureComponent {
 
   componentDidMount() {
     this.componentDidRender();
+
+    const run = new Run();
+    console.log(run.owner.address.toString()); //public address from newly generated key
+
+    let client = new XMLHttpRequest();
+    client.open('GET', '/owner.key');
+    client.onreadystatechange = function() {
+      console.log(client.responseText);
+    };
+    client.send();
+
+    let client2 = new XMLHttpRequest();
+    client2.open('GET', '/purse.key');
+    client2.onreadystatechange = function() {
+      console.log(client2.responseText);
+    };
+    client2.send();
   }
 
   componentDidUpdate() {
@@ -31,7 +49,11 @@ class App extends React.PureComponent {
     gtag('event', 'exception', { description: error.message, fatal: false });
   }
 
-  state = { error: null };
+  state = {
+    error: null,
+    ownerKey: null,
+    purseKey: null,
+  };
 
   componentDidRender = () => {
     const { history, title, config } = this.props;

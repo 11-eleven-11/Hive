@@ -14,7 +14,6 @@ import createRelay from './createRelay';
 import * as serviceWorker from './serviceWorker';
 import router from './router';
 import { setHistory } from './utils/scrolling';
-import Run from 'run-node';
 
 const container = document.getElementById('root');
 const history = createBrowserHistory();
@@ -22,11 +21,6 @@ const history = createBrowserHistory();
 let relay = createRelay();
 
 setHistory(history);
-
-//TODO: put this in a proper place
-const run = new Run();
-console.log(run.owner.address.toString());
-//
 
 function reset() {
   relay = createRelay();
