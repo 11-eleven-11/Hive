@@ -75,6 +75,14 @@ function LayoutToolbar(props) {
         >
           News
         </Button>
+         <Button
+          className={s.button}
+          color="inherit"
+          component={Link}
+          href="/news"
+        >
+          About
+        </Button>
         {me ? (
           <React.Fragment>
             <Avatar
