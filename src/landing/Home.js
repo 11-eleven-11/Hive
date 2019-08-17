@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(1),
   },
   media: {
-    height: 140,
+    height: 200,
   },
   drawer: {
     width: drawerWidth,
@@ -164,7 +164,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -190,7 +190,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -216,7 +216,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -242,7 +242,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -268,7 +268,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -294,7 +294,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -320,7 +320,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -346,7 +346,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -372,7 +372,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -398,7 +398,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -424,7 +424,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -450,7 +450,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -476,7 +476,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -502,7 +502,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -528,7 +528,7 @@ function Home() {
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x150"
+                  image="https://via.placeholder.com/500x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
