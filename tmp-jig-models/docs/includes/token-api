@@ -1,0 +1,46 @@
+<h1 id='api-reference-token'>API Reference: Token</h1>
+<p><code>class Token extends Jig</code></p>
+
+<p>Token is a base jig for fungible tokens similar to ERC20 or SLP. To issue tokens, a minter first mints a new <code>Token</code> with an initial amount. This is a special <code>Token</code> because it is the first of its kind and called the <code>minter</code>, and only the holder of this Token may mint new ones. However, this <code>Token</code> may be split and sent to others many times. <code>Token</code> supports numerical amounts by default.</p>
+<h2 id='constructor'>constructor</h2>
+<blockquote>
+<p>Minting a new token</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>Combining two tokens</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">token</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">token</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">combined</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">])</span>
+</code></pre>
+<p><code>init(amount: number, tokens: ?Array&lt;Token&gt;): Token</code></p>
+
+<p><code>init()</code> either mints a new token or combines existing tokens depending on whether the <code>tokens</code> argument is passed. If <code>tokens</code> is undefined, then a new minter token is minted with the amount specificied. If <code>tokens</code> is defined however, then the new token is the merging of the tokens passed up to the <code>amount</code> specified. Each token passed will be decreased and destroyed when its amount reaches 0, preserving the total supply.</p>
+<h2 id='mint'>mint</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nx">token</span><span class="p">.</span><span class="nx">mint</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="nx">token</span><span class="p">.</span><span class="nx">amount</span> <span class="o">===</span> <span class="mi">150</span> <span class="c1">// true</span>
+</code></pre>
+<p><code>mint(amount: number): Token</code></p>
+
+<p><code>mint()</code> increases the total supply in the minter token. Only the minter token is able to mint new amounts.</p>
+<h2 id='send'>send</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">sent</span> <span class="o">=</span> <span class="nx">token</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">'&lt;pubkey&gt;'</span><span class="p">)</span>
+<span class="nx">token</span><span class="p">.</span><span class="nx">amount</span> <span class="o">===</span> <span class="mi">80</span> <span class="c1">// true</span>
+</code></pre>
+<p><code>send(amount: number, to: string): Token</code></p>
+
+<p>Sends an amount from this token to a different public key. The amount in the current token is decreased and a new token is created and returned with the new amount and sharing the same minter.</p>
+<h2 id='amount'>amount</h2>
+<p><code>amount: number</code></p>
+
+<p>The numerical value held within this token. The meaning of amount depends on the token.</p>
+<h2 id='minter'>minter</h2>
+<p><code>minter: Token</code></p>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">gold</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">silver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nx">gold</span><span class="p">.</span><span class="nx">minter</span> <span class="o">!==</span> <span class="nx">silver</span><span class="p">.</span><span class="nx">minter</span>
+</code></pre>
+<p>The original token minted before any splits and merges. Only tokens with the same minter may be merged together. All tokens always retain a reference to their minter so that users may easily determine a token&#39;s type.</p>

@@ -1,0 +1,22 @@
+<h1 id='api-reference-pay'>API Reference: Pay</h1>
+<p>The interface to pay for transactions and implement purse functionality in <code>run</code>. The default <code>Pay</code> implementation is <a href="#purse-api">Purse</a></p>
+<h2 id='pay'>pay</h2>
+<blockquote>
+<p>Pay for a transaction using specific utxos</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">PayWithUtxos</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">utxos</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">utxos</span> <span class="o">=</span> <span class="nx">utxos</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">privateKey</span> <span class="o">=</span> <span class="nx">privateKey</span>
+    <span class="p">}</span>
+
+    <span class="nx">async</span> <span class="nx">pay</span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">utxos</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">privateKey</span><span class="p">.</span><span class="nx">toAddress</span><span class="p">()).</span><span class="nx">sign</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">privateKey</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">run</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Run</span><span class="p">({</span> <span class="na">purse</span><span class="p">:</span> <span class="k">new</span> <span class="nx">PayWithUtxos</span><span class="p">(</span><span class="nx">utxos</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">)</span> <span class="p">})</span>
+</code></pre>
+<p><code>pay(tx): Promise&lt;tx&gt;</code></p>
+
+<p>Adds payment inputs and outputs so that a Jig transaction will be accepted by miners. This is an asyncronous call that returns a promise. If an error is thrown, then state of all jigs in the current transaction will be reverted and the transcation will not be broadcasted.</p>

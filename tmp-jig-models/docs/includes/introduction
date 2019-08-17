@@ -1,0 +1,4 @@
+<h1 id='introduction'>Introduction</h1>
+<p><code>run</code> is a software development kit (SDK) and protocol enabling arbitrary code to run on Bitcoin. It supports full object-oriented programming using JavaScript. <code>run</code> is secure and performant for real applications today. The applications can be built using jigs, interactive objects on Bitcoin. Jigs allow you to build almost anything you can dream up: tokens, contracts, interfaces, elections, games, digital pets, and more — all run on Bitcoin.</p>
+
+<p>To give it a go, visit <a href="https://star.store">https://star.store</a> for a series of tutorials.</p>

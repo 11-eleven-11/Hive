@@ -1,0 +1,51 @@
+<h1 id='getting-started'>Getting Started</h1><h2 id='installation'>Installation</h2>
+<blockquote>
+<p>Load both <code>bsv</code> and <code>run</code> in the browser</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"bsv.browser.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"run.browser.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+<blockquote>
+<p>Load <code>run</code> in node</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">Run</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./dist/run.node.min'</span><span class="p">)</span>
+</code></pre>
+<p><code>run</code> runs everywhere JavaScript ES6 runs including all major browsers on desktop and mobile as well as node.js. It uses the <a href="https://github.com/moneybutton/bsv">bsv</a> library from MoneyButton to build and sign transactions. To get started, simply load these two libraries in your application. In the browser, create script tags for <code>bsv.browser.min.js</code> and <code>run.browser.min.js</code>. In node, run <code>npm install</code> to install bsv and then import <code>run.node.min.js</code>.</p>
+
+<p>And that&#39;s it. There&#39;s no need to deploy any servers to use <code>run</code>. All your code and jigs will be saved on-chain at your bitcoin address and <code>run</code> will use public APIs to interact with the bitcoin network.</p>
+<h2 id='setup'>Setup</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">run</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Run</span><span class="p">({</span> <span class="na">network</span><span class="p">:</span> <span class="s1">'mock'</span> <span class="p">})</span>
+</code></pre>
+<p>Let&#39;s first create a <code>Run</code> instance. This is the manager for your jigs and code and it communicates with the bitcoin network. The default <code>Run</code> network is <code>main</code> (mainnet), but for development and testing, we recommend <code>mock</code>. Mock is an in-memory blockchain that does not require funds to use. We like to call it the <em>mockchain</em>. For more configuration options, see <a href="#api-reference-run">API Reference: Run</a>.</p>
+<h2 id='creating-jigs'>Creating Jigs</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">SimpleStore</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">set</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">jig</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleStore</span><span class="p">()</span>
+
+<span class="nx">jig</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'Satoshi Nakamoto'</span><span class="p">)</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jig</span><span class="p">.</span><span class="nx">owner</span><span class="p">)</span>
+</code></pre>
+<p>Let&#39;s begin with a basic jig that stores a value in a variable. Create a jig called <code>SimpleStore</code> as seen on the right. By extending from <code>Jig</code>, instances of your class will automatically sync to the blockchain. Every jig has an <code>owner</code>. Other jigs may read this jig but only the <code>owner</code> is able to update it. The <code>owner</code> is a Bitcoin address, and the private key is required to update it.</p>
+
+<p>In addition to <code>owner</code>, jigs have a <code>location</code>. A jig&#39;s <code>location</code> is the pairing of a bitcoin transaction ID and an output index and it represents a particular state of an object or class on bitcoin. When you check the <code>location</code> property of a jig, you get its current location. If you wish to get the location where the jig was first deployed, that is its <code>origin</code>. The <code>origin</code> is unique and will not change, however <code>location</code> changes with every method call to incorporate the new bitcoin transaction.</p>
+<h2 id='loading-jigs'>Loading Jigs</h2>
+<blockquote>
+<p>Loading all jigs</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">jigs</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">jigs</span><span class="p">()</span>
+
+<span class="kr">const</span> <span class="nx">simpleStore</span> <span class="o">=</span> <span class="nx">jigs</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="k">instanceof</span> <span class="nx">SimpleStore</span><span class="p">)</span>
+
+<span class="nx">simpleStore</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>Loading a specific jig</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">specificJig</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">simpleStore</span><span class="p">.</span><span class="nx">location</span><span class="p">)</span>
+
+<span class="nx">specificJig</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'abc'</span><span class="p">)</span>
+</code></pre>
+<p>The simplest way to load your jigs is to call <code>run.jigs()</code>. This will find and load all objects owned by <code>run.owner</code> and return them in their latest state. Once loaded, you may call methods and use them normally. Alternatively, you may wish to load a particular jig or load a jig at a point in the past. To do that, pass the <code>location</code> of the jig you wish to load into <code>run.load()</code>.</p>

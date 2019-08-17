@@ -1,0 +1,1561 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+
+    <script src="javascripts/bsv.browser.min.js"></script>
+    <script src="javascripts/run.browser.min.js"></script>
+    <script src="javascripts/star.browser.min.js"></script>
+
+    <style>
+      .emoji {
+        width: 14px
+      }
+    </style>
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
+                  </li>
+                  <li>
+                    <a href="#setup" class="toc-h2 toc-link" data-title="Setup">Setup</a>
+                  </li>
+                  <li>
+                    <a href="#creating-jigs" class="toc-h2 toc-link" data-title="Creating Jigs">Creating Jigs</a>
+                  </li>
+                  <li>
+                    <a href="#loading-jigs" class="toc-h2 toc-link" data-title="Loading Jigs">Loading Jigs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#jigs" class="toc-h1 toc-link" data-title="Jigs">Jigs</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#creating" class="toc-h2 toc-link" data-title="Creating">Creating</a>
+                  </li>
+                  <li>
+                    <a href="#updating" class="toc-h2 toc-link" data-title="Updating">Updating</a>
+                  </li>
+                  <li>
+                    <a href="#sending" class="toc-h2 toc-link" data-title="Sending">Sending</a>
+                  </li>
+                  <li>
+                    <a href="#syncing" class="toc-h2 toc-link" data-title="Syncing">Syncing</a>
+                  </li>
+                  <li>
+                    <a href="#interactivity" class="toc-h2 toc-link" data-title="Interactivity">Interactivity</a>
+                  </li>
+                  <li>
+                    <a href="#extending" class="toc-h2 toc-link" data-title="Extending">Extending</a>
+                  </li>
+                  <li>
+                    <a href="#backing" class="toc-h2 toc-link" data-title="Backing">Backing</a>
+                  </li>
+                  <li>
+                    <a href="#comparing-classes" class="toc-h2 toc-link" data-title="Comparing Classes">Comparing Classes</a>
+                  </li>
+                  <li>
+                    <a href="#limiting-supply" class="toc-h2 toc-link" data-title="Limiting Supply">Limiting Supply</a>
+                  </li>
+                  <li>
+                    <a href="#downloading-classes" class="toc-h2 toc-link" data-title="Downloading Classes">Downloading Classes</a>
+                  </li>
+                  <li>
+                    <a href="#private-properties" class="toc-h2 toc-link" data-title="Private Properties">Private Properties</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#advanced-usage" class="toc-h1 toc-link" data-title="Advanced Usage">Advanced Usage</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#class-properties" class="toc-h2 toc-link" data-title="Class Properties">Class Properties</a>
+                  </li>
+                  <li>
+                    <a href="#storing-classes" class="toc-h2 toc-link" data-title="Storing Classes">Storing Classes</a>
+                  </li>
+                  <li>
+                    <a href="#sharing-jig-classes" class="toc-h2 toc-link" data-title="Sharing Jig Classes">Sharing Jig Classes</a>
+                  </li>
+                  <li>
+                    <a href="#batch-transactions" class="toc-h2 toc-link" data-title="Batch Transactions">Batch Transactions</a>
+                  </li>
+                  <li>
+                    <a href="#running-arbitrary-code" class="toc-h2 toc-link" data-title="Running Arbitrary Code">Running Arbitrary Code</a>
+                  </li>
+                  <li>
+                    <a href="#upgrading-jigs" class="toc-h2 toc-link" data-title="Upgrading Jigs">Upgrading Jigs</a>
+                  </li>
+                  <li>
+                    <a href="#fungible-tokens" class="toc-h2 toc-link" data-title="Fungible Tokens">Fungible Tokens</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#how-it-works" class="toc-h1 toc-link" data-title="How It Works">How It Works</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+                  <li>
+                    <a href="#transaction-format" class="toc-h2 toc-link" data-title="Transaction Format">Transaction Format</a>
+                  </li>
+                  <li>
+                    <a href="#inputs-and-outputs" class="toc-h2 toc-link" data-title="Inputs and Outputs">Inputs and Outputs</a>
+                  </li>
+                  <li>
+                    <a href="#serialization" class="toc-h2 toc-link" data-title="Serialization">Serialization</a>
+                  </li>
+                  <li>
+                    <a href="#privacy" class="toc-h2 toc-link" data-title="Privacy">Privacy</a>
+                  </li>
+                  <li>
+                    <a href="#security" class="toc-h2 toc-link" data-title="Security">Security</a>
+                  </li>
+                  <li>
+                    <a href="#signing-rules" class="toc-h2 toc-link" data-title="Signing Rules">Signing Rules</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-reference-run" class="toc-h1 toc-link" data-title="API Reference: Run">API Reference: Run</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#constructor" class="toc-h2 toc-link" data-title="constructor">constructor</a>
+                  </li>
+                  <li>
+                    <a href="#jigs" class="toc-h2 toc-link" data-title="jigs">jigs</a>
+                  </li>
+                  <li>
+                    <a href="#code" class="toc-h2 toc-link" data-title="code">code</a>
+                  </li>
+                  <li>
+                    <a href="#load" class="toc-h2 toc-link" data-title="load">load</a>
+                  </li>
+                  <li>
+                    <a href="#deploy" class="toc-h2 toc-link" data-title="deploy">deploy</a>
+                  </li>
+                  <li>
+                    <a href="#sync" class="toc-h2 toc-link" data-title="sync">sync</a>
+                  </li>
+                  <li>
+                    <a href="#begintransaction" class="toc-h2 toc-link" data-title="beginTransaction">beginTransaction</a>
+                  </li>
+                  <li>
+                    <a href="#endtransaction" class="toc-h2 toc-link" data-title="endTransaction">endTransaction</a>
+                  </li>
+                  <li>
+                    <a href="#owner" class="toc-h2 toc-link" data-title="owner">owner</a>
+                  </li>
+                  <li>
+                    <a href="#purse" class="toc-h2 toc-link" data-title="purse">purse</a>
+                  </li>
+                  <li>
+                    <a href="#blockchain" class="toc-h2 toc-link" data-title="blockchain">blockchain</a>
+                  </li>
+                  <li>
+                    <a href="#version" class="toc-h2 toc-link" data-title="version">version</a>
+                  </li>
+                  <li>
+                    <a href="#activate" class="toc-h2 toc-link" data-title="activate">activate</a>
+                  </li>
+                  <li>
+                    <a href="#static-jig" class="toc-h2 toc-link" data-title="static Jig">static Jig</a>
+                  </li>
+                  <li>
+                    <a href="#static-token" class="toc-h2 toc-link" data-title="static Token">static Token</a>
+                  </li>
+                  <li>
+                    <a href="#static-instance" class="toc-h2 toc-link" data-title="static instance">static instance</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-reference-jig" class="toc-h1 toc-link" data-title="API Reference: Jig">API Reference: Jig</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#constructor" class="toc-h2 toc-link" data-title="constructor">constructor</a>
+                  </li>
+                  <li>
+                    <a href="#origin" class="toc-h2 toc-link" data-title="origin">origin</a>
+                  </li>
+                  <li>
+                    <a href="#location" class="toc-h2 toc-link" data-title="location">location</a>
+                  </li>
+                  <li>
+                    <a href="#owner" class="toc-h2 toc-link" data-title="owner">owner</a>
+                  </li>
+                  <li>
+                    <a href="#satoshis" class="toc-h2 toc-link" data-title="satoshis">satoshis</a>
+                  </li>
+                  <li>
+                    <a href="#sync" class="toc-h2 toc-link" data-title="sync">sync</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-reference-token" class="toc-h1 toc-link" data-title="API Reference: Token">API Reference: Token</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#constructor" class="toc-h2 toc-link" data-title="constructor">constructor</a>
+                  </li>
+                  <li>
+                    <a href="#mint" class="toc-h2 toc-link" data-title="mint">mint</a>
+                  </li>
+                  <li>
+                    <a href="#send" class="toc-h2 toc-link" data-title="send">send</a>
+                  </li>
+                  <li>
+                    <a href="#amount" class="toc-h2 toc-link" data-title="amount">amount</a>
+                  </li>
+                  <li>
+                    <a href="#minter" class="toc-h2 toc-link" data-title="minter">minter</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-reference-blockchain" class="toc-h1 toc-link" data-title="API Reference: Blockchain">API Reference: Blockchain</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#broadcast" class="toc-h2 toc-link" data-title="broadcast">broadcast</a>
+                  </li>
+                  <li>
+                    <a href="#fetch" class="toc-h2 toc-link" data-title="fetch">fetch</a>
+                  </li>
+                  <li>
+                    <a href="#utxos" class="toc-h2 toc-link" data-title="utxos">utxos</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-reference-purse" class="toc-h1 toc-link" data-title="API Reference: Purse">API Reference: Purse</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#privatekey" class="toc-h2 toc-link" data-title="privateKey">privateKey</a>
+                  </li>
+                  <li>
+                    <a href="#address" class="toc-h2 toc-link" data-title="address">address</a>
+                  </li>
+                  <li>
+                    <a href="#balance" class="toc-h2 toc-link" data-title="balance">balance</a>
+                  </li>
+                  <li>
+                    <a href="#utxos" class="toc-h2 toc-link" data-title="utxos">utxos</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-reference-pay" class="toc-h1 toc-link" data-title="API Reference: Pay">API Reference: Pay</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#pay" class="toc-h2 toc-link" data-title="pay">pay</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li>version 0.3.0 alpha</li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p><code>run</code> is a software development kit (SDK) and protocol enabling arbitrary code to run on Bitcoin. It supports full object-oriented programming using JavaScript. <code>run</code> is secure and performant for real applications today. The applications can be built using jigs, interactive objects on Bitcoin. Jigs allow you to build almost anything you can dream up: tokens, contracts, interfaces, elections, games, digital pets, and more — all run on Bitcoin.</p>
+
+<p>To give it a go, visit <a href="https://star.store">https://star.store</a> for a series of tutorials.</p>
+<h1 id='getting-started'>Getting Started</h1><h2 id='installation'>Installation</h2>
+<blockquote>
+<p>Load both <code>bsv</code> and <code>run</code> in the browser</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"bsv.browser.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"run.browser.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+<blockquote>
+<p>Load <code>run</code> in node</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">Run</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./dist/run.node.min'</span><span class="p">)</span>
+</code></pre>
+<p><code>run</code> runs everywhere JavaScript ES6 runs including all major browsers on desktop and mobile as well as node.js. It uses the <a href="https://github.com/moneybutton/bsv">bsv</a> library from MoneyButton to build and sign transactions. To get started, simply load these two libraries in your application. In the browser, create script tags for <code>bsv.browser.min.js</code> and <code>run.browser.min.js</code>. In node, run <code>npm install</code> to install bsv and then import <code>run.node.min.js</code>.</p>
+
+<p>And that&#39;s it. There&#39;s no need to deploy any servers to use <code>run</code>. All your code and jigs will be saved on-chain at your bitcoin address and <code>run</code> will use public APIs to interact with the bitcoin network.</p>
+<h2 id='setup'>Setup</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">run</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Run</span><span class="p">({</span> <span class="na">network</span><span class="p">:</span> <span class="s1">'mock'</span> <span class="p">})</span>
+</code></pre>
+<p>Let&#39;s first create a <code>Run</code> instance. This is the manager for your jigs and code and it communicates with the bitcoin network. The default <code>Run</code> network is <code>main</code> (mainnet), but for development and testing, we recommend <code>mock</code>. Mock is an in-memory blockchain that does not require funds to use. We like to call it the <em>mockchain</em>. For more configuration options, see <a href="#api-reference-run">API Reference: Run</a>.</p>
+<h2 id='creating-jigs'>Creating Jigs</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">SimpleStore</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">set</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">jig</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleStore</span><span class="p">()</span>
+
+<span class="nx">jig</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'Satoshi Nakamoto'</span><span class="p">)</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">jig</span><span class="p">.</span><span class="nx">owner</span><span class="p">)</span>
+</code></pre>
+<p>Let&#39;s begin with a basic jig that stores a value in a variable. Create a jig called <code>SimpleStore</code> as seen on the right. By extending from <code>Jig</code>, instances of your class will automatically sync to the blockchain. Every jig has an <code>owner</code>. Other jigs may read this jig but only the <code>owner</code> is able to update it. The <code>owner</code> is a Bitcoin address, and the private key is required to update it.</p>
+
+<p>In addition to <code>owner</code>, jigs have a <code>location</code>. A jig&#39;s <code>location</code> is the pairing of a bitcoin transaction ID and an output index and it represents a particular state of an object or class on bitcoin. When you check the <code>location</code> property of a jig, you get its current location. If you wish to get the location where the jig was first deployed, that is its <code>origin</code>. The <code>origin</code> is unique and will not change, however <code>location</code> changes with every method call to incorporate the new bitcoin transaction.</p>
+<h2 id='loading-jigs'>Loading Jigs</h2>
+<blockquote>
+<p>Loading all jigs</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">jigs</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">jigs</span><span class="p">()</span>
+
+<span class="kr">const</span> <span class="nx">simpleStore</span> <span class="o">=</span> <span class="nx">jigs</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="k">instanceof</span> <span class="nx">SimpleStore</span><span class="p">)</span>
+
+<span class="nx">simpleStore</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>Loading a specific jig</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">specificJig</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">simpleStore</span><span class="p">.</span><span class="nx">location</span><span class="p">)</span>
+
+<span class="nx">specificJig</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'abc'</span><span class="p">)</span>
+</code></pre>
+<p>The simplest way to load your jigs is to call <code>run.jigs()</code>. This will find and load all objects owned by <code>run.owner</code> and return them in their latest state. Once loaded, you may call methods and use them normally. Alternatively, you may wish to load a particular jig or load a jig at a point in the past. To do that, pass the <code>location</code> of the jig you wish to load into <code>run.load()</code>.</p>
+<h1 id='jigs'>Jigs</h1>
+<p>Jigs are interactive objects on Bitcoin. Every jig has a JavaScript class and that class determines what the jig can do. Every jig is unique. Each has an owner and only that owner is able to update the jig. How is that secured? Bitcoin! Let&#39;s see how you can create a jig.</p>
+<h2 id='creating'>Creating</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Post</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span> 
+    <span class="nx">init</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">new</span> <span class="nx">Post</span><span class="p">(</span><span class="s1">'Hello, world'</span><span class="p">)</span>
+</code></pre>
+<p>Let&#39;s create a new jig called <code>Post</code> that represents content on a message board. In JavaScript, your constructor is called <code>constructor</code> but for jigs, this method is called <code>init</code>. Think of them the same way. If <code>init</code> throws an exception, the jig will never be created, just like constructors. You create jigs by calling <code>new</code> as you would with normal JavaScript objects and they get created on Bitcoin. Pretty cool.</p>
+<h2 id='updating'>Updating</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">EditablePost</span> <span class="kr">extends</span> <span class="nx">Post</span> <span class="p">{</span>
+    <span class="nx">edit</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">editablePost</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EditablePost</span><span class="p">(</span><span class="s1">'Hello, world'</span><span class="p">)</span>
+
+<span class="nx">editablePost</span><span class="p">.</span><span class="nx">edit</span><span class="p">(</span><span class="s1">'Hello, BitCoin'</span><span class="p">)</span>
+</code></pre>
+<p>Jigs are updated by calling methods. In fact, this is the only way to update jigs, because if users could change properties directly, then classes would become irrelevant. When you call a method, <code>run</code> publishes a Bitcoin transaction with data in an <code>op_return</code> that includes the method name and its arguments so that its state may be recomputed later simply by playing back every update one-by-one. For more information about how it works, see <a href="#how-it-works">How It Works</a>.</p>
+<h2 id='sending'>Sending</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Dragon</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">send</span><span class="p">(</span><span class="nx">pubkey</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">owner</span> <span class="o">=</span> <span class="nx">pubkey</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">new</span> <span class="nx">Dragon</span><span class="p">().</span><span class="nx">send</span><span class="p">(</span><span class="s1">'&lt;some other public key&gt;'</span><span class="p">)</span>
+</code></pre>
+<p>Jigs may be sent to someone else by changing the <code>owner</code> property of a jig. Simply set the owner to the new owner&#39;s public key. Only public keys are supported at this time and they must be in a string format, but after changing the owner, the new owner will be able to update the jig.</p>
+<h2 id='syncing'>Syncing</h2>
+<blockquote>
+<p>Wait for updates to complete</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">LoyaltyCard</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+    <span class="nx">init</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">stamps</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">}</span>
+    <span class="nx">stamp</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">stamps</span> <span class="o">+=</span><span class="mi">1</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">card</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">new</span> <span class="nx">LoyaltyCard</span><span class="p">().</span><span class="nx">sync</span><span class="p">()</span>
+
+<span class="nx">card</span><span class="p">.</span><span class="nx">stamp</span><span class="p">()</span>
+<span class="nx">await</span> <span class="nx">card</span><span class="p">.</span><span class="nx">sync</span><span class="p">()</span>
+</code></pre>
+<blockquote>
+<p>Sync a jig from its origin to its latest state</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">card2</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">card</span><span class="p">.</span><span class="nx">origin</span><span class="p">)</span>
+<span class="nx">card2</span><span class="p">.</span><span class="nx">sync</span><span class="p">()</span>
+</code></pre>
+<p><code>run</code> is asyncronous. When you create or update jigs, <code>run</code> creates Bitcoin transactions for you in the background and broadcasts them to the network. As with any network request, the request may sometimes fail. Your connection may go down or a node on the network may reject your transaction for various reasons. In addition, your jigs may be behind the latest state on the network. <code>run</code> does not automatically update your jigs.</p>
+
+<p>Therefore, every jig has a <code>sync()</code> method to ensure your local state is the same as that on the network. Calling <code>jig.sync()</code> returns a promise that resolves once all pending transactions are published successfully and the jig is updated with any new transactions from the network. Any errors with the network requests or validation will cause the promise to be rejected.</p>
+<h2 id='interactivity'>Interactivity</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Event</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">createTicket</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">new</span> <span class="nx">Ticket</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">Ticket</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">event</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Event</span><span class="p">.</span><span class="nx">deps</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">Ticket</span> <span class="p">}</span>
+</code></pre>
+<p>Jigs may create other jigs. Calling <code>new</code> to construct a jig within another jig&#39;s methods run will create a new output in the transaction. The <code>Jig.deps</code> property may be used to specify class dependencies because by default Jig code runs in a sandbox without access to other code.</p>
+
+<p>Jigs may store other jigs as properties too. Think of these as standard JavaScript references that you may read or write. However, if stored jigs are updated, then their owners must also sign the Bitcoin transaction that updates their state. Reads have similar rules. For more information on spending rules, see the section titled <a href="#how-it-works">How It Works</a>.</p>
+<h2 id='extending'>Extending</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">EditablePost</span> <span class="kr">extends</span> <span class="nx">Post</span> <span class="p">{</span>
+  <span class="nx">edit</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">message</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p>Jig classes may be extended from other jig classes to add or alter behavior. This is a great way to build off of established jigs and even support modding communities. Class <code>super</code> calls work as expected, and there is no need to specify parents as dependencies because they will be automatically detected. </p>
+<h2 id='backing'>Backing</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Donation</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">owner</span><span class="p">,</span> <span class="nx">satoshis</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">message</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">owner</span> <span class="o">=</span> <span class="nx">pubkey</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">satoshis</span> <span class="o">=</span> <span class="nx">satoshis</span>
+  <span class="p">}</span>
+
+  <span class="nx">withdraw</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">satoshis</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">new</span> <span class="nx">Donation</span><span class="p">(</span><span class="s1">'I like your videos'</span><span class="p">,</span> <span class="nx">pubkey</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+</code></pre>
+<p>Jigs may be backed by Bitcoins. When a jig is backed, it means that the output associated with that jig has a non-dust value in it. Backed jigs let users send money between each other and provide a baseline value for items. To back a jig, set the <code>satoshis</code> property to any non-negative number. Your purse will automatically deposit that amount into the jig. When the <code>satoshis</code> property is later decreased, those Bitcoins will be withdrawn to the jig owner&#39;s purse.</p>
+
+<p>It is important to remember that these are <em>backed</em> jigs and not smart contracts. The jig&#39;s owner may always melt the satoshis out of the jig and in doing so destroy the jig.</p>
+
+<aside class="notice">
+<b>Note:</b> All bitcoin outputs must have an amount at least the dust limit, currently 546 satoshis, to be accepted by the network. `run` will choose the greater of the `satoshis` property and this dust limit when building outputs.
+</aside>
+<h2 id='comparing-classes'>Comparing Classes</h2>
+<blockquote>
+<p>Attaching an item</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Hat</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">Person</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">wear</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">===</span> <span class="nx">Hat</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">item</span> <span class="o">=</span> <span class="nx">item</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Person</span><span class="p">.</span><span class="nx">deps</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">Hat</span> <span class="p">}</span>
+</code></pre>
+<p>The <code>constructor</code> property is useful for checking the class of a jig. Because JavaScript is dynamically typed, you should always check the types of your parameters. You can compare the <code>constructor</code> to known dependencies and also read its class properties. Unlike other properties, reading the <code>constructor</code> is not considered a read when determining which jigs to spend because its value does not change.</p>
+
+<p>Sometimes you may wish to check if a class is part of a changing set. For example, a game may have a list of item classes that may change over time. For that, see the <a href="#storing-classes">Storing Classes</a> section.</p>
+
+<aside class="warning">
+<b>Warning:</b> Using `instanceof` is not recommended for comparing classes because anyone may extend a class and change its behavior.
+</aside>
+<h2 id='limiting-supply'>Limiting Supply</h2>
+<blockquote>
+<p>Pattern 1: Minter keeps a list</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Game</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">weapons</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">}</span>
+  <span class="nx">createWeapon</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">weapons</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'too many weapons'</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">weapons</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">new</span> <span class="nx">Weapon</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">weapons</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">weapons</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">Weapon</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">(</span><span class="nx">game</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">game</span> <span class="o">=</span> <span class="nx">game</span> <span class="p">}</span>
+  <span class="nx">valid</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">weapon</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Game</span><span class="p">.</span><span class="nx">deps</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">Weapon</span> <span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Pattern 2: Child modifies parent</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Game</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">weaponCount</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">}</span>
+  <span class="nx">createWeapon</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">weaponCount</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'too many weapons'</span><span class="p">)</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Weapon</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">incrementWeaponCount</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">weaponCount</span><span class="o">++</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">Weapon</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">(</span><span class="nx">game</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">game</span> <span class="o">=</span> <span class="nx">game</span>
+    <span class="nx">game</span><span class="p">.</span><span class="nx">incrementWeaponCount</span><span class="p">()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Game</span><span class="p">.</span><span class="nx">deps</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">Weapon</span> <span class="p">}</span>
+</code></pre>
+<p>The supply of a jig class may be limited through the use of a <em>minter</em>. The <em>minter</em> is a separate jig responsible for creating the limited-supply jigs and knowing when to stop, after which it throws an error. It is important that it not be possible to inflate the supply by creating jigs outside of the <em>minter</em>. To enforce this, we recommend one of two patterns:</p>
+
+<ol>
+<li><p><strong>Minter keeps a list</strong>: In this pattern, the <em>minter</em> jig has an internal list of all jigs it creates. This list is the official list, and the user has the responsibility to check that jigs they receive are part of this list. Although this pattern is simple to understand, the additional onus on users to validate may be undesirable.</p></li>
+<li><p><strong>Child-modifies-parent</strong>: In this pattern, the child calls a method on the parent when it is constructed to update the parent in some way, perhaps by incrementing a counter or adding itself to a list. Because all jig updates require approval from their owner, this pattern enforces a limited-supply automatically and there is no need to check whether an item is part of a list. However, it is still important to check that the item&#39;s <em>minter</em> is the one expected.</p></li>
+</ol>
+<h2 id='downloading-classes'>Downloading Classes</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Data</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Data</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="c1">// The location of the Data class is stored in Data.location</span>
+</code></pre>
+<blockquote>
+<p>Load the Data class from another instance</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">Data</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="s1">'&lt;class-location-goes-here&gt;'</span><span class="p">)</span>
+
+<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Data</span><span class="p">(</span><span class="s1">'abc'</span><span class="p">)</span>
+</code></pre>
+<p>You may wish to download existing code that has already been deployed, for example, to create more instances of a particular class. The <code>run.load</code> method, in addition to loading jigs, is also able to download, install and sandbox code from the blockchain.</p>
+<h2 id='private-properties'>Private Properties</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Dragon</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_numberOfCrashLandings</span> <span class="o">=</span> <span class="mi">88</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">InsurancePolicy</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">(</span><span class="nx">dragon</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Throws an error !</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">dragon</span><span class="p">.</span><span class="nx">_numberOfCrashLandings</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">chargeMoreMoney</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p>Jigs may contain private variables and private methods by prefixing them with an underscore. This is a popular convention in JavaScript and <code>run</code> enforces it as a validation rule for Jigs. With private properties, you may precisely control the interface that users and other jigs interact with.</p>
+
+<p>There are a few rules to learn. Private variables may only be read from within one of that jig&#39;s methods. If another kind of class attempts to read a private variable, <code>run</code> will throw an error. They may however be read externally. Private methods are similar that they may only be called as helper methods within the same jig or by another jig of the same class. However unlike private variables, it is an error to call a private method externally.</p>
+<h1 id='advanced-usage'>Advanced Usage</h1><h2 id='class-properties'>Class Properties</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">DigitalPet</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="nx">DigitalPet</span><span class="p">.</span><span class="nx">author</span> <span class="o">=</span> <span class="s1">'Maximus'</span>
+<span class="nx">DigitalPet</span><span class="p">.</span><span class="nx">license</span> <span class="o">=</span> <span class="s1">'MIT'</span>
+<span class="nx">DigitalPet</span><span class="p">.</span><span class="nx">icon</span> <span class="o">=</span> <span class="p">{</span> <span class="na">emoji</span><span class="p">:</span> <span class="s1">'🐉'</span> <span class="p">}</span>
+
+<span class="nx">run</span><span class="p">.</span><span class="nx">deploy</span><span class="p">(</span><span class="nx">DigitalPet</span><span class="p">)</span>
+</code></pre>
+<p>Classes and functions may have static properties as metadata. These properties are stored onchain with the code definition itself when the code is uploaded. Any later downloads of that code will have these properties set. Class property values may be any type that <code>run</code> is able to serialize, including basic data types, jigs, and other code including classes or functions. Here are some recommended conventions:</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>author</code></td>
+<td>string</td>
+<td>Name of the class&#39;s creator</td>
+</tr>
+<tr>
+<td><code>license</code></td>
+<td>string</td>
+<td>License for the code</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>object { emoji: string }</td>
+<td>Icon to identify the class in block explorers. The <code>emoji</code> property should be a single emoji character.</td>
+</tr>
+<tr>
+<td><code>deps</code></td>
+<td>object</td>
+<td>Dependencies that are loaded as globals into the code sandbox.</td>
+</tr>
+</tbody></table>
+
+<p>In addition, when a Jig is uploaded, its <code>origin</code>, <code>location</code>, and <code>owner</code> properties are set as class properties, but they may not be changed.</p>
+<h2 id='storing-classes'>Storing Classes</h2>
+<blockquote>
+<p>Comparing a class against a dynamic set</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Person</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">allowed</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">}</span>
+
+  <span class="nx">allow</span><span class="p">(</span><span class="nx">ItemClass</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">allowed</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">ItemClass</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="nx">wear</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">allowed</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">constructor</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">item</span> <span class="o">=</span> <span class="nx">item</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p>Jigs may store other classes and functions as properties inside them and also accept code as arguments to their methods. This is useful, for example, to define an official list of supported classes used in a game. It may also be used to create dynamic jig factories, and even to upgrade the behavior of a class after it is written. When code is passed or stored for the first time, it will be automatically deployed and assigned an owner. Code is always owned by someone.</p>
+<h2 id='sharing-jig-classes'>Sharing Jig Classes</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Dragon</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">set</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// In node, or the browser, upload the class via `run.deploy` and write down its origin.</span>
+<span class="c1">// Then save it onto the class for the appropriate Bitcoin network before distributing.</span>
+
+<span class="nx">Dragon</span><span class="p">.</span><span class="nx">originMainnet</span> <span class="o">=</span> <span class="s1">'bee45c75c37a289517f33ebfa051601c9610ccc56fbddfbabc44413db5b0bc1b_o1'</span>
+</code></pre>
+<p>In addition to downloading code from the blockchain, Jig classes may be shared with others in libraries. To share a Jig class, first upload its code manually to each Bitcoin network you wish to support. Then set the following static properties on the class itself before distributing it. Run will automatically use these origins and locations on the appropriate network and not re-upload the class.</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>originMainnet</code></td>
+<td>string</td>
+<td>Mainnet origin for the uploaded class</td>
+</tr>
+<tr>
+<td><code>originTestnet</code></td>
+<td>string</td>
+<td>Testnet origin for the uploaded class</td>
+</tr>
+<tr>
+<td><code>originStn</code></td>
+<td>string</td>
+<td>STN origin for the uploaded class</td>
+</tr>
+<tr>
+<td><code>originMocknet</code></td>
+<td>string</td>
+<td>Mocknet origin for the uploaded class</td>
+</tr>
+<tr>
+<td><code>locationMainnet</code></td>
+<td>string</td>
+<td>Mainnet location for the uploaded class</td>
+</tr>
+<tr>
+<td><code>locationTestnet</code></td>
+<td>string</td>
+<td>Testnet location for the uploaded class</td>
+</tr>
+<tr>
+<td><code>locationStn</code></td>
+<td>string</td>
+<td>STN location for the uploaded class</td>
+</tr>
+<tr>
+<td><code>locationMocknet</code></td>
+<td>string</td>
+<td>Mocknet location for the uploaded class</td>
+</tr>
+<tr>
+<td><code>ownerMainnet</code></td>
+<td>?string</td>
+<td>Optional mainnet owner pubkey for the uploaded class</td>
+</tr>
+<tr>
+<td><code>ownerTestnet</code></td>
+<td>?string</td>
+<td>Optional testnet owner pubkey for the uploaded class</td>
+</tr>
+<tr>
+<td><code>ownerStn</code></td>
+<td>?string</td>
+<td>Optional STN owner pubkey for the uploaded class</td>
+</tr>
+<tr>
+<td><code>ownerMocknet</code></td>
+<td>?string</td>
+<td>Optional mocknet owner pubkey for the uploaded class</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+<b>Warning:</b> Run assumes that the class code matches the code that is stored on the blockchain. Only use class libraries from those you trust.
+</aside>
+<h2 id='batch-transactions'>Batch Transactions</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">run</span><span class="p">.</span><span class="nx">beginTransaction</span><span class="p">()</span>
+<span class="kr">const</span> <span class="nx">jig</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CustomJig</span><span class="p">()</span>
+<span class="nx">jig</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">to</span><span class="p">)</span>
+<span class="nx">run</span><span class="p">.</span><span class="nx">endTransaction</span><span class="p">()</span>
+</code></pre>
+<p>Multiple actions may be batched together into a single atomic Bitcoin transaction. In addition to making these actions all-or-nothing, it also reduces the fees. Any number of updates may be batched together from different jigs. Call <code>run.beginTransaction()</code> before performing updates and <code>run.endTransaction()</code> after. These may also be nested, and when the final <code>endTransaction()</code> is called, the transaction will be published on-chain.</p>
+<h2 id='running-arbitrary-code'>Running Arbitrary Code</h2>
+<blockquote>
+<p>Loading a helper class</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Preconditions</span> <span class="p">{</span>
+  <span class="kr">static</span> <span class="nx">checkArgument</span><span class="p">(</span><span class="nx">check</span><span class="p">)</span> <span class="p">{</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">check</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">()</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">PositiveNumber</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">checkArgument</span><span class="p">(</span><span class="nx">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">PositiveNumber</span><span class="p">.</span><span class="nx">deps</span> <span class="o">=</span> <span class="p">{</span> <span class="na">$</span><span class="p">:</span> <span class="nx">Preconditions</span> <span class="p">}</span>
+</code></pre>
+<p><code>run</code> supports running arbitrary code from the blockchain and not just jigs. Currently, arbitrary code must be uploaded as either classes or functions. Like jigs, this code also runs in a sandbox environment but it does not sync with the blockchain. Therefore, it should not save state. One popular use case for arbitrary code is to write helper libraries for jigs. For example, big integer math or hashing. Another use case is to upgrade behavior of Jig classes. See <a href="#upgrading-jigs">Upgrading Jigs</a> for more details.</p>
+
+<aside class="notice">
+<b>Note:</b> Unlike Jigs, arguments passed into sandboxed code directly without going through a Jig may expose your global scope. Be careful.
+</aside>
+<h2 id='upgrading-jigs'>Upgrading Jigs</h2>
+<blockquote>
+<p>Method 1: Reissuing Jigs</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">OriginalJig</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">f</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">3</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">UpgradedJig</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span> 
+  <span class="nx">init</span><span class="p">(</span><span class="nx">original</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">original</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">!==</span> <span class="nx">OriginalJig</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'unexpected jig'</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">original</span> <span class="o">=</span> <span class="nx">original</span>
+  <span class="p">}</span>
+  <span class="nx">f</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">4</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Method 2: Replacing Behavior</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Weapon</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">setAttackBehavior</span><span class="p">(</span><span class="nx">attackFunction</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">attackFunction</span> <span class="o">=</span> <span class="nx">attackFunction</span>
+  <span class="p">}</span>
+
+  <span class="nx">attack</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">attackFunction</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">weapon</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Weapon</span><span class="p">()</span>
+
+<span class="kd">function</span> <span class="nx">attackPlayer</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">player</span><span class="p">.</span><span class="nx">doDamage</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">weapon</span><span class="p">.</span><span class="nx">setAttackBehavior</span><span class="p">(</span><span class="nx">attackPlayer</span><span class="p">)</span>
+<span class="nx">weapon</span><span class="p">.</span><span class="nx">attack</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span>
+</code></pre>
+<p>By default, jig classes are not upgradable. However, you may simulate upgradability by creating a new jig that wraps the old one adds the new behavior. You may also simulate upgradability by storing behavior on classes. These are both demonstrated on the right. There will be additional ways to upgrade classes in the future.</p>
+<h2 id='fungible-tokens'>Fungible Tokens</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">USDCoin</span> <span class="kr">extends</span> <span class="nx">Token</span> <span class="p">{</span>
+  <span class="nx">setBackingBank</span><span class="p">(</span><span class="nx">bank</span><span class="p">,</span> <span class="nx">account</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">minter</span> <span class="o">!==</span> <span class="k">this</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'only the minter token may set the bank'</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">bank</span> <span class="o">=</span> <span class="nx">bank</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">account</span> <span class="o">=</span> <span class="nx">account</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p>It is possible to create fungible tokens similar to ERC-20 with <code>run</code>. <code>run</code> provides a base <code>Token</code> class for this purpose. However unlike ERC-20 where multiple users interact through a single contract, in <code>run</code> each user owns their own tokens. It is closer to Bitcoin UTXOs or SLP tokens. You might own multiple <code>Token</code>s each with different amounts in them and all of the same kind. <code>Token</code> amounts may be split off and sent to others, and tokens may also be combined together like Bitcoin outputs. You may even extend the base <code>Token</code> class to add new functionality as shown on the right.</p>
+
+<p>See <a href="#api-reference-token"><code>API Reference: Token</code></a> for more details.</p>
+<h1 id='how-it-works'>How It Works</h1><h2 id='overview'>Overview</h2>
+<p>A jig is a JavaScript object that <code>run</code> syncs with the blockchain. All of its code and method calls are stored on-chain in <code>op_return</code> outputs, enabling its state to be reconstructed by just loading its code and replaying every method call. Every Jig is paired with a Bitcoin output and only the owners of these output is able to make changes to the jig. All updates taken together form a transaction chain that enables consensus through user verification. This design is similar to other UTXO-based token systems because miners don&#39;t verify what is published. If anyone cheats however or publishes an incorrect update, it not only destroys the jig but is also apparent to everyone for all time.</p>
+
+<aside class="notice">
+<b>Note:</b> Non-standard scripts will enable complex ownership models for jigs in the future.
+</aside>
+<h2 id='transaction-format'>Transaction Format</h2>
+<blockquote>
+<p>Sample code for transaction</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Dragon</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">dragon</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dragon</span><span class="p">()</span>
+</code></pre>
+<p>The <code>run</code> protocol for storing jigs and code is in development but will be well-documented, stable, and open in the future. Here is an example Bitcoin transaction.</p>
+
+<table><thead>
+<tr>
+<th>Inputs</th>
+<th>Outputs</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1. payment</td>
+<td>1. op-return</td>
+</tr>
+<tr>
+<td></td>
+<td>2. p2pkh: Dragon Class</td>
+</tr>
+<tr>
+<td></td>
+<td>3. phpkh: dragon jig instance</td>
+</tr>
+<tr>
+<td></td>
+<td>4. change output for payment</td>
+</tr>
+</tbody></table>
+<h3 id='op_return-protocol'>op_return protocol</h3>
+<p>The following script is used for the first output of all <code>run</code> transactions: </p>
+
+<p><code>[op_false] [op_return] [op_push] &quot;run&quot; [op_push] 0x00000000 [op_push] &lt;json&gt;</code></p>
+
+<ul>
+<li>All strings are UTF-8 encoded.</li>
+<li>The second push data is the protocol version.</li>
+<li><code>[op_false] [op_return]</code> is standard on Bitcoin SV since the Quasar hard fork.</li>
+<li>The json payload is currently encrypted. This encryption will be removed before launch.</li>
+</ul>
+<h3 id='json-payload'>json payload</h3>
+<p><code>{</code></p>
+
+<p><code>actions: [{ def: &quot;_o1&quot;, method: &quot;init&quot;, args: [], owner: &quot;&lt;pubkey&gt;&quot; }]</code>,</p>
+
+<p><code>defs: [{ code: &quot;class Dragon extends Jig { }&quot; ],</code></p>
+
+<p><code>jigs: 1</code></p>
+
+<p><code>}</code></p>
+<h2 id='inputs-and-outputs'>Inputs and Outputs</h2>
+<p>Within a Jig transaction, the inputs are the jigs which were updated during the transaction, and the outputs are the updated or newly created jigs. There may also be class and payment inputs and outputs. The jig or class for each output is determined by evaluating the updates in the <code>op_return</code>, and the resulting order is roughly the class outputs followed by the jig outputs in their order they were read or written.</p>
+<h2 id='serialization'>Serialization</h2>
+<p>Jigs and other objects that are passed into methods require special serialization to be able to reconstructed. <code>run</code> uses a custom protocol that is similar to JSON. The following data types are supported:</p>
+
+<ul>
+<li>Numbers</li>
+<li>Strings</li>
+<li>Booleans</li>
+<li>Objects</li>
+<li>Arrays</li>
+<li>Jigs</li>
+<li>Classes</li>
+<li>Functions</li>
+</ul>
+
+<p>Symbols are not serializable and will not be supported. Maps, Sets, Dates, Buffers, and other standard library objects are currently unsupported but will be in the future.</p>
+
+<aside class="notice">
+<b>Note:</b> Circular references of properties within the same Jig is not supported today. However, two Jigs may refer to each other.
+</aside>
+<h2 id='privacy'>Privacy</h2>
+<p>All jigs and jig code are stored on-chain and are open for everyone to read. This enables anyone to reconstruct the state of any jig. Privacy is achieved similar to Bitcoin UTXOs. For maximum privacy, public keys should not be re-used. In the future, we will introduce <em>private jigs</em> that are visible only to the current owners, but by their nature they will not work as well well with explorers, analytics and other services.</p>
+<h2 id='security'>Security</h2>
+<p>Every jig&#39;s code is sandboxed so that it does not have access to the global state which includes your funds. This provides security and also determinism when replaying a jig&#39;s history, because a jig should evaluate the same in every environment. To accomplish this, <code>run</code> extends the <code>vm</code> library in node and uses iframe sandboxing in the browser. Nonetheless, it is recommended you avoid running untrusted code.</p>
+
+<p>Because of this sandboxing, Jigs must specify their dependencies manually by setting the <code>deps</code> property on the class. Upon creating an instance of that jig, Run will load each dependency into its own sandbox and link them together.</p>
+
+<p>Run also provides protection so that you may not perform updates on your jigs that will not be validated by others. For example, Run will throw an error if you try to change a property on a jig directly rather than call a method, or if you attempt to set a function as a property on a jig. Only top-level method calls may change a jig&#39;s state which is also enforced by <code>run</code>.</p>
+<h2 id='signing-rules'>Signing Rules</h2>
+<p>The rules to determine which jigs must be spent in a Bitcoin transaction and therefore which owners are required to sign off are the following:</p>
+
+<ol>
+<li>If a method reads jigs and does not change state, then no spends are required.</li>
+<li>If there are any changes to a jig&#39;s state, then all jigs written are spent.</li>
+<li>If one jig creates another jig, then the creator jig is spent.</li>
+</ol>
+
+<p>Jigs that are only read are referenced but their owners are not required to sign off. However, they must plausibly be in their latest state when read. Reads of immutable properties however are not counted as reads by <code>run</code>. Reads are only counted if the property is <em>mutable state</em> because <em>immutable state</em> would be the same for every <code>location</code> in the past.</p>
+<h1 id='api-reference-run'>API Reference: Run</h1><h2 id='constructor'>constructor</h2>
+<blockquote>
+<p>Create a <code>run</code> instance on mocknet. The purse will be auto-funded.</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">run</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Run</span><span class="p">({</span> <span class="na">network</span><span class="p">:</span> <span class="s1">'mock'</span> <span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Create a run instance on testnet</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">// Create a run instance on testnet</span>
+<span class="kr">const</span> <span class="nx">run</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Run</span><span class="p">({</span>
+  <span class="na">network</span><span class="p">:</span> <span class="s1">'test'</span><span class="p">,</span>
+  <span class="na">owner</span><span class="p">:</span> <span class="s1">'cTMHbJULREfbsUFsuJLMrNbJ7VrASgWeYfFF6EgJMy49ARnNed3d'</span><span class="p">,</span>
+  <span class="na">purse</span><span class="p">:</span> <span class="s1">'cQP1h2zumWrCr2zxciuNeho61QUGtQ4zBKWFauk7WEhFb8kvjRTh'</span>
+<span class="p">})</span>
+</code></pre>
+<p><code>constructor(config: Object): Run</code></p>
+
+<p>Creates a <code>run</code> instance. The <code>run</code> instance provides the network and the purse, so you wouldn&#39;t be able to create jigs without it. <code>run</code> is the core of all platform functionality and creating one is required.</p>
+
+<p>You may create the <code>run</code> instance with either a private key, public key, or address as the owner. If you set the <code>owner</code> property to a private key on the config object, then new Jigs and classes may be created. However, if you set <code>owner</code> to a public key or address, then the <code>run</code> instance will be in read-only mode and you won&#39;t be able to create new objects.</p>
+
+<p>The <code>owner</code> is different from the <code>purse</code>. The purse also has a private key but it pays for transactions whereas the owner is used to update jigs. It is recommended that these be separate keys so that the bitcoin outputs are distinct. This helps both for performance and reducing the risk of a another purse not being aware that certain outputs were for jigs and accidentally destroying them.</p>
+
+<p>Creating a new <code>Run</code> instance will automatically activate it. See <code>run.activate()</code> for more information.</p>
+<h3 id='config-object'>Config Object</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>network</code></td>
+<td>string</td>
+<td>Bitcoin network, either <code>main</code>, <code>test</code>, <code>stn</code>, or <code>mock</code>.</td>
+<td><code>main</code></td>
+</tr>
+<tr>
+<td>`owner**</td>
+<td>string</td>
+<td>Private key, public key, or address used to own jigs and sign transactions</td>
+<td>Randomly generated</td>
+</tr>
+<tr>
+<td><code>purse</code></td>
+<td>string</td>
+<td><code>Pay</code></td>
+<td>Private key or <code>Pay</code> API used to pay for transactions. On the mock network, the purse will be funded automatically. For other networks, the user must fund the purse.</td>
+</tr>
+<tr>
+<td><code>blockchain</code></td>
+<td>Blockchain or string</td>
+<td>Blockchain API for interacting with the Bitcoin network. Either an implementation of Blockchain, or one of &#39;star&#39;, &#39;bitindex&#39; or &#39;whatsonchain&#39; strings</td>
+<td>&#39;star&#39;</td>
+</tr>
+</tbody></table>
+<h2 id='jigs'>jigs</h2>
+<blockquote>
+<p>Load all jigs that are tickets</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">jigs</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">jigs</span><span class="p">()</span>
+<span class="kr">const</span> <span class="nx">ticketClassOrigin</span> <span class="o">=</span> <span class="s1">'e4a9618d3a187448feeb95ff30f7ec6381a025316cdcae2cdf388ad3de7fab6f_o1'</span>
+<span class="kr">const</span> <span class="nx">tickets</span> <span class="o">=</span> <span class="nx">jigs</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">jig</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">origin</span> <span class="o">===</span> <span class="nx">ticketClassOrigin</span><span class="p">)</span>
+</code></pre>
+<p><code>jigs(): Promise&lt;Array&lt;Jig&gt;&gt;</code></p>
+
+<p>Returns an array of all jigs owned by the <code>run</code> <code>owner</code>.</p>
+
+<aside class="notice">
+<b>Note:</b> This is potentially a long operation if there are many jigs to load.
+</aside>
+<h2 id='code'>code</h2>
+<blockquote>
+<p>Load the user&#39;s jig classes and instantiates the first one</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="p">[</span><span class="nx">MyJigClass</span><span class="p">]</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">code</span><span class="p">()</span>
+<span class="kr">const</span> <span class="nx">jig</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyJigClass</span><span class="p">()</span>
+</code></pre>
+<p><code>code(): Promise&lt;Array&lt;Class|Function&gt;&gt;</code></p>
+
+<p>Returns an array of all jig classes and other code owned by the <code>run</code> owner.</p>
+<h2 id='load'>load</h2>
+<blockquote>
+<p>Load a particular jig</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">ticketLocation</span> <span class="o">=</span> <span class="s1">'afc557ef2970af0b5fb8bc1a70a320af425c7a45ca5d40eac78475109563c5f8_o1'</span>
+<span class="kr">const</span> <span class="nx">ticket</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">ticketLocation</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>Load a Jig class</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">classLocation</span> <span class="o">=</span> <span class="s1">'e4a9618d3a187448feeb95ff30f7ec6381a025316cdcae2cdf388ad3de7fab6f_o2'</span>
+<span class="kr">const</span> <span class="nx">MyClass</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">classLocation</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">object</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">()</span>
+</code></pre>
+<p><code>load(location: string): Promise&lt;object|Function&gt;</code></p>
+
+<p>Universal load method to load both jigs and jig classes or other code using their bitcoin <code>location</code>. The <code>location</code> is a transaction id and output index pair and this string should usually be the jig&#39;s or class&#39;s last known <code>location</code> property. However, it is also possible to load jigs at any state in its past using other blockchain <code>location</code>s, although these will be read-only. Downloaded code will be safely sandboxed before being returned.</p>
+<h2 id='deploy'>deploy</h2>
+<blockquote>
+<p>Upload a BigInteger class to the blockchain</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">BigInteger</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">location</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">deploy</span><span class="p">(</span><span class="nx">BigInteger</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'BigInteger blockchain location'</span><span class="p">,</span> <span class="nx">location</span><span class="p">)</span>
+</code></pre>
+<p><code>deploy(type: Function): Promise&lt;string&gt;</code></p>
+
+<p>Uploads a class to the blockchain. Once deployment completes, the class will be assigned a <code>location</code> so that it may be downloaded later. <code>deploy</code> also returns that location in a promise. If a transaction is in progress via <code>beginTransaction</code> however, then this method will return a resolved promise, but it will not contain the location, because the location will not be known until after the transaction is complete. Finally, the code uploaded does not necessarily need to be a Jig class — any class or function will work.</p>
+<h2 id='sync'>sync</h2>
+<blockquote>
+<p>Wait for all jigs to deploy and classes to upload before continuing</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">MyObject</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kr">const</span> <span class="nx">jig</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyObject</span><span class="p">()</span>
+<span class="kr">class</span> <span class="nx">MyClass</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nx">run</span><span class="p">.</span><span class="nx">upload</span><span class="p">(</span><span class="nx">MyClass</span><span class="p">)</span>
+<span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">sync</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'jig origin'</span><span class="p">,</span> <span class="nx">jig</span><span class="p">.</span><span class="nx">origin</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'class origin'</span><span class="p">,</span> <span class="nx">MyClass</span><span class="p">.</span><span class="nx">origin</span><span class="p">)</span>
+</code></pre>
+<p><code>sync(): Promise&lt;void&gt;</code></p>
+
+<p>Returns a promise that completes when all pending transactions are published. After this completes, jigs and classes will be assigned their <code>location</code>s.</p>
+
+<aside class="notice">
+<b>Note:</b> If a pending transaction fails to publish, that transaction and all subsequent transactions are reverted and the Promise is rejected.
+</aside>
+<h2 id='begintransaction'>beginTransaction</h2>
+<blockquote>
+<p>Create a counter and increment it twice in one transaction</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">run</span><span class="p">.</span><span class="nx">beginTransaction</span><span class="p">()</span>
+<span class="kr">const</span> <span class="nx">counter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Counter</span><span class="p">()</span>
+<span class="nx">counter</span><span class="p">.</span><span class="nx">inc</span><span class="p">()</span>
+<span class="nx">counter</span><span class="p">.</span><span class="nx">inc</span><span class="p">()</span>
+<span class="nx">run</span><span class="p">.</span><span class="nx">endTransaction</span><span class="p">()</span>
+</code></pre>
+<p><code>beginTransaction()</code></p>
+
+<p>Begins a batch transaction. All jig instantiations and updates will be delayed until <code>endTransaction</code> is called, at which point a single transaction that combines all previous actions will be published. Using batch transactions will reduce transaction size and per-action cost when there are multiple actions. Transactions may also be nested and only when the final endTransaction is called will the transaction be published.</p>
+
+<aside class="notice">
+<b>Note:</b> If the transaction fails to post, then all actions in the batch are reverted.
+</aside>
+<h2 id='endtransaction'>endTransaction</h2>
+<p><code>endTransaction()</code></p>
+
+<p>Ends a previous batch transaction started with <code>beginTransaction</code> and adds it to a background queue to submit to the blockchain.</p>
+<h2 id='owner'>owner</h2>
+<p><code>owner: Object { privkey, pubkey, address }</code></p>
+
+<p>Owner used to update jigs and sign transactions.</p>
+<h3 id='owner-object'>Owner Object</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>privkey</code></td>
+<td>bsv.PrivateKey</td>
+<td>The private key of the owner</td>
+</tr>
+<tr>
+<td><code>pubkey</code></td>
+<td>bsv.PublicKey</td>
+<td>The public key of the owner</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>bsv.Address</td>
+<td>The Bitcoin address of the owner</td>
+</tr>
+</tbody></table>
+<h2 id='purse'>purse</h2>
+<p><code>purse: Purse</code></p>
+
+<p>The purse used to pay for transactions. In the current version of <code>run</code>, you should not change the purse after the <code>run</code> instance is loaded.</p>
+<h2 id='blockchain'>blockchain</h2>
+<blockquote>
+<p>Download a transaction from the blockchain</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">txid</span> <span class="o">=</span> <span class="s1">'afc557ef2970af0b5fb8bc1a70a320af425c7a45ca5d40eac78475109563c5f8'</span>
+<span class="kr">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">blockchain</span><span class="p">.</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">txid</span><span class="p">)</span>
+</code></pre>
+<p><code>blockchain: Blockchain</code></p>
+
+<p>Blockchain API to access the bitcoin network. See [API Reference: Blockchain(#api-reference-blockchain).</p>
+<h2 id='version'>version</h2>
+<p><code>version: string</code></p>
+
+<p>Version of the <code>run</code> library</p>
+<h2 id='activate'>activate</h2>
+<p><code>activate()</code></p>
+
+<p>Sets this instance to <code>Run.instance</code>, the active <code>Run</code> instance. All jig instantiations, updates, and class deployments will occur on the active run instance. The owner of that instance will sign transactions and its blockchain and purse are the ones which will be used. <code>activate()</code> will also assign <code>bsv.Networks.defaultNetwork</code> to be the active <code>run</code>&#39;s network configuration. </p>
+<h2 id='static-jig'>static Jig</h2>
+<blockquote>
+<p>Create a custom jig that extends the Jig base class</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">MyObject</span> <span class="kr">extends</span> <span class="nx">Run</span><span class="p">.</span><span class="nx">Jig</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre>
+<p><code>static Jig: Jig</code></p>
+
+<p><code>Jig</code> class that is global for all <code>Run</code> instances. You must extend from this base class to create a jig. See <a href="#api-reference-jig">API Reference: Jig</a>.</p>
+<h2 id='static-token'>static Token</h2>
+<p><code>static Token: Token</code></p>
+
+<p><code>Token</code> class that is global for all <code>Run</code> instances. See <a href="#api-reference-token">API Reference: Token</a>.</p>
+<h2 id='static-instance'>static instance</h2>
+<p><code>static instance: Run</code></p>
+
+<p>The currently active <code>Run</code> instance. All jig instantiations, updates, and class deployments will occur on the active run instance. The owner of that instance will sign transactions and its blockchain and purse are the ones which will be used. You may change the active <code>run</code> instance either by calling <code>run.activate()</code> or by creating a new <code>Run</code> instance.</p>
+<h1 id='api-reference-jig'>API Reference: Jig</h1><h2 id='constructor'>constructor</h2>
+<blockquote>
+<p>Simple jig that takes two parameters in its constructor</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">SimpleStore</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="nx">b</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleStore</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">store</span><span class="p">.</span><span class="nx">b</span><span class="p">)</span> <span class="c1">// prints 2</span>
+</code></pre>
+<p><code>init(): Jig</code></p>
+
+<p><code>init()</code> is equivalent in jigs to <code>constructor()</code> for regular classes. The user may pass parameters to it and call <code>super.init()</code> to call parent constructors. <code>init()</code> may not be called directly by users because <code>run</code> will call it automatically when the class is instantiated. Also, jigs are not allowed to have a <code>constructor()</code> method because <code>init()</code> is used instead.</p>
+<h2 id='origin'>origin</h2>
+<blockquote>
+<p>Two different tickets have different origins</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Ticket</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kr">const</span> <span class="nx">ticket1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Ticket</span><span class="p">()</span>
+<span class="kr">const</span> <span class="nx">ticket2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Ticket</span><span class="p">()</span>
+<span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">sync</span><span class="p">()</span>
+<span class="c1">// ticket1.origin !== ticket2.origin</span>
+</code></pre>
+<p><code>origin: string</code></p>
+
+<p>The unique blockchain location where the jig was initially deployed distinguishing the jig from all others. The format is <code>TXID_oN</code> where <code>TXID</code> is the bitcoin transaction ID where the jig was first deployed. <code>o</code> is shorthand for <em>output</em> and <code>N</code> is the zero-based index for the P2PKH output representing this jig. The origin is set automatically by <code>run</code> after deploying the jig and it becomes read-only afterward. Jig methods may internally read the origin anytime after it is initially published.</p>
+<h2 id='location'>location</h2>
+<blockquote>
+<p>The value of <code>location</code> changes with every update</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Weapon</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">upgrade</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">upgraded</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="k">return</span> <span class="k">this</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">weapon</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">new</span> <span class="nx">Weapon</span><span class="p">().</span><span class="nx">sync</span><span class="p">()</span>
+<span class="c1">// weapon.origin === weapon.location</span>
+<span class="nx">await</span> <span class="nx">weapon</span><span class="p">.</span><span class="nx">uprade</span><span class="p">().</span><span class="nx">sync</span><span class="p">()</span>
+<span class="c1">// weapon.origin !== weapon.location</span>
+</code></pre>
+<p><code>location: string</code></p>
+
+<p>The blockchain location representing the current state of the jig. This is a P2PKH output and is in the same form as <code>origin</code>. However, unlike <code>origin</code>, <code>location</code> will update with every state change on the jig.</p>
+
+<p>When there is a pending change, reading <code>location</code> will throw an error. This is because the Bitcoin transaction id is not yet known. The user should call <code>sync</code> first to avoid this error. Finally, note that this is a read-only property that <code>run</code> updates for you, and it may only be read outside of jig methods.</p>
+<h2 id='owner'>owner</h2>
+<blockquote>
+<p>Sending a jig to a new owner</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Item</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">send</span><span class="p">(</span><span class="nx">to</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">owner</span> <span class="o">=</span> <span class="nx">to</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">()</span>
+<span class="nx">item</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'0261b44db219de925b85e8f26cbfe551e31bf25678b8ff9512bca03aea218e9258'</span><span class="p">)</span>
+</code></pre>
+<p><code>owner: string</code></p>
+
+<p>The public key string representing the owner of this jig. This is equivalent to the public key for the current P2PKH output of the jig&#39;s location. The jig may change this property to change owners, but it is read-only from outside the jig.</p>
+<h2 id='satoshis'>satoshis</h2>
+<blockquote>
+<p>Backing a jig with Bitcoin</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Item</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">back</span><span class="p">(</span><span class="nx">satoshis</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="k">this</span><span class="p">.</span><span class="nx">satoshis</span> <span class="o">=</span> <span class="nx">satoshis</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p><code>satoshis: number</code></p>
+
+<p>This number represents the amount of Bitcoin in satoshis that are backing this jig. It may be increased or decreased but it may not be set below zero. Increasing this value will deposit Bitcoin into the output for the jig from the Run purse. Decreasing it will withdraw Bitcoin to the Run purse. It may only be changed from within a Jig. If the satoshi value in the output is less than the value in the jig, the jig is automatically invalidated.</p>
+<h2 id='sync'>sync</h2>
+<p><code>sync(options: Object): Promise&lt;void&gt;</code></p>
+
+<p>Synchronizes this jig with the blockchain by waiting for all pending transactions to publish and updating the jig with any new transactions from the network. If  you pass <code>{ forward: false }</code>, then only the pending transactions will be published and new state will not be downloaded. This may be useful for performance or if the Blockchain API does not support forward syncing, as is the case with BitIndex and WhatsOnChain.</p>
+<h1 id='api-reference-token'>API Reference: Token</h1>
+<p><code>class Token extends Jig</code></p>
+
+<p>Token is a base jig for fungible tokens similar to ERC20 or SLP. To issue tokens, a minter first mints a new <code>Token</code> with an initial amount. This is a special <code>Token</code> because it is the first of its kind and called the <code>minter</code>, and only the holder of this Token may mint new ones. However, this <code>Token</code> may be split and sent to others many times. <code>Token</code> supports numerical amounts by default.</p>
+<h2 id='constructor'>constructor</h2>
+<blockquote>
+<p>Minting a new token</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>Combining two tokens</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">token</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">token</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">combined</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">])</span>
+</code></pre>
+<p><code>init(amount: number, tokens: ?Array&lt;Token&gt;): Token</code></p>
+
+<p><code>init()</code> either mints a new token or combines existing tokens depending on whether the <code>tokens</code> argument is passed. If <code>tokens</code> is undefined, then a new minter token is minted with the amount specificied. If <code>tokens</code> is defined however, then the new token is the merging of the tokens passed up to the <code>amount</code> specified. Each token passed will be decreased and destroyed when its amount reaches 0, preserving the total supply.</p>
+<h2 id='mint'>mint</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nx">token</span><span class="p">.</span><span class="nx">mint</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="nx">token</span><span class="p">.</span><span class="nx">amount</span> <span class="o">===</span> <span class="mi">150</span> <span class="c1">// true</span>
+</code></pre>
+<p><code>mint(amount: number): Token</code></p>
+
+<p><code>mint()</code> increases the total supply in the minter token. Only the minter token is able to mint new amounts.</p>
+<h2 id='send'>send</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">sent</span> <span class="o">=</span> <span class="nx">token</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">'&lt;pubkey&gt;'</span><span class="p">)</span>
+<span class="nx">token</span><span class="p">.</span><span class="nx">amount</span> <span class="o">===</span> <span class="mi">80</span> <span class="c1">// true</span>
+</code></pre>
+<p><code>send(amount: number, to: string): Token</code></p>
+
+<p>Sends an amount from this token to a different public key. The amount in the current token is decreased and a new token is created and returned with the new amount and sharing the same minter.</p>
+<h2 id='amount'>amount</h2>
+<p><code>amount: number</code></p>
+
+<p>The numerical value held within this token. The meaning of amount depends on the token.</p>
+<h2 id='minter'>minter</h2>
+<p><code>minter: Token</code></p>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">gold</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">silver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Token</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nx">gold</span><span class="p">.</span><span class="nx">minter</span> <span class="o">!==</span> <span class="nx">silver</span><span class="p">.</span><span class="nx">minter</span>
+</code></pre>
+<p>The original token minted before any splits and merges. Only tokens with the same minter may be merged together. All tokens always retain a reference to their minter so that users may easily determine a token&#39;s type.</p>
+<h1 id='api-reference-blockchain'>API Reference: Blockchain</h1>
+<p>The interface run uses to communicate with the Bitcoin network. <code>run</code> ships with several implementations by default including the mockchain and three REST APIs. Developers may implement <code>Blockchain</code> to interface with Bitcoin in custom ways.</p>
+<h2 id='broadcast'>broadcast</h2>
+<blockquote>
+<p>Create and broadcast a simple transaction</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bsv</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">().</span><span class="nx">from</span><span class="p">(</span><span class="nx">utxo</span><span class="p">).</span><span class="nx">to</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">amount</span><span class="p">).</span><span class="nx">sign</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">)</span>
+<span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">blockchain</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span>
+</code></pre>
+<p><code>broadcast(tx: bsv.Transaction): Promise&lt;void&gt;</code></p>
+
+<p>Submits a transaction to the network. A promise is returned that will resolve if the transaction was accepted or reject with the error if the network did not accept the transaction.</p>
+<h2 id='fetch'>fetch</h2>
+<blockquote>
+<p>Downloads a transaction from the network</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">txid</span> <span class="o">=</span> <span class="s1">'afc557ef2970af0b5fb8bc1a70a320af425c7a45ca5d40eac78475109563c5f8'</span>
+<span class="kr">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">blockchain</span><span class="p">.</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">txid</span><span class="p">)</span>
+</code></pre>
+<p><code>fetch(txid: string, force: ?boolean): Promise&lt;bsv.Transaction&gt;</code></p>
+
+<p>Downloads a transaction from the network. A promise is returned that will resolve with the transaction parsed using the <code>bsv</code> library or reject with the error if the transaction could not be returned. The optional <code>force</code> parameter requests that <code>fetch</code> requery the blockchain and not return a cached copy. The returned transaction should also have additional properties set:</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>time</code></td>
+<td>number</td>
+<td>yes</td>
+<td>The time in milliseconds when the transaction was accepted by a miner or included in a block.</td>
+</tr>
+<tr>
+<td><code>blocktime</code></td>
+<td>number</td>
+<td>no</td>
+<td>The time in milliseconds when the transaction was included in a block.</td>
+</tr>
+<tr>
+<td><code>confirmations</code></td>
+<td>number</td>
+<td>no</td>
+<td>The number of block confirmations for this transaction</td>
+</tr>
+<tr>
+<td><code>blockhash</code></td>
+<td>string</td>
+<td>no</td>
+<td>The hash of the block this transaction was included in</td>
+</tr>
+<tr>
+<td><code>blockheight</code></td>
+<td>number</td>
+<td>no</td>
+<td>The height of the block this transaction was included in, or -1 if the transaction is in the mempool.</td>
+</tr>
+<tr>
+<td><code>outputs[i].spentTxId</code></td>
+<td>string</td>
+<td>no</td>
+<td>The transaction id that spends this output, or null if unspent. This is required for forward syncing.</td>
+</tr>
+<tr>
+<td><code>outputs[i].spentIndex</code></td>
+<td>number</td>
+<td>no</td>
+<td>The input index in the transaction that spends this output, or null if unspent.</td>
+</tr>
+<tr>
+<td><code>outputs[i].spentHeight</code></td>
+<td>number</td>
+<td>no</td>
+<td>The block height of the transaction that spends this output, or -1 if the transaction is in the mempool.</td>
+</tr>
+</tbody></table>
+<h2 id='utxos'>utxos</h2>
+<blockquote>
+<p>Downloads the current UTXOs for a given address</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">address</span> <span class="o">=</span> <span class="s1">'mpBU73vq9ajhkXknP1sNGe6wjXH7QtwmWm'</span>
+<span class="kr">const</span> <span class="nx">utxos</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">blockchain</span><span class="p">.</span><span class="nx">utxos</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bsv</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">().</span><span class="nx">from</span><span class="p">(</span><span class="nx">utxos</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span>
+</code></pre>
+<p><code>utxos(address: string): Promise&lt;Array&lt;{txid: string, vout: number, script: bsv.Script, satoshis: number}&gt;&gt;</code></p>
+
+<p>Returns the unspent outputs for a given address. A promise is returned that will resolve with an array of UTXOs, which may be empty, or reject with an error. Each returned UTXO may be converted to a <code>bsv.Transaction.UnspentOutput</code> by passing it into the constructor.</p>
+<h1 id='api-reference-purse'>API Reference: Purse</h1>
+<p>The purse that <code>run</code> uses by default to pay for transactions using a local wallet. This is an implementation of the <code>Pay</code> API.</p>
+<h2 id='privatekey'>privateKey</h2>
+<p><code>privateKey: bsv.PrivateKey</code></p>
+
+<p>Private key used to sign transaction.</p>
+<h2 id='address'>address</h2>
+<p><code>address: bsv.Address</code></p>
+
+<p>Address used to find UTXOs and receive payments.</p>
+<h2 id='balance'>balance</h2>
+<blockquote>
+<p>Querying the current balance</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Satoshis'</span><span class="p">,</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">purse</span><span class="p">.</span><span class="nx">balance</span><span class="p">())</span>
+</code></pre>
+<p><code>balance(): Promise&lt;number&gt;</code></p>
+
+<p>Returns a promise that resolves to the current balance in satoshis of this purse. This is the sum of all satoshis in this purse&#39;s unspent outputs.</p>
+<h2 id='utxos'>utxos</h2>
+<blockquote>
+<p>Building a transaction using the purse</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">utxos</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">purse</span><span class="p">.</span><span class="nx">utxos</span><span class="p">()</span>
+<span class="kr">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bsv</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">().</span><span class="nx">from</span><span class="p">(</span><span class="nx">utxos</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="nx">run</span><span class="p">.</span><span class="nx">purse</span><span class="p">.</span><span class="nx">address</span><span class="p">).</span><span class="nx">sign</span><span class="p">(</span><span class="nx">run</span><span class="p">.</span><span class="nx">purse</span><span class="p">.</span><span class="nx">privateKey</span><span class="p">)</span>
+</code></pre>
+<p><code>utxos(): Promise&lt;{txid: string, vout: number, script: bsv.Script, satoshis: number}&gt;</code></p>
+
+<p>Returns a promise that resolves to the current UTXOs of this purse.</p>
+<h1 id='api-reference-pay'>API Reference: Pay</h1>
+<p>The interface to pay for transactions and implement purse functionality in <code>run</code>. The default <code>Pay</code> implementation is <a href="#purse-api">Purse</a></p>
+<h2 id='pay'>pay</h2>
+<blockquote>
+<p>Pay for a transaction using specific utxos</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">PayWithUtxos</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">utxos</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">utxos</span> <span class="o">=</span> <span class="nx">utxos</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">privateKey</span> <span class="o">=</span> <span class="nx">privateKey</span>
+    <span class="p">}</span>
+
+    <span class="nx">async</span> <span class="nx">pay</span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">utxos</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">privateKey</span><span class="p">.</span><span class="nx">toAddress</span><span class="p">()).</span><span class="nx">sign</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">privateKey</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">run</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Run</span><span class="p">({</span> <span class="na">purse</span><span class="p">:</span> <span class="k">new</span> <span class="nx">PayWithUtxos</span><span class="p">(</span><span class="nx">utxos</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">)</span> <span class="p">})</span>
+</code></pre>
+<p><code>pay(tx): Promise&lt;tx&gt;</code></p>
+
+<p>Adds payment inputs and outputs so that a Jig transaction will be accepted by miners. This is an asyncronous call that returns a promise. If an error is thrown, then state of all jigs in the current transaction will be reverted and the transcation will not be broadcasted.</p>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+
+  <!-- Twemoji provides the emoji asset in one of the examples -->
+  <script src="https://twemoji.maxcdn.com/2/twemoji.min.js?12.0.4" crossorigin="anonymous"></script>
+
+  <script>
+    twemoji.parse(document.body)
+  </script>
+
+</html>

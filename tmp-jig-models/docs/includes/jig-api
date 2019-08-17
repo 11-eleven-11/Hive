@@ -1,0 +1,81 @@
+<h1 id='api-reference-jig'>API Reference: Jig</h1><h2 id='constructor'>constructor</h2>
+<blockquote>
+<p>Simple jig that takes two parameters in its constructor</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">SimpleStore</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="nx">b</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleStore</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">store</span><span class="p">.</span><span class="nx">b</span><span class="p">)</span> <span class="c1">// prints 2</span>
+</code></pre>
+<p><code>init(): Jig</code></p>
+
+<p><code>init()</code> is equivalent in jigs to <code>constructor()</code> for regular classes. The user may pass parameters to it and call <code>super.init()</code> to call parent constructors. <code>init()</code> may not be called directly by users because <code>run</code> will call it automatically when the class is instantiated. Also, jigs are not allowed to have a <code>constructor()</code> method because <code>init()</code> is used instead.</p>
+<h2 id='origin'>origin</h2>
+<blockquote>
+<p>Two different tickets have different origins</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Ticket</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kr">const</span> <span class="nx">ticket1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Ticket</span><span class="p">()</span>
+<span class="kr">const</span> <span class="nx">ticket2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Ticket</span><span class="p">()</span>
+<span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">sync</span><span class="p">()</span>
+<span class="c1">// ticket1.origin !== ticket2.origin</span>
+</code></pre>
+<p><code>origin: string</code></p>
+
+<p>The unique blockchain location where the jig was initially deployed distinguishing the jig from all others. The format is <code>TXID_oN</code> where <code>TXID</code> is the bitcoin transaction ID where the jig was first deployed. <code>o</code> is shorthand for <em>output</em> and <code>N</code> is the zero-based index for the P2PKH output representing this jig. The origin is set automatically by <code>run</code> after deploying the jig and it becomes read-only afterward. Jig methods may internally read the origin anytime after it is initially published.</p>
+<h2 id='location'>location</h2>
+<blockquote>
+<p>The value of <code>location</code> changes with every update</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Weapon</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">upgrade</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">upgraded</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="k">return</span> <span class="k">this</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">weapon</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">new</span> <span class="nx">Weapon</span><span class="p">().</span><span class="nx">sync</span><span class="p">()</span>
+<span class="c1">// weapon.origin === weapon.location</span>
+<span class="nx">await</span> <span class="nx">weapon</span><span class="p">.</span><span class="nx">uprade</span><span class="p">().</span><span class="nx">sync</span><span class="p">()</span>
+<span class="c1">// weapon.origin !== weapon.location</span>
+</code></pre>
+<p><code>location: string</code></p>
+
+<p>The blockchain location representing the current state of the jig. This is a P2PKH output and is in the same form as <code>origin</code>. However, unlike <code>origin</code>, <code>location</code> will update with every state change on the jig.</p>
+
+<p>When there is a pending change, reading <code>location</code> will throw an error. This is because the Bitcoin transaction id is not yet known. The user should call <code>sync</code> first to avoid this error. Finally, note that this is a read-only property that <code>run</code> updates for you, and it may only be read outside of jig methods.</p>
+<h2 id='owner'>owner</h2>
+<blockquote>
+<p>Sending a jig to a new owner</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Item</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">send</span><span class="p">(</span><span class="nx">to</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">owner</span> <span class="o">=</span> <span class="nx">to</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">()</span>
+<span class="nx">item</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'0261b44db219de925b85e8f26cbfe551e31bf25678b8ff9512bca03aea218e9258'</span><span class="p">)</span>
+</code></pre>
+<p><code>owner: string</code></p>
+
+<p>The public key string representing the owner of this jig. This is equivalent to the public key for the current P2PKH output of the jig&#39;s location. The jig may change this property to change owners, but it is read-only from outside the jig.</p>
+<h2 id='satoshis'>satoshis</h2>
+<blockquote>
+<p>Backing a jig with Bitcoin</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">Item</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span>
+  <span class="nx">back</span><span class="p">(</span><span class="nx">satoshis</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="k">this</span><span class="p">.</span><span class="nx">satoshis</span> <span class="o">=</span> <span class="nx">satoshis</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p><code>satoshis: number</code></p>
+
+<p>This number represents the amount of Bitcoin in satoshis that are backing this jig. It may be increased or decreased but it may not be set below zero. Increasing this value will deposit Bitcoin into the output for the jig from the Run purse. Decreasing it will withdraw Bitcoin to the Run purse. It may only be changed from within a Jig. If the satoshi value in the output is less than the value in the jig, the jig is automatically invalidated.</p>
+<h2 id='sync'>sync</h2>
+<p><code>sync(options: Object): Promise&lt;void&gt;</code></p>
+
+<p>Synchronizes this jig with the blockchain by waiting for all pending transactions to publish and updating the jig with any new transactions from the network. If  you pass <code>{ forward: false }</code>, then only the pending transactions will be published and new state will not be downloaded. This may be useful for performance or if the Blockchain API does not support forward syncing, as is the case with BitIndex and WhatsOnChain.</p>

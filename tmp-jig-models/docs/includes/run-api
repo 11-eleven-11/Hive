@@ -1,0 +1,223 @@
+<h1 id='api-reference-run'>API Reference: Run</h1><h2 id='constructor'>constructor</h2>
+<blockquote>
+<p>Create a <code>run</code> instance on mocknet. The purse will be auto-funded.</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">run</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Run</span><span class="p">({</span> <span class="na">network</span><span class="p">:</span> <span class="s1">'mock'</span> <span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Create a run instance on testnet</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">// Create a run instance on testnet</span>
+<span class="kr">const</span> <span class="nx">run</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Run</span><span class="p">({</span>
+  <span class="na">network</span><span class="p">:</span> <span class="s1">'test'</span><span class="p">,</span>
+  <span class="na">owner</span><span class="p">:</span> <span class="s1">'cTMHbJULREfbsUFsuJLMrNbJ7VrASgWeYfFF6EgJMy49ARnNed3d'</span><span class="p">,</span>
+  <span class="na">purse</span><span class="p">:</span> <span class="s1">'cQP1h2zumWrCr2zxciuNeho61QUGtQ4zBKWFauk7WEhFb8kvjRTh'</span>
+<span class="p">})</span>
+</code></pre>
+<p><code>constructor(config: Object): Run</code></p>
+
+<p>Creates a <code>run</code> instance. The <code>run</code> instance provides the network and the purse, so you wouldn&#39;t be able to create jigs without it. <code>run</code> is the core of all platform functionality and creating one is required.</p>
+
+<p>You may create the <code>run</code> instance with either a private key, public key, or address as the owner. If you set the <code>owner</code> property to a private key on the config object, then new Jigs and classes may be created. However, if you set <code>owner</code> to a public key or address, then the <code>run</code> instance will be in read-only mode and you won&#39;t be able to create new objects.</p>
+
+<p>The <code>owner</code> is different from the <code>purse</code>. The purse also has a private key but it pays for transactions whereas the owner is used to update jigs. It is recommended that these be separate keys so that the bitcoin outputs are distinct. This helps both for performance and reducing the risk of a another purse not being aware that certain outputs were for jigs and accidentally destroying them.</p>
+
+<p>Creating a new <code>Run</code> instance will automatically activate it. See <code>run.activate()</code> for more information.</p>
+<h3 id='config-object'>Config Object</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>network</code></td>
+<td>string</td>
+<td>Bitcoin network, either <code>main</code>, <code>test</code>, <code>stn</code>, or <code>mock</code>.</td>
+<td><code>main</code></td>
+</tr>
+<tr>
+<td>`owner**</td>
+<td>string</td>
+<td>Private key, public key, or address used to own jigs and sign transactions</td>
+<td>Randomly generated</td>
+</tr>
+<tr>
+<td><code>purse</code></td>
+<td>string</td>
+<td><code>Pay</code></td>
+<td>Private key or <code>Pay</code> API used to pay for transactions. On the mock network, the purse will be funded automatically. For other networks, the user must fund the purse.</td>
+</tr>
+<tr>
+<td><code>blockchain</code></td>
+<td>Blockchain or string</td>
+<td>Blockchain API for interacting with the Bitcoin network. Either an implementation of Blockchain, or one of &#39;star&#39;, &#39;bitindex&#39; or &#39;whatsonchain&#39; strings</td>
+<td>&#39;star&#39;</td>
+</tr>
+</tbody></table>
+<h2 id='jigs'>jigs</h2>
+<blockquote>
+<p>Load all jigs that are tickets</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">jigs</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">jigs</span><span class="p">()</span>
+<span class="kr">const</span> <span class="nx">ticketClassOrigin</span> <span class="o">=</span> <span class="s1">'e4a9618d3a187448feeb95ff30f7ec6381a025316cdcae2cdf388ad3de7fab6f_o1'</span>
+<span class="kr">const</span> <span class="nx">tickets</span> <span class="o">=</span> <span class="nx">jigs</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">jig</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">origin</span> <span class="o">===</span> <span class="nx">ticketClassOrigin</span><span class="p">)</span>
+</code></pre>
+<p><code>jigs(): Promise&lt;Array&lt;Jig&gt;&gt;</code></p>
+
+<p>Returns an array of all jigs owned by the <code>run</code> <code>owner</code>.</p>
+
+<aside class="notice">
+<b>Note:</b> This is potentially a long operation if there are many jigs to load.
+</aside>
+<h2 id='code'>code</h2>
+<blockquote>
+<p>Load the user&#39;s jig classes and instantiates the first one</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="p">[</span><span class="nx">MyJigClass</span><span class="p">]</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">code</span><span class="p">()</span>
+<span class="kr">const</span> <span class="nx">jig</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyJigClass</span><span class="p">()</span>
+</code></pre>
+<p><code>code(): Promise&lt;Array&lt;Class|Function&gt;&gt;</code></p>
+
+<p>Returns an array of all jig classes and other code owned by the <code>run</code> owner.</p>
+<h2 id='load'>load</h2>
+<blockquote>
+<p>Load a particular jig</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">ticketLocation</span> <span class="o">=</span> <span class="s1">'afc557ef2970af0b5fb8bc1a70a320af425c7a45ca5d40eac78475109563c5f8_o1'</span>
+<span class="kr">const</span> <span class="nx">ticket</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">ticketLocation</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>Load a Jig class</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">classLocation</span> <span class="o">=</span> <span class="s1">'e4a9618d3a187448feeb95ff30f7ec6381a025316cdcae2cdf388ad3de7fab6f_o2'</span>
+<span class="kr">const</span> <span class="nx">MyClass</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">classLocation</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">object</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">()</span>
+</code></pre>
+<p><code>load(location: string): Promise&lt;object|Function&gt;</code></p>
+
+<p>Universal load method to load both jigs and jig classes or other code using their bitcoin <code>location</code>. The <code>location</code> is a transaction id and output index pair and this string should usually be the jig&#39;s or class&#39;s last known <code>location</code> property. However, it is also possible to load jigs at any state in its past using other blockchain <code>location</code>s, although these will be read-only. Downloaded code will be safely sandboxed before being returned.</p>
+<h2 id='deploy'>deploy</h2>
+<blockquote>
+<p>Upload a BigInteger class to the blockchain</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">BigInteger</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">location</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">deploy</span><span class="p">(</span><span class="nx">BigInteger</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'BigInteger blockchain location'</span><span class="p">,</span> <span class="nx">location</span><span class="p">)</span>
+</code></pre>
+<p><code>deploy(type: Function): Promise&lt;string&gt;</code></p>
+
+<p>Uploads a class to the blockchain. Once deployment completes, the class will be assigned a <code>location</code> so that it may be downloaded later. <code>deploy</code> also returns that location in a promise. If a transaction is in progress via <code>beginTransaction</code> however, then this method will return a resolved promise, but it will not contain the location, because the location will not be known until after the transaction is complete. Finally, the code uploaded does not necessarily need to be a Jig class — any class or function will work.</p>
+<h2 id='sync'>sync</h2>
+<blockquote>
+<p>Wait for all jigs to deploy and classes to upload before continuing</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">MyObject</span> <span class="kr">extends</span> <span class="nx">Jig</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kr">const</span> <span class="nx">jig</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyObject</span><span class="p">()</span>
+<span class="kr">class</span> <span class="nx">MyClass</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nx">run</span><span class="p">.</span><span class="nx">upload</span><span class="p">(</span><span class="nx">MyClass</span><span class="p">)</span>
+<span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">sync</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'jig origin'</span><span class="p">,</span> <span class="nx">jig</span><span class="p">.</span><span class="nx">origin</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'class origin'</span><span class="p">,</span> <span class="nx">MyClass</span><span class="p">.</span><span class="nx">origin</span><span class="p">)</span>
+</code></pre>
+<p><code>sync(): Promise&lt;void&gt;</code></p>
+
+<p>Returns a promise that completes when all pending transactions are published. After this completes, jigs and classes will be assigned their <code>location</code>s.</p>
+
+<aside class="notice">
+<b>Note:</b> If a pending transaction fails to publish, that transaction and all subsequent transactions are reverted and the Promise is rejected.
+</aside>
+<h2 id='begintransaction'>beginTransaction</h2>
+<blockquote>
+<p>Create a counter and increment it twice in one transaction</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">run</span><span class="p">.</span><span class="nx">beginTransaction</span><span class="p">()</span>
+<span class="kr">const</span> <span class="nx">counter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Counter</span><span class="p">()</span>
+<span class="nx">counter</span><span class="p">.</span><span class="nx">inc</span><span class="p">()</span>
+<span class="nx">counter</span><span class="p">.</span><span class="nx">inc</span><span class="p">()</span>
+<span class="nx">run</span><span class="p">.</span><span class="nx">endTransaction</span><span class="p">()</span>
+</code></pre>
+<p><code>beginTransaction()</code></p>
+
+<p>Begins a batch transaction. All jig instantiations and updates will be delayed until <code>endTransaction</code> is called, at which point a single transaction that combines all previous actions will be published. Using batch transactions will reduce transaction size and per-action cost when there are multiple actions. Transactions may also be nested and only when the final endTransaction is called will the transaction be published.</p>
+
+<aside class="notice">
+<b>Note:</b> If the transaction fails to post, then all actions in the batch are reverted.
+</aside>
+<h2 id='endtransaction'>endTransaction</h2>
+<p><code>endTransaction()</code></p>
+
+<p>Ends a previous batch transaction started with <code>beginTransaction</code> and adds it to a background queue to submit to the blockchain.</p>
+<h2 id='owner'>owner</h2>
+<p><code>owner: Object { privkey, pubkey, address }</code></p>
+
+<p>Owner used to update jigs and sign transactions.</p>
+<h3 id='owner-object'>Owner Object</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>privkey</code></td>
+<td>bsv.PrivateKey</td>
+<td>The private key of the owner</td>
+</tr>
+<tr>
+<td><code>pubkey</code></td>
+<td>bsv.PublicKey</td>
+<td>The public key of the owner</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>bsv.Address</td>
+<td>The Bitcoin address of the owner</td>
+</tr>
+</tbody></table>
+<h2 id='purse'>purse</h2>
+<p><code>purse: Purse</code></p>
+
+<p>The purse used to pay for transactions. In the current version of <code>run</code>, you should not change the purse after the <code>run</code> instance is loaded.</p>
+<h2 id='blockchain'>blockchain</h2>
+<blockquote>
+<p>Download a transaction from the blockchain</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">txid</span> <span class="o">=</span> <span class="s1">'afc557ef2970af0b5fb8bc1a70a320af425c7a45ca5d40eac78475109563c5f8'</span>
+<span class="kr">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">blockchain</span><span class="p">.</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">txid</span><span class="p">)</span>
+</code></pre>
+<p><code>blockchain: Blockchain</code></p>
+
+<p>Blockchain API to access the bitcoin network. See [API Reference: Blockchain(#api-reference-blockchain).</p>
+<h2 id='version'>version</h2>
+<p><code>version: string</code></p>
+
+<p>Version of the <code>run</code> library</p>
+<h2 id='activate'>activate</h2>
+<p><code>activate()</code></p>
+
+<p>Sets this instance to <code>Run.instance</code>, the active <code>Run</code> instance. All jig instantiations, updates, and class deployments will occur on the active run instance. The owner of that instance will sign transactions and its blockchain and purse are the ones which will be used. <code>activate()</code> will also assign <code>bsv.Networks.defaultNetwork</code> to be the active <code>run</code>&#39;s network configuration. </p>
+<h2 id='static-jig'>static Jig</h2>
+<blockquote>
+<p>Create a custom jig that extends the Jig base class</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">class</span> <span class="nx">MyObject</span> <span class="kr">extends</span> <span class="nx">Run</span><span class="p">.</span><span class="nx">Jig</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre>
+<p><code>static Jig: Jig</code></p>
+
+<p><code>Jig</code> class that is global for all <code>Run</code> instances. You must extend from this base class to create a jig. See <a href="#api-reference-jig">API Reference: Jig</a>.</p>
+<h2 id='static-token'>static Token</h2>
+<p><code>static Token: Token</code></p>
+
+<p><code>Token</code> class that is global for all <code>Run</code> instances. See <a href="#api-reference-token">API Reference: Token</a>.</p>
+<h2 id='static-instance'>static instance</h2>
+<p><code>static instance: Run</code></p>
+
+<p>The currently active <code>Run</code> instance. All jig instantiations, updates, and class deployments will occur on the active run instance. The owner of that instance will sign transactions and its blockchain and purse are the ones which will be used. You may change the active <code>run</code> instance either by calling <code>run.activate()</code> or by creating a new <code>Run</code> instance.</p>

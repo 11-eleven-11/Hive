@@ -1,0 +1,91 @@
+<h1 id='api-reference-blockchain'>API Reference: Blockchain</h1>
+<p>The interface run uses to communicate with the Bitcoin network. <code>run</code> ships with several implementations by default including the mockchain and three REST APIs. Developers may implement <code>Blockchain</code> to interface with Bitcoin in custom ways.</p>
+<h2 id='broadcast'>broadcast</h2>
+<blockquote>
+<p>Create and broadcast a simple transaction</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bsv</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">().</span><span class="nx">from</span><span class="p">(</span><span class="nx">utxo</span><span class="p">).</span><span class="nx">to</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">amount</span><span class="p">).</span><span class="nx">sign</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">)</span>
+<span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">blockchain</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span>
+</code></pre>
+<p><code>broadcast(tx: bsv.Transaction): Promise&lt;void&gt;</code></p>
+
+<p>Submits a transaction to the network. A promise is returned that will resolve if the transaction was accepted or reject with the error if the network did not accept the transaction.</p>
+<h2 id='fetch'>fetch</h2>
+<blockquote>
+<p>Downloads a transaction from the network</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">txid</span> <span class="o">=</span> <span class="s1">'afc557ef2970af0b5fb8bc1a70a320af425c7a45ca5d40eac78475109563c5f8'</span>
+<span class="kr">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">blockchain</span><span class="p">.</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">txid</span><span class="p">)</span>
+</code></pre>
+<p><code>fetch(txid: string, force: ?boolean): Promise&lt;bsv.Transaction&gt;</code></p>
+
+<p>Downloads a transaction from the network. A promise is returned that will resolve with the transaction parsed using the <code>bsv</code> library or reject with the error if the transaction could not be returned. The optional <code>force</code> parameter requests that <code>fetch</code> requery the blockchain and not return a cached copy. The returned transaction should also have additional properties set:</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>time</code></td>
+<td>number</td>
+<td>yes</td>
+<td>The time in milliseconds when the transaction was accepted by a miner or included in a block.</td>
+</tr>
+<tr>
+<td><code>blocktime</code></td>
+<td>number</td>
+<td>no</td>
+<td>The time in milliseconds when the transaction was included in a block.</td>
+</tr>
+<tr>
+<td><code>confirmations</code></td>
+<td>number</td>
+<td>no</td>
+<td>The number of block confirmations for this transaction</td>
+</tr>
+<tr>
+<td><code>blockhash</code></td>
+<td>string</td>
+<td>no</td>
+<td>The hash of the block this transaction was included in</td>
+</tr>
+<tr>
+<td><code>blockheight</code></td>
+<td>number</td>
+<td>no</td>
+<td>The height of the block this transaction was included in, or -1 if the transaction is in the mempool.</td>
+</tr>
+<tr>
+<td><code>outputs[i].spentTxId</code></td>
+<td>string</td>
+<td>no</td>
+<td>The transaction id that spends this output, or null if unspent. This is required for forward syncing.</td>
+</tr>
+<tr>
+<td><code>outputs[i].spentIndex</code></td>
+<td>number</td>
+<td>no</td>
+<td>The input index in the transaction that spends this output, or null if unspent.</td>
+</tr>
+<tr>
+<td><code>outputs[i].spentHeight</code></td>
+<td>number</td>
+<td>no</td>
+<td>The block height of the transaction that spends this output, or -1 if the transaction is in the mempool.</td>
+</tr>
+</tbody></table>
+<h2 id='utxos'>utxos</h2>
+<blockquote>
+<p>Downloads the current UTXOs for a given address</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">address</span> <span class="o">=</span> <span class="s1">'mpBU73vq9ajhkXknP1sNGe6wjXH7QtwmWm'</span>
+<span class="kr">const</span> <span class="nx">utxos</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">blockchain</span><span class="p">.</span><span class="nx">utxos</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bsv</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">().</span><span class="nx">from</span><span class="p">(</span><span class="nx">utxos</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span>
+</code></pre>
+<p><code>utxos(address: string): Promise&lt;Array&lt;{txid: string, vout: number, script: bsv.Script, satoshis: number}&gt;&gt;</code></p>
+
+<p>Returns the unspent outputs for a given address. A promise is returned that will resolve with an array of UTXOs, which may be empty, or reject with an error. Each returned UTXO may be converted to a <code>bsv.Transaction.UnspentOutput</code> by passing it into the constructor.</p>

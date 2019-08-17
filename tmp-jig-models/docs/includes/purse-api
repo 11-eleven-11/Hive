@@ -1,0 +1,29 @@
+<h1 id='api-reference-purse'>API Reference: Purse</h1>
+<p>The purse that <code>run</code> uses by default to pay for transactions using a local wallet. This is an implementation of the <code>Pay</code> API.</p>
+<h2 id='privatekey'>privateKey</h2>
+<p><code>privateKey: bsv.PrivateKey</code></p>
+
+<p>Private key used to sign transaction.</p>
+<h2 id='address'>address</h2>
+<p><code>address: bsv.Address</code></p>
+
+<p>Address used to find UTXOs and receive payments.</p>
+<h2 id='balance'>balance</h2>
+<blockquote>
+<p>Querying the current balance</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Satoshis'</span><span class="p">,</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">purse</span><span class="p">.</span><span class="nx">balance</span><span class="p">())</span>
+</code></pre>
+<p><code>balance(): Promise&lt;number&gt;</code></p>
+
+<p>Returns a promise that resolves to the current balance in satoshis of this purse. This is the sum of all satoshis in this purse&#39;s unspent outputs.</p>
+<h2 id='utxos'>utxos</h2>
+<blockquote>
+<p>Building a transaction using the purse</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">utxos</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">run</span><span class="p">.</span><span class="nx">purse</span><span class="p">.</span><span class="nx">utxos</span><span class="p">()</span>
+<span class="kr">const</span> <span class="nx">tx</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">bsv</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">().</span><span class="nx">from</span><span class="p">(</span><span class="nx">utxos</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="nx">run</span><span class="p">.</span><span class="nx">purse</span><span class="p">.</span><span class="nx">address</span><span class="p">).</span><span class="nx">sign</span><span class="p">(</span><span class="nx">run</span><span class="p">.</span><span class="nx">purse</span><span class="p">.</span><span class="nx">privateKey</span><span class="p">)</span>
+</code></pre>
+<p><code>utxos(): Promise&lt;{txid: string, vout: number, script: bsv.Script, satoshis: number}&gt;</code></p>
+
+<p>Returns a promise that resolves to the current UTXOs of this purse.</p>
