@@ -76,12 +76,6 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     width: drawerWidth,
   },
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-  },
   code: {
     padding: theme.spacing(2),
     color: theme.palette.common.white,
@@ -117,6 +111,7 @@ function Home() {
         anchor="left"
       >
         <div className={classes.toolbar} />
+        <h2 style={{paddingLeft: 20, marginBottom: 16}}> Hive </h2>
         <Divider />
         <List>
   
@@ -163,7 +158,6 @@ function Home() {
         </List>
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.toolbar} />
         <Grid container spacing={2}>
         <Grid item xs={6}>
            <Card className={classes.card}>

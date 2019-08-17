@@ -26,11 +26,7 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '0.5em',
   },
   link: {
-    color: 'rgba(0, 0, 0, 0.6)',
-    textDecoration: 'none',
-    '&:hover': {
-      textDocoration: 'underline',
-    },
+    
   },
 }));
 
@@ -39,25 +35,7 @@ function LayoutFooter() {
 
   return (
     <div className={s.root}>
-      <Typography className={s.text}>
-        <span className={s.copyright}>&copy; 2019</span>
-        <a className={s.link} href="https://github.com/Kohze/Hive">
-          Hive
-        </a>
-        <span className={s.separator}>|</span>
-        <Link className={s.link} href="/about">
-          About Us
-        </Link>
-        <span className={s.separator}>|</span>
-        <Link className={s.link} href="/terms">
-          Terms
-        </Link>
-        <span className={s.separator}>|</span>
-        <Link className={s.link} href="/privacy">
-          Privacy
-        </Link>
-        
-      </Typography>
+      
     </div>
   );
 }
