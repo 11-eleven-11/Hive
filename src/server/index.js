@@ -28,11 +28,17 @@ dotenv.config({ path: '.env' });
 // Configure Firebase Admin SDK
 // https://firebase.google.com/docs/admin/setup
 if (!firebase.apps.length) {
-  firebase.initializeApp({
-    credential: firebase.credential.cert(
-      JSON.parse(process.env.GCP_SERVICE_KEY),
-    ),
-  });
+  var firebaseConfig = {
+    apiKey: "AIzaSyAfG3f7m1fHNDXqpmEKK4OJtRF2klMOAVk",
+    authDomain: "hive-e330f.firebaseapp.com",
+    databaseURL: "https://hive-e330f.firebaseio.com",
+    projectId: "hive-e330f",
+    storageBucket: "hive-e330f.appspot.com",
+    messagingSenderId: "73476503957",
+    appId: "1:73476503957:web:3883e8867185f360"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
 }
 
 if (process.env.NODE_ENV === 'production') {
