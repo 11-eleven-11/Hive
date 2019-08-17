@@ -63,7 +63,8 @@
 
     // TODO: run.purse.address correct?
     const hive = new Hive(
-        "My Hive",
+        "foobar",
+        run.owner.publicKey.toString(),
         run.purse.address.toString(),
         "Category",
         40000,
@@ -80,7 +81,8 @@
     console.log("Hive.getNumberOfUsers(): " + hive.getNumberOfUsers());
 
     const hiveNode = new HiveNode(
-        "My HiveNode",
+        "test",
+        "02c1a6f2f6c71d4dd50333ad54ab0d738d2f6544461ca40033a244f0658b9d1c6a",
         run.purse.address.toString(),
         "www.google.com",
         "image?",
