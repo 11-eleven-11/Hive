@@ -13,11 +13,11 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "bsv-browser": "file:./src/libs/bsv-browser",
-    "run-browser": "file:./src/libs/run-browser",
-    "run-node": "file:./src/libs/run-node",
-    "star-browser": "file:./src/libs/star-browser",
-    "star-node": "file:./src/libs/star-node",
+    "bsv-browser": "file:./libs/bsv-browser",
+    "run-browser": "file:./libs/run-browser",
+    "run-node": "file:./libs/run-node",
+    "star-browser": "file:./libs/star-browser",
+    "star-node": "file:./libs/star-node",
     "@babel/polyfill": "^7.2.5",
     "@babel/runtime": "^7.3.1",
     "@firebase/app": "^0.4.14",
@@ -63,7 +63,8 @@
     "slug": "^1.1.0",
     "universal-router": "^8.2.1",
     "uuid": "^3.3.2",
-    "validator": "^11.1.0"
+    "validator": "^11.1.0",
+    "bsv": "^0.29.2"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
