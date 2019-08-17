@@ -18,6 +18,14 @@ import { setHistory } from './utils/scrolling';
 let ownerKey = 'KxUyDn3uvRvubU4iPtRcaYo28rF7uMqyhbXqxuEwgJRMGgopkzGu';
 let purseKey = 'L1TLtVkhTq6tfHpvTEg3UVCzeYLHAEcawvvukBCxuLe8QF2gHmaf';
 
+const Run = window.Run;
+const run = new Run({ network: 'mock' });
+console.log(run.owner);
+class Dragon extends Run.Jig { }
+const dragon = new Dragon();
+alert(dragon);
+console.log(dragon);
+
 fetch('/keys.json')
   .then(r => r.json())
   .then(data => {

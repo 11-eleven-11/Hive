@@ -11,9 +11,6 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import theme from '../theme';
 import ErrorPage from './ErrorPage';
 import { ConfigContext, HistoryContext, ResetContext } from '../hooks';
-import Run from 'run-node';
-import Hive from '../jigs/Hive';
-import HiveNode from '../jigs/HiveNode';
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -31,37 +28,7 @@ class App extends React.PureComponent {
   }
 
   componentDidMount() {
-    const run = new Run({
-      purse: this.state.pursekey,
-      owner: this.state.ownerkey,
-      network: 'mock', //comment out for mainnet
-    });
 
-    run.purse.balance().then(satoshis => {
-      console.log('Current balance:', satoshis);
-    });
-
-    const hive = new Hive(
-      'My Hive',
-      run.owner.pubkey.toString(),
-      'Category',
-      3000,
-      'image',
-    );
-    this.setState({ exampleHive: hive });
-    console.dir(hive);
-    console.log(hive.location);
-
-    const hiveNode = new HiveNode(
-      'My HiveNode',
-      run.owner.pubkey.toString(),
-      'www.google.com',
-      'image?',
-      null,
-    );
-    this.setState({ exampleHiveNode: hiveNode });
-    console.dir(hiveNode);
-    console.log(hiveNode.location);
   }
 
   componentDidCatch(error, info) {
