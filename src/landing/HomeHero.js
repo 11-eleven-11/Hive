@@ -54,16 +54,9 @@ function HomeHero() {
   const s = useStyles();
 
   return (
-    <div className={s.root}>
-      <Typography className={s.title} variant="h3">
-        Hive - A BSV Metanet Project
-      </Typography>
-      <Typography className={s.subTitle} variant="h5">
-        Connect media, links, explore and comment the internet.
-      </Typography>
-      <div className={s.actions}>
-        <LoginButton className={s.button} provider="google" />
-      </div>
+    <div>
+     
+   
     </div>
   );
 }
