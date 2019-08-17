@@ -36,10 +36,78 @@ class App extends React.PureComponent {
           purseKey: data.purseKey,
         });
         //Demo
-        const run = new Run({purse: data.purseKey, owner: data.ownerKey});
-        run.purse.balance().then((satoshis) => {
-          console.log('Current balance:', satoshis);
-        });
+
+        //Mainnet
+        //const run = new Run({purse: data.purseKey, owner: data.ownerKey});
+        //run.purse.balance().then((satoshis) => {
+        //  console.log('Current balance:', satoshis);
+        //});
+        const run = new Run({ network: 'mock' });
+
+        class Hive extends Jig {
+          owners = [];
+
+          init(name, owner, category, satoshis, image) {
+            this.name = name;
+            this.owner = owner;
+            this.owners = [];
+            this.owners.push(owner);
+            this.category = category;
+            this.satoshis = satoshis;
+            this.image = image;
+          }
+
+          addOwner(owner) {
+            this.owners.push(owner);
+          }
+
+          getNumberOfUsers() {
+            return this.owners.length;
+          }
+        }
+
+        class HiveNode extends Jig {
+          init(name, owner, url, mediaData, previousNode) {
+            this.name = name;
+            this.owner = owner;
+            this.url = url;
+            this.mediaData = mediaData;
+            this.previousNode = previousNode;
+          }
+        }
+
+        // TODO: run.purse.address correct?
+        const hive = new Hive(
+          'My Hive',
+          run.owner.pubkey.toString(),
+          'Category',
+          40000,
+          'image',
+        );
+
+        console.log('Hive.owner: ' + hive.owner);
+        console.log('Hive.name: ' + hive.name);
+        console.log('Hive.category: ' + hive.category);
+        console.log('Hive.satoshis: ' + hive.satoshis);
+        console.log('Hive.image: ' + hive.image);
+        console.dir(hive.owners);
+        //TODO
+        //console.log("Hive.getNumberOfNodes(): " + hive.getNumberOfNodes());
+        console.log('Hive.getNumberOfUsers(): ' + hive.getNumberOfUsers());
+
+        const hiveNode = new HiveNode(
+          'My HiveNode',
+          run.owner.pubkey.toString(),
+          'www.google.com',
+          'image?',
+          null,
+        );
+
+        console.log('HiveNode.owner: ' + hiveNode.owner);
+        console.log('HiveNode.name: ' + hiveNode.name);
+        console.log('HiveNode.url: ' + hiveNode.url);
+        console.log('HiveNode.mediaData: ' + hiveNode.mediaData);
+        console.log('HiveNode.previousNode: ' + hiveNode.previousNode);
       });
   }
 
