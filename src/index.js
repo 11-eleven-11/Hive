@@ -14,10 +14,7 @@ import createRelay from './createRelay';
 import * as serviceWorker from './serviceWorker';
 import router from './router';
 import { setHistory } from './utils/scrolling';
-import bsv from 'bsv';
-import * as bsvBrowser from 'bsv-browser';
-import * as Run from 'run-node';
-import * as starNode from 'star-node';
+import Run from 'run-node';
 
 const container = document.getElementById('root');
 const history = createBrowserHistory();
