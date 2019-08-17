@@ -14,8 +14,6 @@ import createRelay from './createRelay';
 import * as serviceWorker from './serviceWorker';
 import router from './router';
 import { setHistory } from './utils/scrolling';
-import Run from 'run-node';
-import Jig from 'run-node';
 
 const container = document.getElementById('root');
 const history = createBrowserHistory();
@@ -23,24 +21,6 @@ const history = createBrowserHistory();
 let relay = createRelay();
 
 setHistory(history);
-
-//TODO: put this in a proper place
-const run = new Run();
-
-// class SimpleStore extends Jig {
-//   set(value) {
-//     this.value = value
-//   }
-// }
-//
-// const jig = new SimpleStore()
-// jig.set('Satoshi Nakamoto')
-//
-// console.log(jig.owner)
-// console.log(jig.value)
-
-console.log(run.owner.address.toString());
-//
 
 function reset() {
   relay = createRelay();
