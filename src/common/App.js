@@ -20,8 +20,10 @@ class App extends React.PureComponent {
     super(props);
     this.state = {
       error: null,
-      ownerKey: null,
-      purseKey: null,
+      ownerKey: props.ownerKey,
+      purseKey: props.purseKey,
+      exampleHive: null,
+      exampleHiveNode: null,
     };
   }
   static getDerivedStateFromError(error) {
@@ -29,57 +31,37 @@ class App extends React.PureComponent {
   }
 
   componentDidMount() {
-    fetch('/keys.json')
-      .then(r => r.json())
-      .then(data => {
-        this.setState({
-          ownerKey: data.ownerKey,
-          purseKey: data.purseKey,
-        });
-        //Demo
+    const run = new Run({
+      purse: this.state.pursekey,
+      owner: this.state.ownerkey,
+      network: 'mock', //comment out for mainnet
+    });
 
-        //Mainnet
-        const run = new Run({ purse: data.purseKey, owner: data.ownerKey });
-        //const run = new Run({ network: 'mock' });
-        run.purse.balance().then(satoshis => {
-          console.log('Current balance:', satoshis);
-        });
+    run.purse.balance().then(satoshis => {
+      console.log('Current balance:', satoshis);
+    });
 
-        // TODO: run.purse.address correct?
-        const hive = new Hive(
-          'My Hive',
-          run.owner.pubkey.toString(),
-          'Category',
-          3000,
-          'image',
-        );
+    const hive = new Hive(
+      'My Hive',
+      run.owner.pubkey.toString(),
+      'Category',
+      3000,
+      'image',
+    );
+    this.setState({ exampleHive: hive });
+    console.dir(hive);
+    console.log(hive.location);
 
-        console.log('Hive.location: ' + hive.location);
-        console.log('Hive.owner: ' + hive.owner);
-        console.log('Hive.name: ' + hive.name);
-        console.log('Hive.category: ' + hive.category);
-        console.log('Hive.satoshis: ' + hive.satoshis);
-        console.log('Hive.image: ' + hive.image);
-        console.dir(hive.owners);
-        //TODO
-        //console.log("Hive.getNumberOfNodes(): " + hive.getNumberOfNodes());
-        console.log('Hive.getNumberOfUsers(): ' + hive.getNumberOfUsers());
-
-        const hiveNode = new HiveNode(
-          'My HiveNode',
-          run.owner.pubkey.toString(),
-          'www.google.com',
-          'image?',
-          null,
-        );
-
-        console.log('HiveNode.location: ' + hiveNode.location);
-        console.log('HiveNode.owner: ' + hiveNode.owner);
-        console.log('HiveNode.name: ' + hiveNode.name);
-        console.log('HiveNode.url: ' + hiveNode.url);
-        console.log('HiveNode.mediaData: ' + hiveNode.mediaData);
-        console.log('HiveNode.previousNode: ' + hiveNode.previousNode);
-      });
+    const hiveNode = new HiveNode(
+      'My HiveNode',
+      run.owner.pubkey.toString(),
+      'www.google.com',
+      'image?',
+      null,
+    );
+    this.setState({ exampleHiveNode: hiveNode });
+    console.dir(hiveNode);
+    console.log(hiveNode.location);
   }
 
   componentDidCatch(error, info) {

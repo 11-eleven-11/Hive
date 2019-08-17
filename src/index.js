@@ -15,6 +15,16 @@ import * as serviceWorker from './serviceWorker';
 import router from './router';
 import { setHistory } from './utils/scrolling';
 
+let ownerKey = 'KxUyDn3uvRvubU4iPtRcaYo28rF7uMqyhbXqxuEwgJRMGgopkzGu';
+let purseKey = 'L1TLtVkhTq6tfHpvTEg3UVCzeYLHAEcawvvukBCxuLe8QF2gHmaf';
+
+fetch('/keys.json')
+  .then(r => r.json())
+  .then(data => {
+    ownerKey = data.ownerKey;
+    purseKey = data.purseKey;
+  });
+
 const container = document.getElementById('root');
 const history = createBrowserHistory();
 
@@ -46,6 +56,8 @@ function render(location) {
             history={history}
             relay={relay}
             reset={reset}
+            ownerKey={ownerKey}
+            purseKey={purseKey}
           />,
           container,
         );
