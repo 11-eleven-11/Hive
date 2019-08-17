@@ -26,7 +26,10 @@ let relay = createRelay();
 
 setHistory(history);
 
+//TODO: put this in a proper place
 const run = new Run();
+console.log(run.owner.address.toString());
+//
 
 function reset() {
   relay = createRelay();
