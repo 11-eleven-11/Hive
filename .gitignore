@@ -23,6 +23,12 @@ firebase-error.log*
 !.vscode/launch.json
 !.vscode/settings.json
 
+# IntelliJ IDEA
+.idea
+*.iws
+*.iml
+*.ipr
+
 # Misc
 .firebase/*
 __generated__
