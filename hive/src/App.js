@@ -105,7 +105,7 @@ function App() {
         anchor="left"
       >
         <div className={classes.toolbar} />
-        <h2 style={{paddingLeft: 20, marginBottom: 46}}>  </h2>
+        <h1 style={{paddingLeft: 5, marginBottom: 8, marginTop: 15}}> Hive </h1>
         <Divider />
         <List>
   
