@@ -54,6 +54,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     display: 'flex',
+    backgroundColor: 'rgba(50,97,90,0.5)'
   },
   card: {
     maxWidth: 445,
@@ -73,6 +74,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    backgroundColor: 'rgba(255,255,255,0.4)'
   },
   code: {
     padding: theme.spacing(2),
@@ -109,7 +111,7 @@ function Home() {
         anchor="left"
       >
         <div className={classes.toolbar} />
-        <h2 style={{paddingLeft: 20, marginBottom: 16}}> Hive </h2>
+        <h2 style={{paddingLeft: 20, marginBottom: 46}}>  </h2>
         <Divider />
         <List>
   

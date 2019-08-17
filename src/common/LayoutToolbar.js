@@ -26,7 +26,8 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
     fontFamily: theme.typography.monoFamily,
-    fontWeight: 100,
+    fontWeight: 500,
+    color: 'white'
   },
   avatar: {
     marginLeft: theme.spacing(1),
