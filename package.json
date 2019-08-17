@@ -1,123 +1,55 @@
 {
-  "name": "app",
-  "version": "0.0.0",
   "private": true,
-  "main": "build/server.js",
-  "engines": {
-    "node": "10"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
+  "workspaces": [
+    "packages/*"
   ],
-  "dependencies": {
-    "@babel/polyfill": "^7.2.5",
-    "@babel/runtime": "^7.3.1",
-    "@firebase/app": "^0.4.14",
-    "@material-ui/core": "^4.3.1",
-    "@material-ui/icons": "^4.2.1",
-    "body-parser": "^1.19.0",
-    "bsv": "^0.29.2",
-    "bsv-browser": "file:./libs/bsv-browser",
-    "clsx": "^1.0.4",
-    "cookie": "^0.4.0",
-    "cookie-parser": "^1.4.4",
-    "dataloader": "^1.4.0",
-    "dotenv": "^8.0.0",
-    "ejs": "^2.6.2",
-    "express": "^4.17.1",
-    "express-graphql": "^0.9.0",
-    "firebase-admin": "^8.3.0",
-    "firebase-functions": "^3.2.0",
-    "got": "^9.6.0",
-    "graphql": "^14.4.2",
-    "graphql-relay": "^0.6.0",
-    "history": "^4.9.0",
-    "hoist-non-react-statics": "^3.3.0",
-    "idx": "^2.5.6",
-    "jsonwebtoken": "^8.5.1",
-    "jwt-passport": "^0.0.5",
-    "knex": "^0.19.1",
-    "load-script": "^1.0.0",
-    "lodash": "^4.17.15",
-    "moment-timezone": "^0.5.26",
-    "passport": "^0.4.0",
-    "passport-facebook": "^3.0.0",
-    "passport-google-oauth20": "^2.0.0",
-    "pg": "^7.12.0",
-    "prop-types": "^15.7.2",
-    "query-string": "^6.8.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-relay": "^5.0.0",
-    "recompose": "^0.30.0",
-    "relay-runtime": "^5.0.0",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.7",
-    "run-browser": "file:./libs/run-browser",
-    "run-node": "file:./libs/run-node",
-    "serialize-javascript": "^1.7.0",
-    "slug": "^1.1.0",
-    "star-browser": "file:./libs/star-browser",
-    "star-node": "file:./libs/star-node",
-    "universal-router": "^8.2.1",
-    "uuid": "^3.3.2",
-    "validator": "^11.1.0"
+  "scripts": {
+    "build": "cd packages/react-scripts && node bin/react-scripts.js build",
+    "changelog": "lerna-changelog",
+    "create-react-app": "node tasks/cra.js",
+    "e2e": "tasks/e2e-simple.sh",
+    "e2e:docker": "tasks/local-test.sh",
+    "postinstall": "cd packages/react-error-overlay/ && yarn build:prod",
+    "publish": "tasks/publish.sh",
+    "start": "cd packages/react-scripts && node bin/react-scripts.js start",
+    "screencast": "node ./tasks/screencast.js",
+    "screencast:error": "svg-term --cast jyu19xGl88FQ3poMY8Hbmfw8y --out screencast-error.svg --window --at 12000 --no-cursor",
+    "test": "cd packages/react-scripts && node bin/react-scripts.js test",
+    "format": "prettier --trailing-comma es5 --single-quote --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js'",
+    "compile:lockfile": "node tasks/compile-lockfile.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/register": "^7.0.0",
-    "babel-plugin-lodash": "^3.3.4",
-    "babel-plugin-relay": "^5.0.0",
-    "chai": "^4.2.0",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "husky": "^3.0.3",
-    "lint-staged": "^9.2.1",
-    "minimist": "^1.2.0",
-    "prettier": "^1.18.2",
-    "raw-loader": "^3.1.0",
-    "react-app-tools": "^3.1.0-preview.7",
-    "relay-compiler": "^5.0.0"
-  },
-  "lint-staged": {
-    "*.js": [
-      "yarn run eslint --no-ignore --fix --max-warnings=0",
-      "yarn run prettier --write",
-      "git add --force"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add --force"
-    ]
+    "eslint": "6.1.0",
+    "execa": "1.0.0",
+    "fs-extra": "^7.0.1",
+    "get-port": "^4.2.0",
+    "globby": "^9.1.0",
+    "husky": "^1.3.1",
+    "jest": "24.8.0",
+    "lerna": "3.16.4",
+    "lerna-changelog": "~0.8.2",
+    "lint-staged": "^8.0.4",
+    "meow": "^5.0.0",
+    "multimatch": "^3.0.0",
+    "prettier": "1.18.2",
+    "puppeteer": "^1.13.0",
+    "strip-ansi": "^5.1.0",
+    "svg-term-cli": "^2.1.1",
+    "tempy": "^0.2.1",
+    "wait-for-localhost": "^3.1.0"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
-  "scripts": {
-    "setup": "node ./scripts/setup",
-    "update-schema": "node ./scripts/update-schema",
-    "relay": "relay-compiler --src ./src --schema ./schema.graphql",
-    "prestart": "yarn relay",
-    "start": "react-app start",
-    "build": "react-app build",
-    "test": "react-app test",
-    "lint": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
-    "lint-fix": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" --fix . && yarn run prettier --write \"**/*.{js,json}\"",
-    "db": "node ./scripts/db",
-    "db-backup": "node ./scripts/db-backup",
-    "db-restore": "node ./scripts/db-restore",
-    "db-change": "knex migrate:make",
-    "db-migrate": "knex migrate:latest",
-    "db-rollback": "knex migrate:rollback",
-    "db-seed": "knex seed:run",
-    "db-version": "knex migrate:currentVersion",
-    "deploy": "yarn run deploy-test",
-    "deploy-test": "firebase --project=example-test deploy && node ./scripts/post-deploy --env=test",
-    "deploy-prod": "firebase --project=example-prod deploy && node ./scripts/post-deploy --env=prod"
+  "lint-staged": {
+    "*.{js,md,css,html}": [
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ],
+    "yarn.lock": [
+      "git rm --cached"
+    ]
   }
 }

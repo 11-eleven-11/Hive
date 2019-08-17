@@ -1,6 +1,0 @@
-{
-  "name": "run-node",
-  "version": "0.3.0",
-  "private": true,
-  "main": "./run.node.min.js"
-}
