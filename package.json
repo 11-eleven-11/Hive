@@ -63,7 +63,8 @@
     "slug": "^1.1.0",
     "universal-router": "^8.2.1",
     "uuid": "^3.3.2",
-    "validator": "^11.1.0"
+    "validator": "^11.1.0",
+    "bsv": "^0.29.2"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
