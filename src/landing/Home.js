@@ -118,39 +118,38 @@ function Home() {
   
           <ListItem button>
             <ListItemIcon> <MailIcon /></ListItemIcon>
-            <ListItemText primary="test" />
+            <ListItemText primary="Profile" />
           </ListItem>
           <ListItem button>
             <ListItemIcon> <MailIcon /></ListItemIcon>
-            <ListItemText primary="test" />
+            <ListItemText primary="Followers" />
           </ListItem>
           <ListItem button>
             <ListItemIcon> <MailIcon /></ListItemIcon>
-            <ListItemText primary="test" />
+            <ListItemText primary="Likes" />
           </ListItem>
-          <ListItem button>
-            <ListItemIcon> <MailIcon /></ListItemIcon>
-            <ListItemText primary="test" />
-          </ListItem>
+         
         </List>
         <Divider />
         <List>
-  
+          <h4 style={{paddingLeft: 17}}> Category </h4>
           <ListItem button>
-            <ListItemIcon> <MailIcon /></ListItemIcon>
-            <ListItemText primary="test" />
+            <ListItemText primary="Politics" />
           </ListItem>
           <ListItem button>
-            <ListItemIcon> <MailIcon /></ListItemIcon>
-            <ListItemText primary="test" />
+            <ListItemText primary="History" />
           </ListItem>
           <ListItem button>
-            <ListItemIcon> <MailIcon /></ListItemIcon>
-            <ListItemText primary="test" />
+            <ListItemText primary="Finance" />
           </ListItem>
           <ListItem button>
-            <ListItemIcon> <MailIcon /></ListItemIcon>
-            <ListItemText primary="test" />
+            <ListItemText primary="Cryptocurrency" />
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Sport" />
+          </ListItem>
+           <ListItem button>
+            <ListItemText primary="Other" />
           </ListItem>
         </List>
       </Drawer>
