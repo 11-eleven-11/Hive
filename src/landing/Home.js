@@ -20,6 +20,9 @@ import HomeStack from './HomeStack';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import PeopleIcon from '@material-ui/icons/People';
+import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 import DeleteIcon from '@material-ui/icons/Delete';
 import NavigationIcon from '@material-ui/icons/Navigation';
 
@@ -31,6 +34,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import CategoryIcon from '@material-ui/icons/Category';
 import MailIcon from '@material-ui/icons/Mail';
 
 import Card from '@material-ui/core/Card';
@@ -117,22 +121,27 @@ function Home() {
         <List>
   
           <ListItem button>
-            <ListItemIcon> <MailIcon /></ListItemIcon>
+            <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
             <ListItemText primary="Profile" />
           </ListItem>
           <ListItem button>
-            <ListItemIcon> <MailIcon /></ListItemIcon>
+            <ListItemIcon> <InboxIcon /></ListItemIcon>
+            <ListItemText primary="Requests" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon> <PeopleIcon /></ListItemIcon>
             <ListItemText primary="Followers" />
           </ListItem>
           <ListItem button>
-            <ListItemIcon> <MailIcon /></ListItemIcon>
-            <ListItemText primary="Likes" />
+            <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
+            <ListItemText primary="Notifications" />
           </ListItem>
          
         </List>
         <Divider />
         <List>
-          <h4 style={{paddingLeft: 17}}> Category </h4>
+
+          <ListItemIcon> <h4 style={{paddingLeft: 17}}> Category </h4></ListItemIcon>
           <ListItem button>
             <ListItemText primary="Politics" />
           </ListItem>
