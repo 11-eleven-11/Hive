@@ -13,17 +13,14 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "bsv-browser": "file:./libs/bsv-browser",
-    "run-browser": "file:./libs/run-browser",
-    "run-node": "file:./libs/run-node",
-    "star-browser": "file:./libs/star-browser",
-    "star-node": "file:./libs/star-node",
     "@babel/polyfill": "^7.2.5",
     "@babel/runtime": "^7.3.1",
     "@firebase/app": "^0.4.14",
     "@material-ui/core": "^4.3.1",
     "@material-ui/icons": "^4.2.1",
     "body-parser": "^1.19.0",
+    "bsv": "^0.29.2",
+    "bsv-browser": "file:./libs/bsv-browser",
     "clsx": "^1.0.4",
     "cookie": "^0.4.0",
     "cookie-parser": "^1.4.4",
@@ -59,12 +56,16 @@
     "relay-runtime": "^5.0.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
+    "run-browser": "file:./libs/run-browser",
+    "run-node": "file:./libs/run-node",
     "serialize-javascript": "^1.7.0",
     "slug": "^1.1.0",
+    "star-browser": "file:./libs/star-browser",
+    "star-node": "file:./libs/star-node",
     "universal-router": "^8.2.1",
     "uuid": "^3.3.2",
     "validator": "^11.1.0",
-    "bsv": "^0.29.2"
+    "webpack": "^4.39.2"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
