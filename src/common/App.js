@@ -10,67 +10,40 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 
 import theme from '../theme';
 import ErrorPage from './ErrorPage';
-import { gtag, getScrollPosition } from '../utils';
+import { gtag } from '../utils';
 import { ConfigContext, HistoryContext, ResetContext } from '../hooks';
-import Run from 'run-node';
+// import Run from 'run-node';
 
 class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      ownerKey: null,
+      purseKey: null,
+    };
+  }
   static getDerivedStateFromError(error) {
     return { error };
   }
 
   componentDidMount() {
-    this.componentDidRender();
-
-    const run = new Run();
-    console.log(run.owner.address.toString()); //public address from newly generated key
-
-    let client = new XMLHttpRequest();
-    client.open('GET', '/owner.key');
-    client.onreadystatechange = function() {
-      console.log(client.responseText);
-    };
-    client.send();
-
-    let client2 = new XMLHttpRequest();
-    client2.open('GET', '/purse.key');
-    client2.onreadystatechange = function() {
-      console.log(client2.responseText);
-    };
-    client2.send();
-  }
-
-  componentDidUpdate() {
-    this.componentDidRender();
+    // const run = new Run();
+    //   console.log(run.owner.address.toString()); //public address from newly generated key
+    fetch('/keys.json')
+      .then(r => r.json())
+      .then(data => {
+        this.setState({
+          ownerKey: data.ownerKey,
+          purseKey: data.purseKey,
+        });
+      });
   }
 
   componentDidCatch(error, info) {
     console.log(error, info); // eslint-disable-line no-console
     gtag('event', 'exception', { description: error.message, fatal: false });
   }
-
-  state = {
-    error: null,
-    ownerKey: null,
-    purseKey: null,
-  };
-
-  componentDidRender = () => {
-    const { history, title, config } = this.props;
-    window.document.title = title;
-
-    // Track page views
-    gtag('config', config.gaTrackingId, { transport_type: 'beacon' });
-    // fb(FB => FB.AppEvents.logPageView());
-
-    const scrollY = getScrollPosition(history.location.key);
-
-    if (scrollY && history.action === 'POP') {
-      window.scrollTo(0, scrollY);
-    } else {
-      window.scrollTo(0, 0);
-    }
-  };
 
   resetError = () => {
     this.setState({ error: null });
@@ -95,6 +68,8 @@ class App extends React.PureComponent {
       variables,
       payload,
     } = this.props;
+
+    console.log(this.state, 'thi.state');
 
     return (
       <MuiThemeProvider theme={theme}>
