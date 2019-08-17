@@ -10,9 +10,9 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 
 import theme from '../theme';
 import ErrorPage from './ErrorPage';
-import { gtag } from '../utils';
 import { ConfigContext, HistoryContext, ResetContext } from '../hooks';
-// import Run from 'run-node';
+import Run from 'run-node';
+import Jig from 'run-node';
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -28,8 +28,6 @@ class App extends React.PureComponent {
   }
 
   componentDidMount() {
-    // const run = new Run();
-    //   console.log(run.owner.address.toString()); //public address from newly generated key
     fetch('/keys.json')
       .then(r => r.json())
       .then(data => {
@@ -37,12 +35,16 @@ class App extends React.PureComponent {
           ownerKey: data.ownerKey,
           purseKey: data.purseKey,
         });
+        //Demo
+        const run = new Run({purse: data.purseKey, owner: data.ownerKey});
+        run.purse.balance().then((satoshis) => {
+          console.log('Current balance:', satoshis);
+        });
       });
   }
 
   componentDidCatch(error, info) {
     console.log(error, info); // eslint-disable-line no-console
-    gtag('event', 'exception', { description: error.message, fatal: false });
   }
 
   resetError = () => {
@@ -68,8 +70,6 @@ class App extends React.PureComponent {
       variables,
       payload,
     } = this.props;
-
-    console.log(this.state, 'thi.state');
 
     return (
       <MuiThemeProvider theme={theme}>
