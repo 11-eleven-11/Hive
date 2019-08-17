@@ -4,11 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const Run = window.Run
-const run = new Run({ network: 'mock' })
-class Dragon extends Run.Jig { }
-const dragon = new Dragon()
-alert(dragon)
+const Run = window.Run;
+const run = new Run({ network: 'mock' });
+class Dragon extends Run.Jig {}
+const dragon = new Dragon();
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
