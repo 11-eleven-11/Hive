@@ -47,7 +47,6 @@ function Layout(props) {
       )}
       {!hero && <div className={s.toolbar} />}
       {children}
-      <LayoutFooter />
       <AutoUpdater user={data.me} />
     </React.Fragment>
   );
