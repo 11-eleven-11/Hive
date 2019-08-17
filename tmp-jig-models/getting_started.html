@@ -64,7 +64,7 @@
     // TODO: run.purse.address correct?
     const hive = new Hive(
         "My Hive",
-        run.purse.address.toString(),
+        run.owner.pubkey.toString(),
         "Category",
         40000,
         "image");
@@ -81,7 +81,7 @@
 
     const hiveNode = new HiveNode(
         "My HiveNode",
-        run.purse.address.toString(),
+        run.owner.pubkey.toString(),
         "www.google.com",
         "image?",
         null);
