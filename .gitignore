@@ -40,5 +40,4 @@ __generated__
 backup.sql
 
 # this is temporary until we have a log-in system
-public/purse.key
-public/owner.key
+public/keys.json
