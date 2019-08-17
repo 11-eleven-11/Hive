@@ -12,7 +12,8 @@ import theme from '../theme';
 import ErrorPage from './ErrorPage';
 import { ConfigContext, HistoryContext, ResetContext } from '../hooks';
 import Run from 'run-node';
-import Jig from 'run-node';
+import Hive from '../jigs/Hive';
+import HiveNode from '../jigs/HiveNode';
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -38,53 +39,22 @@ class App extends React.PureComponent {
         //Demo
 
         //Mainnet
-        //const run = new Run({purse: data.purseKey, owner: data.ownerKey});
-        //run.purse.balance().then((satoshis) => {
-        //  console.log('Current balance:', satoshis);
-        //});
-        const run = new Run({ network: 'mock' });
-
-        class Hive extends Jig {
-          owners = [];
-
-          init(name, owner, category, satoshis, image) {
-            this.name = name;
-            this.owner = owner;
-            this.owners = [];
-            this.owners.push(owner);
-            this.category = category;
-            this.satoshis = satoshis;
-            this.image = image;
-          }
-
-          addOwner(owner) {
-            this.owners.push(owner);
-          }
-
-          getNumberOfUsers() {
-            return this.owners.length;
-          }
-        }
-
-        class HiveNode extends Jig {
-          init(name, owner, url, mediaData, previousNode) {
-            this.name = name;
-            this.owner = owner;
-            this.url = url;
-            this.mediaData = mediaData;
-            this.previousNode = previousNode;
-          }
-        }
+        const run = new Run({ purse: data.purseKey, owner: data.ownerKey });
+        //const run = new Run({ network: 'mock' });
+        run.purse.balance().then(satoshis => {
+          console.log('Current balance:', satoshis);
+        });
 
         // TODO: run.purse.address correct?
         const hive = new Hive(
           'My Hive',
           run.owner.pubkey.toString(),
           'Category',
-          40000,
+          3000,
           'image',
         );
 
+        console.log('Hive.location: ' + hive.location);
         console.log('Hive.owner: ' + hive.owner);
         console.log('Hive.name: ' + hive.name);
         console.log('Hive.category: ' + hive.category);
@@ -103,6 +73,7 @@ class App extends React.PureComponent {
           null,
         );
 
+        console.log('HiveNode.location: ' + hiveNode.location);
         console.log('HiveNode.owner: ' + hiveNode.owner);
         console.log('HiveNode.name: ' + hiveNode.name);
         console.log('HiveNode.url: ' + hiveNode.url);
