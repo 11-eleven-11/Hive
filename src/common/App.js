@@ -34,7 +34,7 @@ class App extends React.PureComponent {
     const run = new Run({
       purse: this.state.pursekey,
       owner: this.state.ownerkey,
-      network: 'mock', //uncomment for mainnet
+      network: 'mock', //comment out for mainnet
     });
 
     run.purse.balance().then(satoshis => {
@@ -50,6 +50,7 @@ class App extends React.PureComponent {
     );
     this.setState({ exampleHive: hive });
     console.dir(hive);
+    console.log(hive.location);
 
     const hiveNode = new HiveNode(
       'My HiveNode',
@@ -60,6 +61,7 @@ class App extends React.PureComponent {
     );
     this.setState({ exampleHiveNode: hiveNode });
     console.dir(hiveNode);
+    console.log(hiveNode.location);
   }
 
   componentDidCatch(error, info) {
