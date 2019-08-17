@@ -15,6 +15,7 @@ import * as serviceWorker from './serviceWorker';
 import router from './router';
 import { setHistory } from './utils/scrolling';
 import Run from 'run-node';
+import Jig from 'run-node';
 
 const container = document.getElementById('root');
 const history = createBrowserHistory();
