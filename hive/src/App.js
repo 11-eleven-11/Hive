@@ -19,6 +19,8 @@ import PeopleIcon from '@material-ui/icons/People';
 import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 import DeleteIcon from '@material-ui/icons/Delete';
 import NavigationIcon from '@material-ui/icons/Navigation';
+import Fade from '@material-ui/core/Fade';
+
 
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -180,6 +182,9 @@ function App() {
         </List>
       </Drawer>
       <main className={classes.content}>
+
+        <Fade in={true}>
+
         <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5}}>
         <Grid item xs={3}>
            <Card className={classes.card}>
@@ -572,6 +577,7 @@ function App() {
         </Grid>
         
       </Grid>
+      </Fade>
       </main>
     </div>
       
