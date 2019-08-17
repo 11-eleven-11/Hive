@@ -30,17 +30,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import CategoryIcon from '@material-ui/icons/Category';
 import MailIcon from '@material-ui/icons/Mail';
-import AndroidIcon from '@material-ui/icons/Android';
 
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import * as firebase from 'firebase';
-
-var provider = new firebase.auth.GoogleAuthProvider();
-
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -88,50 +83,11 @@ const useStyles = makeStyles(theme => ({
 
 const drawerWidth = 240;
 
-function googleLogin (){
-  firebase.auth().signInWithPopup(provider).then(function(result) {
-  // This gives you a Google Access Token. You can use it to access the Google API.
-  var token = result.credential.accessToken;
-  // The signed-in user info.
-  var user = result.user;
-  // ...
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // The email of the user's account used.
-  var email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
-  var credential = error.credential;
-  // ...
-});
-
-}
 
 function App() {
 
   const s = useStyles();
   const classes = useStyles();
-  let userBar =  <List><ListItem button onClick={() => googleLogin()}>
-            <ListItemIcon> <AndroidIcon /></ListItemIcon>
-            <ListItemText primary="Google Login" />
-          </ListItem>         <Divider />
-             <ListItem button>
-            <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon> <InboxIcon /></ListItemIcon>
-            <ListItemText primary="Requests" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon> <PeopleIcon /></ListItemIcon>
-            <ListItemText primary="Followers" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
-            <ListItemText primary="Notifications" />
-          </ListItem> </List>;
 
   return (
     <div className="App">
@@ -151,9 +107,25 @@ function App() {
         <div className={classes.toolbar} />
         <h1 style={{paddingLeft: 5, marginBottom: 8, marginTop: 15}}> Hive </h1>
         <Divider />
-
         <List>
-          {userBar}
+  
+          <ListItem button>
+            <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
+            <ListItemText primary="Profile" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon> <InboxIcon /></ListItemIcon>
+            <ListItemText primary="Requests" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon> <PeopleIcon /></ListItemIcon>
+            <ListItemText primary="Followers" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
+            <ListItemText primary="Notifications" />
+          </ListItem>
+         
         </List>
         <Divider />
         <List>
