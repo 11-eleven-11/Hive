@@ -30,6 +30,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 
+import HiveNode from './jigs/HiveNode';
+
 var provider = new firebase.auth.GoogleAuthProvider();
 
 function googleLogin (){
