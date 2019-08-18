@@ -133,15 +133,19 @@ function App() {
             <ListItemText primary="Google Login" />
           </ListItem>         
           <Divider />
-          <ListItem button>
-            <ListItemIcon> <AddBoxIcon /></ListItemIcon>
-            <ListItemText primary="Create Hive" />
-          </ListItem>
+          <Link to="/create" style={{ textDecoration: 'none', color: 'black' }}>
+            <ListItem button>
+              <ListItemIcon> <AddBoxIcon /></ListItemIcon>
+              <ListItemText primary="Create Hive" />
+            </ListItem>
+          </Link>
           <Divider />
-             <ListItem button >
-            <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItem>
+          <Link to="/profile" style={{ textDecoration: 'none', color: 'black' }}>
+            <ListItem button >
+              <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItem>
+          </Link>
           <Divider />
           <ListItem button>
             <ListItemIcon> <InboxIcon /></ListItemIcon>
