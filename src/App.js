@@ -161,7 +161,7 @@ class App extends Component {
                                       <CardActionArea>
                                           <CardMedia
                                             className="media"
-                                            image="https://via.placeholder.com/400x200"
+                                            image={ hive.image }
                                             title="Contemplative Reptile"
                                           />
                                           <CardContent>
@@ -174,7 +174,7 @@ class App extends Component {
                                           </CardContent>
                                       </CardActionArea>
                                       <CardActions>
-                                        <Link to={'/ideas/'+hive.location } style={{ textDecoration: 'none', color: 'black' }}>
+                                        <Link to={'/hivenodes/'+hive.location } style={{ textDecoration: 'none', color: 'black' }}>
                                           <Button size="small" color="primary">
                                               More
                                           </Button>

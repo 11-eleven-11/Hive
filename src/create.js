@@ -26,6 +26,7 @@ export default class Create extends React.Component {
     this.state = {
       name: '',
       description: '',
+      image: '',
       category: '',
       satoshis: 0,
       privKey: '',
@@ -66,7 +67,7 @@ export default class Create extends React.Component {
 
   handleSubmit(event, dev) {
     event.preventDefault();
-    alert('Adding new Hive (name: ' + dev.state.name + ', description: ' + dev.state.description + ', category: ' + dev.state.category + ', satoshis: ' + dev.state.satoshis + ')');
+    alert('Adding new Hive (name: ' + dev.state.name + ', description: ' + dev.state.description + ', imageUrl: ' + dev.state.image +  ', category: ' + dev.state.category + ', satoshis: ' + dev.state.satoshis + ')');
 
     const Run = window.Run;
 
@@ -82,7 +83,7 @@ export default class Create extends React.Component {
             run.owner.pubkey.toString(),
             dev.state.category,
             parseInt(dev.state.satoshis),
-            "image");
+            dev.state.image);
 
      hive.sync().then(createdHive => {
         alert('Hive created, hooray, please wait a bit until you see it on the main page');
@@ -108,6 +109,12 @@ export default class Create extends React.Component {
                 placeholder="Description"
                  value={this.state.description}
                 onChange={(e) => this.setState({description : e.target.value})}
+             />
+             <br/>
+              <Input
+                placeholder="Image URL"
+                 value={this.state.image}
+                onChange={(e) => this.setState({image : e.target.value})}
              />
              <br/>
          <FormControl style={{minWidth: 180}}>
