@@ -1,12 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import * as firebase from 'firebase';
 import Hive from './jigs/Hive';
 import HiveNode from './jigs/HiveNode';
 import HiveState from './jigs/HiveState';
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import App from "./App";
+import Create from "./create";
+import Profile from "./profile";
+
+const routing = (
+  <Router>
+    <div>
+        <Route exact path="/" component={App} />
+        <Route path="/create" component={Create} />
+        <Route path="/profile" component={Profile} />
+    </div>
+  </Router>
+)
 
 const Run = window.Run;
 
@@ -108,7 +123,7 @@ const run = new Run();
 //                    })
 
 //const hive = new Hive(
-//        "My aaaaa",
+//        "My Hive",
 //        "My hive description",
 //        run.owner.pubkey.toString(),
 //        "Category",
@@ -155,10 +170,4 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(routing, document.getElementById('root'));
