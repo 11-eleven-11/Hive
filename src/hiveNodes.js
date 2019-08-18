@@ -117,6 +117,10 @@ class HiveNodes extends Component {
 
     render() {
 
+ 
+
+
+
         const {value, hiveNodes} = this.state;
         return (
           <div className="App">
@@ -126,16 +130,12 @@ class HiveNodes extends Component {
                   <main className="content">
                       
 
-                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108, minWidth: '100vw'}}>
+                      <Grid container spacing={1} xs={12} style={{paddingLeft: 4, paddingTop: 5, marginTop: 60, minWidth: '50vw'}}>
                         {this.state.hiveNodes.map((hive, key) =>
-                            <Grid item xs={3} style={{minWidth: 400}}>
+                            <Grid item xs={12} style={{minWidth: 400}}>
                                   <Card className="card">
                                       <CardActionArea>
-                                          <CardMedia
-                                            className="media"
-                                            image="https://via.placeholder.com/400x200"
-                                            title="Contemplative Reptile"
-                                          />
+                                          
                                           <CardContent>
                                               <Typography gutterBottom variant="h5" component="h2">
                                                    { hive.name }
@@ -145,11 +145,27 @@ class HiveNodes extends Component {
                                               </Typography>
                                           </CardContent>
                                       </CardActionArea>
-                                      <CardActions>
+                                      <CardActions style={{float: 'left'}}>
                                           <Button size="small" color="primary">
                                               More
                                           </Button>
-
+                                           <Button size="small" color="primary">
+                                              Comment
+                                          </Button>
+                                            <Button size="small" color="primary">
+                                              Tip
+                                          </Button>
+                                      </CardActions>
+                                             <CardActions style={{float: 'right'}}>
+                                          <Button size="small" color="default">
+                                              12 likes
+                                          </Button>
+                                           <Button size="small" color="default">
+                                              234 satoshis
+                                          </Button>
+                                            <Button size="small" color="default">
+                                              3 connections
+                                          </Button>
                                       </CardActions>
                                   </Card>
                              </Grid>
