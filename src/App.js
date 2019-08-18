@@ -20,7 +20,10 @@ import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 import DeleteIcon from '@material-ui/icons/Delete';
 import NavigationIcon from '@material-ui/icons/Navigation';
 import Fade from '@material-ui/core/Fade';
+import AddBoxIcon from '@material-ui/icons/AddBox';
 
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -110,14 +113,29 @@ function googleLogin (){
 
 }
 
+
 function App() {
+    
+    const [value, setValue] = React.useState(0);
+
+
+    function handleChange(event, newValue) {
+    setValue(newValue);
+  }
+
 
   const s = useStyles();
   const classes = useStyles();
   let userBar =  <List><ListItem button onClick={() => googleLogin()}>
             <ListItemIcon> <AndroidIcon /></ListItemIcon>
             <ListItemText primary="Google Login" />
-          </ListItem>         <Divider />
+          </ListItem>         
+          <Divider />
+          <ListItem button>
+            <ListItemIcon> <AddBoxIcon /></ListItemIcon>
+            <ListItemText primary="Create Hive" />
+          </ListItem> 
+          <Divider />
              <ListItem button>
             <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
             <ListItemText primary="Profile" />
@@ -133,7 +151,9 @@ function App() {
           <ListItem button>
             <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
             <ListItemText primary="Notifications" />
-          </ListItem> </List>;
+          </ListItem> 
+          
+          </List>;
 
   return (
     <div className="App">
@@ -157,31 +177,26 @@ function App() {
         <List>
           {userBar}
         </List>
-        <Divider />
-        <List>
-
-          <ListItemIcon> <p> Category </p></ListItemIcon>
-          <ListItem button>
-            <ListItemText primary="Politics" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText primary="History" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText primary="Finance" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText primary="Cryptocurrency" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText primary="Sport" />
-          </ListItem>
-           <ListItem button>
-            <ListItemText primary="Other" />
-          </ListItem>
-        </List>
+        
       </Drawer>
       <main className={classes.content}>
+      <Paper className={classes.root} style={{marginLeft: 5, marginRight: 8, marginTop: 5}}>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        indicatorColor="primary"
+        textColor="default"
+        centered
+      >
+        <Tab label="All" />
+        <Tab label="Politics" />
+        <Tab label="Finance" />
+        <Tab label="Cryptocurrency" />
+        <Tab label="Sports" />
+        <Tab label="History" />
+        <Tab label="Other" />
+      </Tabs>
+    </Paper>
 
         <Fade in={true}>
 
