@@ -43,7 +43,7 @@ export default class Create extends React.Component {
             dev.state.description,
             run.owner.pubkey.toString(),
             dev.state.category,
-            dev.state.satoshis,
+            parseInt(dev.state.satoshis),
             "image");
 
      hive.sync().then(createdHive => {
