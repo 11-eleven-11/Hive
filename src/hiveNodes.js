@@ -121,43 +121,16 @@ class HiveNodes extends Component {
               <div className="root">
                   <CssBaseline/>
                   <main className="content">
-                      <Paper className="root" style={{
-                          marginLeft: 0,
-                          marginRight: 8,
-                          marginTop: 65,
-                          position: 'fixed',
-                          zIndex: 9999,
-                          width: '100%',
-                          backgroundColor: '#648882',
-                          borderRadius: 0
-                      }}>
-                          <Tabs
-                            value={value}
-                            onChange={this.handleChange}
-                            indicatorColor="primary"
-                            textColor="default"
-                            centered
-                          >
-                              <Tab label="All"/>
-                              <Tab label="International"/>
-                              <Tab label="Politics"/>
-                              <Tab label="Finance"/>
-                              <Tab label="Cryptocurrency"/>
-                              <Tab label="Technology"/>
-                              <Tab label="Sports"/>
-                              <Tab label="History"/>
-                              <Tab label="Other"/>
-                          </Tabs>
-                      </Paper>
+                      
 
-                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108}}>
+                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108, minWidth: '100vw'}}>
                         {this.state.hiveNodes.map((hive, key) =>
-                            <Grid item xs={3}>
+                            <Grid item xs={3} style={{minWidth: 400}}>
                                   <Card className="card">
                                       <CardActionArea>
                                           <CardMedia
                                             className="media"
-                                            image="https://via.placeholder.com/500x200"
+                                            image="https://via.placeholder.com/400x200"
                                             title="Contemplative Reptile"
                                           />
                                           <CardContent>
