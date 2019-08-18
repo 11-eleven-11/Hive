@@ -8,14 +8,14 @@ import Hive from './jigs/Hive';
 import HiveNode from './jigs/HiveNode';
 import HiveState from './jigs/HiveState';
 
-    var url = "https://genesis.bitdb.network/q/1FnauZ9aUH2Bex6JzdcV4eNX7oLSSEbxtN/ewogICJ2IjogMywKICAicSI6IHsKICAgICJmaW5kIjogeyJvdXQuczEiIDogIk1ldGFWaWJlMiJ9LAogICAgImxpbWl0IjogMTAKICB9Cn0=";
+    var url = "https://genesis.bitdb.network/q/1FnauZ9aUH2Bex6JzdcV4eNX7oLSSEbxtN/ewogICJ2IjogMywKICAicSI6IHsKICAgICJmaW5kIjogeyJvdXQuczIiOiAicnVuIn0sCiAgICAibGltaXQiOiA1MDAKICB9Cn0=";
     var header = {
       headers: { key: "1KJPjd3p8khnWZTkjhDYnywLB2yE1w5BmU" }
     };
 
     fetch(url, header).then(response => {
         response.json().then(json => {
-            console.log(json.c);
+            console.log(json.c[0]);
         });
     });
 

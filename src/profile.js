@@ -86,6 +86,27 @@ const drawerWidth = 240;
 
 function App() {
 
+    //TODO: get from NoSQL
+    const purse = null;
+    const owner = null;
+
+    const Run = window.Run;
+    var run;
+    if (purse == null || owner == null) {
+        run = new Run();
+
+        //TODO:
+        //store  run.owner.privkey.toString()
+        //store  run.purse.privkey.toString()
+        //store  run.purse.address.toString()
+    } else {
+        run = new Run({ purse: purse, owner: owner});
+    }
+
+     console.log(run.owner.privkey.toString(), "owner privkey");
+     console.log(run.purse.privkey.toString(), "purse privkey");
+     console.log(run.purse.address.toString(), "purse address");
+
   const s = useStyles();
   const classes = useStyles();
 
