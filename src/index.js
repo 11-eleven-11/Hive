@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import * as firebase from 'firebase';
-import Hive from './jigs/Hive';
-import HiveNode from './jigs/HiveNode';
-import HiveState from './jigs/HiveState';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -25,7 +22,9 @@ const routing = (
         <Route exact path="/" component={App} />
         <Route path="/create" component={Create} />
         <Route path="/profile" component={Profile} />
-        <Route path="/hivenodes/:location" handler={HiveNodes} />
+        <Route path="/hivenodes" handler={HiveNodes}>
+            <Route path="/:id" component={HiveNodes}/>
+        </Route>
     </div>
   </Router>
 )

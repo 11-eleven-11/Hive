@@ -22,9 +22,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import * as firebase from 'firebase';
 
-
 var provider = new firebase.auth.GoogleAuthProvider();
-
 
 function googleLogin (){
   firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -55,7 +53,6 @@ class App extends Component {
             hiveNodes: [],
             value: null
         };
-
     }
 
     async componentDidMount() {
