@@ -151,7 +151,7 @@ class App extends Component {
                           </Tabs>
                       </Paper>
 
-                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108, minWidth: 1000}}>
+                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108, minWidth: '100vw'}}>
                         {this.state.hives.map((hive, key) =>
                             <Grid item xs={3} style={{minWidth: 400, maxWidth: 400}}>
                                   <Card className="card">

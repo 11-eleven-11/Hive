@@ -29,15 +29,53 @@ export default class Create extends React.Component {
       image: '',
       category: '',
       satoshis: 0,
+      privKey: '',
+      address: ''
     };
   }
+
+  componentDidMount(){
+      var user = firebase.auth().currentUser;
+      var Userid = user.uid;
+      firebase.database()
+          .ref('users/'+Userid)
+          .once("value", (snapshot) => {
+              if(snapshot.exists()) {
+                  if(snapshot.hasChild('privKey'))
+                    var privKey = snapshot.val().privKey;
+                    this.setState({
+                        privKey: privKey,
+                    })
+                }
+
+                  if(snapshot.hasChild('address')) {
+                    var address = snapshot.val().address;
+                    this.setState({
+                        address: address,
+                    })
+              }
+
+              else {
+                  console.log('value doesnt exist');
+              }
+
+          }).catch(function (error) {
+          console.log(error);
+      })
+  }
+
 
   handleSubmit(event, dev) {
     event.preventDefault();
     alert('Adding new Hive (name: ' + dev.state.name + ', description: ' + dev.state.description + ', imageUrl: ' + dev.state.image +  ', category: ' + dev.state.category + ', satoshis: ' + dev.state.satoshis + ')');
 
     const Run = window.Run;
-    const run = new Run();
+
+    const run = new Run({
+        app: 'HiveBeta',
+        owner: this.state.privKey,
+        purse: this.state.privKey
+    })
 
     const hive = new Hive(
             dev.state.name,

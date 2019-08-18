@@ -137,14 +137,6 @@ class HiveNodes extends Component {
         const Run = window.Run;
         const run = new Run();
 
-//        const hive = new Hive(
-//                dev.state.name,
-//                dev.state.description,
-//                run.owner.pubkey.toString(),
-//                dev.state.category,
-//                parseInt(dev.state.satoshis),
-//                dev.state.image);
-
         const hiveNode = new HiveNode(
                     dev.state.hiveNodeName,
                     dev.state.hiveNodeDescription,
@@ -163,6 +155,10 @@ class HiveNodes extends Component {
 
     render() {
 
+
+
+
+
         const {value, hiveNodes} = this.state;
         return (
           <div className="App">
@@ -170,45 +166,14 @@ class HiveNodes extends Component {
               <div className="root">
                   <CssBaseline/>
                   <main className="content">
-                      <Paper className="root" style={{
-                          marginLeft: 0,
-                          marginRight: 8,
-                          marginTop: 65,
-                          position: 'fixed',
-                          zIndex: 9999,
-                          width: '100%',
-                          backgroundColor: '#648882',
-                          borderRadius: 0
-                      }}>
-                          <Tabs
-                            value={value}
-                            onChange={this.handleChange}
-                            indicatorColor="primary"
-                            textColor="default"
-                            centered
-                          >
-                              <Tab label="All"/>
-                              <Tab label="International"/>
-                              <Tab label="Politics"/>
-                              <Tab label="Finance"/>
-                              <Tab label="Cryptocurrency"/>
-                              <Tab label="Technology"/>
-                              <Tab label="Sports"/>
-                              <Tab label="History"/>
-                              <Tab label="Other"/>
-                          </Tabs>
-                      </Paper>
 
-                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108}}>
+
+                      <Grid container spacing={1} xs={12} style={{paddingLeft: 4, paddingTop: 5, marginTop: 60, minWidth: '50vw'}}>
                         {this.state.hiveNodes.map((hive, key) =>
-                            <Grid item xs={3}>
+                            <Grid item xs={12} style={{minWidth: 400}}>
                                   <Card className="card">
                                       <CardActionArea>
-                                          <CardMedia
-                                            className="media"
-                                            image="https://via.placeholder.com/500x200"
-                                            title="Contemplative Reptile"
-                                          />
+
                                           <CardContent>
                                               <Typography gutterBottom variant="h5" component="h2">
                                                    { hive.name }
@@ -218,9 +183,26 @@ class HiveNodes extends Component {
                                               </Typography>
                                           </CardContent>
                                       </CardActionArea>
-                                      <CardActions>
+                                      <CardActions style={{float: 'left'}}>
                                           <Button size="small" color="primary" onClick={(e) => this.setState({hiveNodePreviousNode : hive.origin})}>
-                                              Add link
+                                              Add Link
+                                          </Button>
+                                           <Button size="small" color="primary">
+                                              Comment
+                                          </Button>
+                                            <Button size="small" color="primary">
+                                              Tip
+                                          </Button>
+                                      </CardActions>
+                                             <CardActions style={{float: 'right'}}>
+                                          <Button size="small" color="default">
+                                              12 likes
+                                          </Button>
+                                           <Button size="small" color="default">
+                                              234 satoshis
+                                          </Button>
+                                            <Button size="small" color="default">
+                                              3 connections
                                           </Button>
                                       </CardActions>
                                   </Card>
