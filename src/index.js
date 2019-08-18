@@ -23,7 +23,7 @@ const routing = (
         <Route path="/create" component={Create} />
         <Route path="/profile" component={Profile} />
         <Route path="/hivenodes" handler={HiveNodes}>
-            <Route path="/:id" component={HiveNodes}/>
+            <Route path="/:location" component={HiveNodes}/>
         </Route>
     </div>
   </Router>
