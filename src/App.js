@@ -62,7 +62,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: 'rgba(50,97,90,0.5)'
   },
   card: {
-    maxWidth: 445,
+    maxWidth: 400,
+    minWidth: 400
   },
    fab: {
     margin: theme.spacing(1),
@@ -149,13 +150,13 @@ function App() {
     </Paper>
 
         
-        <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108}}>
-        <Grid item xs={3}>
+        <Grid container spacing={1} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108}}>
+        <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -176,12 +177,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item>
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -202,12 +203,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -228,12 +229,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-          <Grid item xs={3}>
+          <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -254,12 +255,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-          <Grid item xs={3}>
+          <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -280,12 +281,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-          <Grid item xs={3}>
+          <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -306,12 +307,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-         <Grid item xs={3}>
+         <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -332,12 +333,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-         <Grid item xs={3}>
+         <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -358,12 +359,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-         <Grid item xs={3}>
+         <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -384,12 +385,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-         <Grid item xs={3}>
+         <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -410,12 +411,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-         <Grid item xs={3}>
+         <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -436,12 +437,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-         <Grid item xs={3}>
+         <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -462,12 +463,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-         <Grid item xs={3}>
+         <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -488,12 +489,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-          <Grid item xs={3}>
+          <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -514,12 +515,12 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item >
            <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image="https://via.placeholder.com/500x200"
+                  image="https://via.placeholder.com/400x200"
                   title="Contemplative Reptile"
                 />
                 <CardContent>
