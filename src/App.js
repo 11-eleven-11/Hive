@@ -174,7 +174,7 @@ class App extends Component {
                                           </CardContent>
                                       </CardActionArea>
                                       <CardActions>
-                                        <Link to={'/ideas/'+hive.location } style={{ textDecoration: 'none', color: 'black' }}>
+                                        <Link to={'/hivenodes/'+hive.location } style={{ textDecoration: 'none', color: 'black' }}>
                                           <Button size="small" color="primary">
                                               More
                                           </Button>
