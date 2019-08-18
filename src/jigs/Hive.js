@@ -1,6 +1,7 @@
 export default class Hive extends window.Run.Jig {
-  init(name, owner, category, satoshis, image) {
+  init(name, description, owner, category, satoshis, image) {
     this.name = name;
+    this.description = description;
     this.owner = owner;
     this.owners = [];
     this.owners.push(owner);
@@ -16,4 +17,5 @@ export default class Hive extends window.Run.Jig {
   getNumberOfUsers() {
     return this.owners.length;
   }
+
 }
