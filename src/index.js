@@ -4,12 +4,33 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import * as firebase from 'firebase';
-
+import Hive from './jigs/Hive';
+import HiveNode from './jigs/HiveNode';
 
 const Run = window.Run;
 const run = new Run({ network: 'mock' });
-class Dragon extends Run.Jig { };
-const dragon = new Dragon();
+
+const hive = new Hive(
+        "My Hive",
+        run.owner.pubkey.toString(),
+        "Category",
+        40000,
+        "image");
+
+const hiveNode = new HiveNode(
+        "My HiveNode",
+        run.owner.pubkey.toString(),
+        "www.google.com",
+        "image?",
+        null);
+
+hive.sync().then(h => {
+    console.log("hive location: " + h.location);
+});
+
+hiveNode.sync().then(h => {
+    console.log("hiveNode location: " + h.location);
+});
 
 var firebaseConfig = {
     apiKey: "AIzaSyAfG3f7m1fHNDXqpmEKK4OJtRF2klMOAVk",
