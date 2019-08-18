@@ -113,9 +113,9 @@ function googleLogin (){
 
 }
 
-
 function App() {
-    
+
+  
     const [value, setValue] = React.useState(0);
 
 
@@ -180,7 +180,7 @@ function App() {
         
       </Drawer>
       <main className={classes.content}>
-      <Paper className={classes.root} style={{marginLeft: 5, marginRight: 8, marginTop: 5}}>
+      <Paper className={classes.root} style={{marginLeft: 0, marginRight: 8, marginTop: 65, position: 'fixed', zIndex: 9999, width: '100%', backgroundColor: '#648882', borderRadius: 0}}>
       <Tabs
         value={value}
         onChange={handleChange}
@@ -189,9 +189,11 @@ function App() {
         centered
       >
         <Tab label="All" />
+        <Tab label="International" />
         <Tab label="Politics" />
         <Tab label="Finance" />
         <Tab label="Cryptocurrency" />
+        <Tab label="Technology" />
         <Tab label="Sports" />
         <Tab label="History" />
         <Tab label="Other" />
@@ -200,7 +202,7 @@ function App() {
 
         <Fade in={true}>
 
-        <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5}}>
+        <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108}}>
         <Grid item xs={3}>
            <Card className={classes.card}>
               <CardActionArea>
