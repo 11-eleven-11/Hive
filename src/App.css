@@ -31,3 +31,48 @@
     transform: rotate(360deg);
   }
 }
+
+.title {
+  text-align: center,
+}
+
+.subTitle {
+  text-align: center;
+}
+
+.root {
+  margin-left: 240px;
+  flex-grow: 1;
+  display: flex;
+  background-color: rgba(50,97,90,0.5)
+}
+
+.card {
+  max-width: 445px,
+}
+
+.fab {
+  /*margin: theme.spacing(1),*/
+}
+
+.extendedIcon {
+  /*marginRight: theme.spacing(1),*/
+}
+
+.media {
+  height: 200px;
+}
+
+.code {
+  /*padding: theme.spacing(2),*/
+  /*color: theme.palette.common.white,*/
+  background-color: #555;
+  font-family: "Roboto Mono";
+  font-weight: 100;
+  font-size: 0.875rem;
+  /*marginBottom: theme.spacing(3),*/
+}
+
+block {
+
+}
