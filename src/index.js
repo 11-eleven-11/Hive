@@ -9,6 +9,9 @@ import HiveState from './jigs/HiveState';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import NavBar from './components/NavBar';
+import SideBar from './components/SideBar';
+
 import App from "./App";
 import Create from "./create";
 import Profile from "./profile";
@@ -16,6 +19,8 @@ import Profile from "./profile";
 const routing = (
   <Router>
     <div>
+    <NavBar />
+    <SideBar />
         <Route exact path="/" component={App} />
         <Route path="/create" component={Create} />
         <Route path="/profile" component={Profile} />

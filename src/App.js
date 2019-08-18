@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import NavBar from './components/NavBar';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Paper from '@material-ui/core/Paper';
@@ -57,6 +56,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
   },
   root: {
+    marginLeft: 240,
     flexGrow: 1,
     display: 'flex',
     backgroundColor: 'rgba(50,97,90,0.5)'
@@ -128,67 +128,15 @@ function App() {
 
   const s = useStyles();
   const classes = useStyles();
-  let userBar =   <List><ListItem button onClick={() => googleLogin()}>
-            <ListItemIcon> <AndroidIcon /></ListItemIcon>
-            <ListItemText primary="Google Login" />
-          </ListItem>         
-          <Divider />
-          <Link to="/create" style={{ textDecoration: 'none', color: 'black' }}>
-            <ListItem button>
-              <ListItemIcon> <AddBoxIcon /></ListItemIcon>
-              <ListItemText primary="Create Hive" />
-            </ListItem>
-          </Link>
-          <Divider />
-          <Link to="/profile" style={{ textDecoration: 'none', color: 'black' }}>
-            <ListItem button >
-              <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
-              <ListItemText primary="Profile" />
-            </ListItem>
-          </Link>
-          <Divider />
-          <ListItem button>
-            <ListItemIcon> <InboxIcon /></ListItemIcon>
-            <ListItemText primary="Requests" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemIcon> <PeopleIcon /></ListItemIcon>
-            <ListItemText primary="Followers" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
-            <ListItemText primary="Notifications" />
-          </ListItem>
-          <Divider />
-          </List>
-          ;
+
 
   return (
     <div className="App">
-      <NavBar />
       
        <div className={classes.root}>
       <CssBaseline />
      
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        anchor="left"
-      >
-        <div className={classes.toolbar} />
-        <h1 style={{paddingLeft: 5, marginBottom: 8, marginTop: 15}}> Hive </h1>
-        <Divider />
-
-        <List>
-          {userBar}
-        </List>
-        
-      </Drawer>
+    
       <main className={classes.content}>
       <Paper className={classes.root} style={{marginLeft: 0, marginRight: 8, marginTop: 65, position: 'fixed', zIndex: 9999, width: '100%', backgroundColor: '#648882', borderRadius: 0}}>
       <Tabs

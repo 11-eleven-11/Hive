@@ -46,6 +46,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
   },
   root: {
+    marginLeft: 240,
     flexGrow: 1,
     display: 'flex',
     backgroundColor: 'rgba(50,97,90,0.5)'
@@ -110,59 +111,15 @@ function Profile() {
 
   const s = useStyles();
   const classes = useStyles();
-  let userBar =   <List>    
-          <ListItem button>
-            <ListItemIcon> <AddBoxIcon /></ListItemIcon>
-            <ListItemText primary="Create Hive" />
-          </ListItem>
-          <Divider />
-             <ListItem button >
-            <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemIcon> <InboxIcon /></ListItemIcon>
-            <ListItemText primary="Requests" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemIcon> <PeopleIcon /></ListItemIcon>
-            <ListItemText primary="Followers" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
-            <ListItemText primary="Notifications" />
-          </ListItem>
-          <Divider />
-          </List>
-          ;
+
 
   return (
     <div className="Profile">
-      <NavBar />
       
-       <div className={classes.root}>
+      <div className={classes.root}>
       <CssBaseline />
      
-       <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        anchor="left"
-      >
-        <div className={classes.toolbar} />
-        <h1 style={{paddingLeft: 5, marginBottom: 8, marginTop: 15}}> Hive </h1>
-        <Divider />
-
-        <List>
-          {userBar}
-        </List>
-        
-      </Drawer>
+       
       <main className={classes.content} style={{marginTop: 60, height: '100vh'}}>
         <p> this is a  test </p>
       </main>
