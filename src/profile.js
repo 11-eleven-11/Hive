@@ -21,8 +21,8 @@ import Button from '@material-ui/core/Button';
 
 
 const hiveStateOrigin = '720ce85f4f88309eddc10e680664c73828b18ffcd70a351ad532730ee80603a4_o2';
-const Run = window.Run;
-const run = new Run();
+
+var QRCode = require('qrcode.react');
 
  
 
@@ -30,25 +30,6 @@ const run = new Run();
 
 
 
-
-run.load(hiveStateOrigin).then(hiveStateOrigin => {
-    console.log(hiveStateOrigin, 'hiveStateOrigin');
-
-    hiveStateOrigin.sync().then(hiveStateSync => {
-        console.log(hiveStateSync, 'hiveStateSync');
-        console.log('loading all hives');
-
-        hiveStateSync.hiveOrigins.forEach(loadHives);
-    });
-});
-
-function loadHives(hiveOrigin) {
-    run.load(hiveOrigin).then(hiveOrigin => {
-        hiveOrigin.sync().then(hiveSync => {
-            console.log(hiveSync, 'hiveSync');
-        });
-    });
-}
 
 
 export default class Profile extends React.Component {
@@ -58,9 +39,13 @@ export default class Profile extends React.Component {
     super(props);
     this.state = {
       email: '',
+      uid:'',
+      name: '',
       profileName: '',
       posts: 0,
       satoshis: 0,
+      privateKey: '',
+      address: ''
     };
   }
 
@@ -83,22 +68,63 @@ export default class Profile extends React.Component {
     });
   }
 
+  writeUserData(userId, name, email, privKey, address) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email,
+    userId: userId,
+    privKey: privKey,
+    address: address,
+    });
+  }
+
+
   createKeyPair(){
     var user = firebase.auth().currentUser;
+
     console.log("createdPair");
+    const Run = window.Run;
+    const run = new Run();
+
+    console.log(run.owner.privkey.toString());
+    console.log(run.owner.address.toString());
+
+    this.setState({privateKey: run.owner.privkey.toString(), address: run.owner.address.toString()});
+
+    run.load(hiveStateOrigin).then(hiveStateOrigin => {
+        console.log(hiveStateOrigin, 'hiveStateOrigin');
+
+        hiveStateOrigin.sync().then(hiveStateSync => {
+            console.log(hiveStateSync, 'hiveStateSync');
+            console.log('loading all hives');
+
+            hiveStateSync.hiveOrigins.forEach(loadHives);
+        });
+    });
+
+    function loadHives(hiveOrigin) {
+        run.load(hiveOrigin).then(hiveOrigin => {
+            hiveOrigin.sync().then(hiveSync => {
+                console.log(hiveSync, 'hiveSync');
+            });
+    });
+    }
+
+    this.writeUserData(this.state.uid, this.state.name, this.state.email, run.owner.privkey.toString(), run.owner.address.toString());
+
   }
 
 
 
   render() {
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    console.log("signed in");
-  } else {
-    console.log("signed out");
-  }
-});
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log("signed in");
+    } else {
+      console.log("signed out");
+    }
+  });
 
 
     var user = firebase.auth().currentUser;
@@ -114,6 +140,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 
       console.log(uid);
       console.log(user.email)
+      if(this.state.uid == ''){
+        this.setState({uid, email, name})
+      }
     }
 
 
@@ -124,9 +153,14 @@ firebase.auth().onAuthStateChanged(function(user) {
           <Button onClick={() => this.createKeyPair()} variant="contained" color="primary">
             Create KeyPair
           </Button>
+          <br/>
+          <br/>
+          <p> Charge your Wallet </p>
+          <QRCode value="1HtY43HneKL2gYA4Gcp3jV89fdrvMPZBwz" />
+          <p> Balance (in satoshis): 0 </p>
           <p> Unique ID: {uid}</p>
           <p> Email: {email} </p>
-
+          <br/>
           <Button onClick={() => this.deleteAccount()} variant="contained" color="secondary">
             Delete Account
           </Button>
