@@ -101,14 +101,14 @@ class App extends Component {
            async function loadHive(location) {
                console.log('loading hive');
                const hive = await run.load(location);
+               console.log(hive, hiveArray, 'hive')
                hiveArray.push(Object.assign({}, hive));
-               this.setState({ hives: hiveArray });
+               this && this.setState({ hives: hiveArray });
            };
 
       }
 
     handleChange = (event, newValue) => {
-        debugger;
         this.setState({
             value: newValue
         })
@@ -116,7 +116,8 @@ class App extends Component {
 
     render() {
 
-        const {value} = this.state;
+        const {value, hive} = this.state;
+        console.log(hive, 'hive')
         return (
           <div className="App">
 
