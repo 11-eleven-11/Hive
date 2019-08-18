@@ -25,7 +25,7 @@ const routing = (
         <Route exact path="/" component={App} />
         <Route path="/create" component={Create} />
         <Route path="/profile" component={Profile} />
-        <Route path="/hivenodes" component={HiveNodes} />
+        <Route path="/hivenodes/:location" handler={HiveNodes} />
     </div>
   </Router>
 )
