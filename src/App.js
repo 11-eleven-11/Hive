@@ -86,6 +86,8 @@ class App extends Component {
                });
            });
 
+           let dev = this;
+
            function loadData(tx) {
                var txHashClass = tx.tx.h + '_o1';
 
@@ -103,7 +105,7 @@ class App extends Component {
                const hive = await run.load(location);
                console.log(hive, hiveArray, 'hive')
                hiveArray.push(Object.assign({}, hive));
-               this && this.setState({ hives: hiveArray });
+               dev.setState({ hives: hiveArray });
            };
 
       }
