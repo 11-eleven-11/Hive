@@ -44,6 +44,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import * as firebase from 'firebase';
 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import CreateHive from "./components/createhive";
+import Profile from "./components/profile";
+import Requests from "./components/requests";
+import Followers from "./components/followers";
+import Notifications from "./components/notifications";
+
 var provider = new firebase.auth.GoogleAuthProvider();
 
 
@@ -126,36 +134,41 @@ function App() {
 
   const s = useStyles();
   const classes = useStyles();
-  let userBar =  <List><ListItem button onClick={() => googleLogin()}>
+  let userBar =   <List><ListItem button onClick={() => googleLogin()}>
             <ListItemIcon> <AndroidIcon /></ListItemIcon>
             <ListItemText primary="Google Login" />
           </ListItem>         
           <Divider />
-          <ListItem button>
+          <ListItem button component={Link} to="/create-hive">
             <ListItemIcon> <AddBoxIcon /></ListItemIcon>
             <ListItemText primary="Create Hive" />
-          </ListItem> 
+          </ListItem>
           <Divider />
-             <ListItem button>
+             <ListItem button component={Link} to="/profile">
             <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
             <ListItemText primary="Profile" />
           </ListItem>
-          <ListItem button>
+          <Divider />
+          <ListItem button component={Link} to="/requests">
             <ListItemIcon> <InboxIcon /></ListItemIcon>
             <ListItemText primary="Requests" />
           </ListItem>
-          <ListItem button>
+          <Divider />
+          <ListItem button component={Link} to="/followers">
             <ListItemIcon> <PeopleIcon /></ListItemIcon>
             <ListItemText primary="Followers" />
           </ListItem>
-          <ListItem button>
+          <Divider />
+          <ListItem button component={Link} to="/notifications">
             <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
             <ListItemText primary="Notifications" />
-          </ListItem> 
-          
-          </List>;
+          </ListItem>
+          <Divider />
+          </List>
+          ;
 
   return (
+    <Router>
     <div className="App">
       <NavBar />
       
@@ -225,7 +238,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -239,7 +252,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Iran Conflict 
+                    Iran Conflict
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -251,7 +264,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -265,7 +278,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -277,7 +290,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -291,7 +304,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -303,7 +316,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -317,7 +330,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -329,7 +342,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -343,7 +356,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -355,7 +368,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -369,7 +382,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -381,7 +394,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -395,7 +408,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -407,7 +420,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -421,7 +434,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -433,7 +446,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -447,7 +460,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -459,7 +472,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -473,7 +486,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -485,7 +498,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -499,7 +512,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -511,7 +524,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -525,7 +538,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -537,7 +550,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -551,7 +564,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -563,7 +576,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -592,13 +605,19 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-        
+
       </Grid>
       </Fade>
       </main>
     </div>
       
     </div>
+    <Route path="/create-hive" component={CreateHive} />
+    <Route path="/profile" component={Profile} />
+    <Route path="/requests" component={Requests} />
+    <Route path="/followers" component={Followers} />
+    <Route path="/notifications" component={Notifications} />
+  </Router>
   );
 }
 
