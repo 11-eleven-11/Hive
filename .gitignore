@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/hive/node_modules
 /.pnp
 .pnp.js
 
