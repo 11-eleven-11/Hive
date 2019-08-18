@@ -16,139 +16,89 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
 import Button from '@material-ui/core/Button';
-
-
-const hiveStateOrigin = '720ce85f4f88309eddc10e680664c73828b18ffcd70a351ad532730ee80603a4_o2';
-const Run = window.Run;
-const run = new Run();
-
- 
-
-
-
-
-
-
-run.load(hiveStateOrigin).then(hiveStateOrigin => {
-    console.log(hiveStateOrigin, 'hiveStateOrigin');
-
-    hiveStateOrigin.sync().then(hiveStateSync => {
-        console.log(hiveStateSync, 'hiveStateSync');
-        console.log('loading all hives');
-
-        hiveStateSync.hiveOrigins.forEach(loadHives);
-    });
-});
-
-function loadHives(hiveOrigin) {
-    run.load(hiveOrigin).then(hiveOrigin => {
-        hiveOrigin.sync().then(hiveSync => {
-            console.log(hiveSync, 'hiveSync');
-        });
-    });
-}
-
 
 export default class Create extends React.Component {
 
-
   constructor(props) {
     super(props);
+
     this.state = {
-      name: false,
-      description: false,
-      category: false,
+      name: '',
+      description: '',
+      category: '',
       satoshis: 0,
     };
   }
 
-  componentWillMount(){
-    // this.props.fetchuserdetails();
-  };
+  handleSubmit(event, dev) {
+    event.preventDefault();
+    alert('Adding new Hive (name: ' + dev.state.name + ', description: ' + dev.state.description + ', category: ' + dev.state.category + ', satoshis: ' + dev.state.satoshis + ')');
 
-  componentDidMount(){
-    // this.props.fetchuserdetails();
-  };
+    const Run = window.Run;
+    const run = new Run();
+
+    const hive = new Hive(
+            dev.state.name,
+            dev.state.description,
+            run.owner.pubkey.toString(),
+            dev.state.category,
+            parseInt(dev.state.satoshis),
+            "image");
+
+     hive.sync().then(createdHive => {
+        alert('Hive created, hooray, please wait a bit until you see it on the main page');
+     }).catch(function(rejected) {
+        alert('Error while creating Hive: ' + rejected);
+     });
+  }
+
 
   render() {
 
     return (
+    <form ref="form" onSubmit={(e) => this.handleSubmit(e, this)}>
         <div style={{marginTop: 60, marginLeft: 240}}> 
         <div style={{paddingLeft: 150, paddingTop: 50}}> 
              <Input
                 placeholder="Name"
-                inputProps={{}}
+                value={this.state.name}
+                onChange={(e) => this.setState({name : e.target.value})}
              />
              <br/>
               <Input
                 placeholder="Description"
-                inputProps={{}}
+                 value={this.state.description}
+                onChange={(e) => this.setState({description : e.target.value})}
              />
              <br/>
          <FormControl style={{minWidth: 180}}>
             <InputLabel htmlFor="age-simple">Category</InputLabel>
             <Select
-              value={2}
-              onChange={console.log("works")}
-              inputProps={{
-                name: 'age',
-                id: 'age-simple',
-              }}
+              value={this.state.category}
+                onChange={(e) => this.setState({category : e.target.value})}
                 >
-                  <MenuItem value={10}>Politics</MenuItem>
-                  <MenuItem value={20}>International</MenuItem>
-                  <MenuItem value={30}>Technology</MenuItem>
-                  <MenuItem value={30}>Cryptocurrency</MenuItem>
-                  <MenuItem value={30}>Other</MenuItem>
+                  <MenuItem value="Politics">Politics</MenuItem>
+                  <MenuItem value="International">International</MenuItem>
+                  <MenuItem value="Technology">Technology</MenuItem>
+                  <MenuItem value="Cryptocurrency">Cryptocurrency</MenuItem>
+                  <MenuItem value="Other">Other</MenuItem>
             </Select>
           </FormControl>
           <br />
               <Input
                 placeholder="Satoshis"
-                inputProps={{}}
+                 value={this.state.satoshis}
+                onChange={(e) => this.setState({satoshis : e.target.value})}
              />
              <br/>
-              <Input
-                placeholder="Placeholder"
-                inputProps={{}}
-             />
-             <br />
 
-         <Button variant="contained" color="default">
+         <Button variant="contained" color="default" type="submit">
             Submit
           </Button>
         </div>
         </div>
+    </form>
     );
   }
 }
-
-
-//const hiveState = new HiveState();
-//
-//const hive = new Hive(
-//        "My Hive",
-//        "My hive description",
-//        run.owner.pubkey.toString(),
-//        "Category",
-//        40000,
-//        "image");
-//
-//hive.sync().then(hiveSync => {
-//    hiveState.sync().then(hiveStateSync => {
-//        hiveStateSync.addHive(hiveSync.origin);
-//            const hiveNode = new HiveNode(
-//                    "My HiveNode",
-//                    "HiveNode description",
-//                    run.owner.pubkey.toString(),
-//                    "www.google.com",
-//                    "image",
-//                    hiveSync.origin,
-//                    null);
-//
-//            console.log("hiveState origin: " + hiveStateSync.origin);
-//    });
-//});
-

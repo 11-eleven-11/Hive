@@ -15,6 +15,7 @@ import SideBar from './components/SideBar';
 import App from "./App";
 import Create from "./create";
 import Profile from "./profile";
+import HiveNodes from "./hiveNodes";
 
 const routing = (
   <Router>
@@ -24,6 +25,7 @@ const routing = (
         <Route exact path="/" component={App} />
         <Route path="/create" component={Create} />
         <Route path="/profile" component={Profile} />
+        <Route path="/hivenodes" component={HiveNodes} />
     </div>
   </Router>
 )

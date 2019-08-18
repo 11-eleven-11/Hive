@@ -11,7 +11,6 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
@@ -22,9 +21,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import * as firebase from 'firebase';
 
-
 var provider = new firebase.auth.GoogleAuthProvider();
-
 
 function googleLogin (){
   firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -46,7 +43,7 @@ function googleLogin (){
 
 }
 
-class App extends Component {
+class HiveNodes extends Component {
     constructor(props) {
         super(props);
 
@@ -69,7 +66,7 @@ class App extends Component {
 
         console.log('component did mount');
 
-        const hiveArray = [];
+        const hiveNodeArray = [];
 
         const Run = window.Run;
         const run = new Run();
@@ -92,19 +89,19 @@ class App extends Component {
 
                run.load(txHashClass).then(obj => {
                    if (obj.name === 'Hive') {
-                       loadHive(tx.tx.h + '_o2');
+                       //loadHive(tx.tx.h + '_o2');
                    } else if (obj.name === 'HiveNode') {
-                       //loadHiveNode(tx.tx.h + '_o2');
+                       loadHiveNode(tx.tx.h + '_o2');
                    }
                });
            }
 
-           async function loadHive(location) {
-               console.log('loading hive');
-               const hive = await run.load(location);
-               console.log(hive, hiveArray, 'hive')
-               hiveArray.push(Object.assign({}, hive));
-               dev.setState({ hives: hiveArray });
+           async function loadHiveNode(location) {
+               console.log('loading hive node');
+               const hiveNode = await run.load(location);
+               console.log(hiveNodeArray, 'hiveNodeArray')
+               hiveNodeArray.push(Object.assign({}, hiveNode));
+               dev.setState({ hiveNodes: hiveNodeArray });
            };
 
       }
@@ -117,8 +114,7 @@ class App extends Component {
 
     render() {
 
-        const {value, hive} = this.state;
-        console.log(hive, 'hive')
+        const {value, hiveNodes} = this.state;
         return (
           <div className="App">
 
@@ -154,14 +150,14 @@ class App extends Component {
                           </Tabs>
                       </Paper>
 
-                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108, minWidth: 1000}}>
-                        {this.state.hives.map((hive, key) =>
-                            <Grid item xs={3} style={{minWidth: 400, maxWidth: 400}}>
+                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108}}>
+                        {this.state.hiveNodes.map((hive, key) =>
+                            <Grid item xs={3}>
                                   <Card className="card">
                                       <CardActionArea>
                                           <CardMedia
                                             className="media"
-                                            image="https://via.placeholder.com/400x200"
+                                            image="https://via.placeholder.com/500x200"
                                             title="Contemplative Reptile"
                                           />
                                           <CardContent>
@@ -174,11 +170,10 @@ class App extends Component {
                                           </CardContent>
                                       </CardActionArea>
                                       <CardActions>
-                                        <Link to="/hivenodes" style={{ textDecoration: 'none', color: 'black' }}>
                                           <Button size="small" color="primary">
                                               More
                                           </Button>
-                                        </Link>
+
                                       </CardActions>
                                   </Card>
                              </Grid>
@@ -193,4 +188,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default HiveNodes;
