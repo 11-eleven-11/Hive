@@ -161,7 +161,7 @@ class App extends Component {
                                       <CardActionArea>
                                           <CardMedia
                                             className="media"
-                                            image="https://via.placeholder.com/400x200"
+                                            image={ hive.image }
                                             title="Contemplative Reptile"
                                           />
                                           <CardContent>
