@@ -44,18 +44,40 @@ export default class Profile extends React.Component {
       profileName: '',
       posts: 0,
       satoshis: 0,
-      privateKey: '',
+      privKey: '',
       address: ''
     };
   }
 
-  componentWillMount(){
-    // this.props.fetchuserdetails();
-  };
+    componentDidMount(){
+      var user = firebase.auth().currentUser;
+      var Userid = user.uid;
+      firebase.database()
+          .ref('users/'+Userid)
+          .once("value", (snapshot) => {
+              if(snapshot.exists()) {
+                  if(snapshot.hasChild('privKey'))
+                    var privKey = snapshot.val().privKey;
+                    this.setState({
+                        privKey: privKey,
+                    })
+                }
 
-  componentDidMount(){
-    // this.props.fetchuserdetails();
-  };
+                  if(snapshot.hasChild('address')) {
+                    var address = snapshot.val().address;
+                    this.setState({
+                        address: address,
+                    })
+              }
+
+              else {
+                  console.log('value doesnt exist');
+              }
+
+          }).catch(function (error) {
+          console.log(error);
+      })
+  }
 
 
   deleteAccount(){
@@ -88,8 +110,9 @@ export default class Profile extends React.Component {
 
     console.log(run.owner.privkey.toString());
     console.log(run.owner.address.toString());
+    console.log(run.owner.balance.toString());
 
-    this.setState({privateKey: run.owner.privkey.toString(), address: run.owner.address.toString()});
+    this.setState({privKey: run.owner.privkey.toString(), address: run.owner.address.toString(), satoshis: run.owner.balance.toString()});
 
     run.load(hiveStateOrigin).then(hiveStateOrigin => {
         console.log(hiveStateOrigin, 'hiveStateOrigin');
@@ -131,13 +154,16 @@ export default class Profile extends React.Component {
     var name, email, photoUrl, uid, emailVerified;
 
     if (user != null) {
+
+      
+
       name = user.displayName;
       email = user.email;
       uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
                        // this value to authenticate with your backend server, if
                        // you have one. Use User.getToken() instead.
 
-
+      
       console.log(uid);
       console.log(user.email)
       if(this.state.uid == ''){
@@ -150,14 +176,22 @@ export default class Profile extends React.Component {
     return (
         <div style={{marginTop: 60, marginLeft: 240}}> 
         <div style={{paddingLeft: 150, paddingTop: 50}}> 
-          <Button onClick={() => this.createKeyPair()} variant="contained" color="primary">
+          {!this.state.privKey && <Button onClick={() => this.createKeyPair()} variant="contained" color="primary">
             Create KeyPair
-          </Button>
+          </Button> 
+          }
           <br/>
           <br/>
+          {this.state.privKey &&
+          <div>
           <p> Charge your Wallet </p>
-          <QRCode value="1HtY43HneKL2gYA4Gcp3jV89fdrvMPZBwz" />
-          <p> Balance (in satoshis): 0 </p>
+          <QRCode value={this.state.address} />
+          <p> Adress: {this.state.address} </p>
+          <p> PrivateKey: {this.state.privKey}</p>
+           
+          <p> Balance (in satoshis): {this.state.satoshis} </p>
+          </div>
+          }
           <p> Unique ID: {uid}</p>
           <p> Email: {email} </p>
           <br/>
