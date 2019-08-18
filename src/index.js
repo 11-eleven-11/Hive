@@ -20,10 +20,10 @@ const routing = (
     <NavBar />
     <SideBar />
         <Route exact path="/" component={App} />
-        <Route path="/create" component={Create} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/hivenodes" handler={HiveNodes}>
-            <Route path="/:id" component={HiveNodes}/>
+        <Route exact path="/create" component={Create} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/hivenodes" handler={HiveNodes}>
+            <Route path="/hivenodes/:location" component={HiveNodes}/>
         </Route>
     </div>
   </Router>

@@ -47,7 +47,10 @@ class HiveNodes extends Component {
     constructor(props) {
         super(props);
 
+        var hiveOrigin = document.URL.substring(document.URL.lastIndexOf('/') + 1)
+
         this.state = {
+            hiveOrigin: hiveOrigin,
             hives: [ ],
             hiveNodes: [],
             value: null
@@ -101,7 +104,7 @@ class HiveNodes extends Component {
                const hiveNode = await run.load(location);
                console.log(hiveNodeArray, 'hiveNodeArray')
                hiveNodeArray.push(Object.assign({}, hiveNode));
-               dev.setState({ hiveNodes: hiveNodeArray });
+               dev.setState({ hiveNodes: hiveNodeArray.filter(hiveNode => hiveNode.hiveOrigin === dev.state.hiveOrigin) });
            };
 
       }
