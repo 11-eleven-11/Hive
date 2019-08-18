@@ -24,14 +24,6 @@ const hiveStateOrigin = '720ce85f4f88309eddc10e680664c73828b18ffcd70a351ad532730
 
 var QRCode = require('qrcode.react');
 
- 
-
-
-
-
-
-
-
 export default class Profile extends React.Component {
 
 
@@ -203,31 +195,3 @@ export default class Profile extends React.Component {
     );
   }
 }
-
-
-//const hiveState = new HiveState();
-//
-//const hive = new Hive(
-//        "My Hive",
-//        "My hive description",
-//        run.owner.pubkey.toString(),
-//        "Category",
-//        40000,
-//        "image");
-//
-//hive.sync().then(hiveSync => {
-//    hiveState.sync().then(hiveStateSync => {
-//        hiveStateSync.addHive(hiveSync.origin);
-//            const hiveNode = new HiveNode(
-//                    "My HiveNode",
-//                    "HiveNode description",
-//                    run.owner.pubkey.toString(),
-//                    "www.google.com",
-//                    "image",
-//                    hiveSync.origin,
-//                    null);
-//
-//            console.log("hiveState origin: " + hiveStateSync.origin);
-//    });
-//});
-
