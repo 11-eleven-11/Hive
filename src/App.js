@@ -47,6 +47,10 @@ import * as firebase from 'firebase';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import CreateHive from "./components/createhive";
+import Profile from "./components/profile";
+import Requests from "./components/requests";
+import Followers from "./components/followers";
+import Notifications from "./components/notifications";
 
 var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -140,22 +144,26 @@ function App() {
             <ListItemText primary="Create Hive" />
           </ListItem>
           <Divider />
-             <ListItem button>
+             <ListItem button component={Link} to="/profile">
             <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
             <ListItemText primary="Profile" />
           </ListItem>
-          <ListItem button>
+          <Divider />
+          <ListItem button component={Link} to="/requests">
             <ListItemIcon> <InboxIcon /></ListItemIcon>
             <ListItemText primary="Requests" />
           </ListItem>
-          <ListItem button>
+          <Divider />
+          <ListItem button component={Link} to="/followers">
             <ListItemIcon> <PeopleIcon /></ListItemIcon>
             <ListItemText primary="Followers" />
           </ListItem>
-          <ListItem button>
+          <Divider />
+          <ListItem button component={Link} to="/notifications">
             <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
             <ListItemText primary="Notifications" />
-          </ListItem> 
+          </ListItem>
+          <Divider />
           </List>
           ;
 
@@ -603,6 +611,10 @@ function App() {
       
     </div>
     <Route path="/create-hive" component={CreateHive} />
+    <Route path="/profile" component={Profile} />
+    <Route path="/requests" component={Requests} />
+    <Route path="/followers" component={Followers} />
+    <Route path="/notifications" component={Notifications} />
   </Router>
   );
 }
