@@ -8,31 +8,62 @@ import Hive from './jigs/Hive';
 import HiveNode from './jigs/HiveNode';
 import HiveState from './jigs/HiveState';
 
-const hiveStateOrigin = '720ce85f4f88309eddc10e680664c73828b18ffcd70a351ad532730ee80603a4_o2';
-const Run = window.Run;
-const run = new Run();
+    var url = "https://genesis.bitdb.network/q/1FnauZ9aUH2Bex6JzdcV4eNX7oLSSEbxtN/ewogICJ2IjogMywKICAicSI6IHsKICAgICJmaW5kIjogeyJvdXQuczEiIDogIk1ldGFWaWJlMiJ9LAogICAgImxpbWl0IjogMTAKICB9Cn0=";
+    var header = {
+      headers: { key: "1KJPjd3p8khnWZTkjhDYnywLB2yE1w5BmU" }
+    };
 
-run.load(hiveStateOrigin).then(hiveStateOrigin => {
-    console.log(hiveStateOrigin, 'hiveStateOrigin');
-
-    hiveStateOrigin.sync().then(hiveStateSync => {
-        console.log(hiveStateSync, 'hiveStateSync');
-        console.log('loading all hives');
-
-        hiveStateSync.hiveOrigins.forEach(loadHives);
-    });
-});
-
-function loadHives(hiveOrigin) {
-    run.load(hiveOrigin).then(hiveOrigin => {
-        hiveOrigin.sync().then(hiveSync => {
-            console.log(hiveSync, 'hiveSync');
+    fetch(url, header).then(response => {
+        response.json().then(json => {
+            console.log(json.c);
         });
     });
-}
 
-//const hiveState = new HiveState();
+//const hiveStateOrigin = '720ce85f4f88309eddc10e680664c73828b18ffcd70a351ad532730ee80603a4_o2';
+const Run = window.Run;
+//const run = new Run();
 //
+// console.log(run.owner.privkey.toString(), "owner privkey");
+// console.log(run.purse.privkey.toString(), "purse privkey");
+// console.log(run.purse.address.toString(), "purse address");
+
+//
+//run.load(hiveStateOrigin).then(hiveStateOrigin => {
+//    console.log(hiveStateOrigin, 'hiveStateOrigin');
+//
+//    hiveStateOrigin.sync().then(hiveStateSync => {
+//        console.log(hiveStateSync, 'hiveStateSync');
+//        console.log('loading all hives');
+//
+//        hiveStateSync.hiveOrigins.forEach(loadHives);
+//    });
+//});
+//
+//function loadHives(hiveOrigin) {
+//    run.load(hiveOrigin).then(hiveOrigin => {
+//        hiveOrigin.sync().then(hiveSync => {
+//            console.log(hiveSync, 'hiveSync');
+//        });
+//    });
+//}
+
+//const Run = window.Run;
+//const run = new Run({ purse: "KxU7m7v7PoGcXbauzj1CBhAroxbuPCfDqFLcRugFXJviB4a7GxYE", owner: "KwZG1jV8cELu8xKMJ4jADBG3JWXbRK2oaRAtctdiL7Yqsxnehctq"});
+//const run = new Run({ purse: "KwenwKmED5WpM3mzFs45fPWnAsPWosjKVpG3gjUEXL3wcGj1Fuv6", owner: "L2sasYwWLfaPXnNATthb7nUWPQepfTq5nDjQbe5gvDrZNGJ91ZKD"});
+//
+//const hiveNode = new HiveNode(
+//                    "My HiveNode",
+//                    "HiveNode description",
+//                    run.owner.pubkey.toString(),
+//                    "www.google.com",
+//                    "image",
+//                    "null",
+//                    null);
+//
+//                    hiveNode.sync().then(hiveNodeSync => {
+//                    console.log(hiveNodeSync.location, "location hiveNode");
+//                    })
+
 //const hive = new Hive(
 //        "My Hive",
 //        "My hive description",
@@ -40,6 +71,23 @@ function loadHives(hiveOrigin) {
 //        "Category",
 //        40000,
 //        "image");
+//
+//const hive2 = new Hive(
+//        "abc",
+//        "abc",
+//        run.owner.pubkey.toString(),
+//        "abc",
+//        1337,
+//        "abc"
+//);
+
+//hive.sync().then(hiveSync => {
+//    console.log(hiveSync.location, "location hive");
+//});
+//
+//hive2.sync().then(hiveSync => {
+//    console.log(hiveSync.location, "location hive");
+//});
 //
 //hive.sync().then(hiveSync => {
 //    hiveState.sync().then(hiveStateSync => {
