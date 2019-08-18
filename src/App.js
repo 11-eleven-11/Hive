@@ -44,6 +44,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import * as firebase from 'firebase';
 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import CreateHive from "./components/createhive";
+
 var provider = new firebase.auth.GoogleAuthProvider();
 
 
@@ -126,15 +130,15 @@ function App() {
 
   const s = useStyles();
   const classes = useStyles();
-  let userBar =  <List><ListItem button onClick={() => googleLogin()}>
+  let userBar =   <List><ListItem button onClick={() => googleLogin()}>
             <ListItemIcon> <AndroidIcon /></ListItemIcon>
             <ListItemText primary="Google Login" />
           </ListItem>         
           <Divider />
-          <ListItem button>
+          <ListItem button component={Link} to="/create-hive">
             <ListItemIcon> <AddBoxIcon /></ListItemIcon>
             <ListItemText primary="Create Hive" />
-          </ListItem> 
+          </ListItem>
           <Divider />
              <ListItem button>
             <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
@@ -152,10 +156,11 @@ function App() {
             <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
             <ListItemText primary="Notifications" />
           </ListItem> 
-          
-          </List>;
+          </List>
+          ;
 
   return (
+    <Router>
     <div className="App">
       <NavBar />
       
@@ -223,7 +228,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -237,7 +242,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Iran Conflict 
+                    Iran Conflict
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -249,7 +254,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -263,7 +268,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -275,7 +280,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -289,7 +294,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -301,7 +306,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -315,7 +320,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -327,7 +332,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -341,7 +346,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -353,7 +358,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -367,7 +372,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -379,7 +384,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -393,7 +398,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -405,7 +410,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -419,7 +424,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -431,7 +436,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -445,7 +450,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -457,7 +462,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -471,7 +476,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -483,7 +488,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -497,7 +502,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -509,7 +514,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -523,7 +528,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -535,7 +540,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -549,7 +554,7 @@ function App() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Boris Johnson 
+                    Boris Johnson
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -561,7 +566,7 @@ function App() {
                 <Button size="small" color="primary">
                   More
                 </Button>
-                
+
               </CardActions>
             </Card>
         </Grid>
@@ -590,13 +595,15 @@ function App() {
               </CardActions>
             </Card>
         </Grid>
-        
+
       </Grid>
       </Fade>
       </main>
     </div>
       
     </div>
+    <Route path="/create-hive" component={CreateHive} />
+  </Router>
   );
 }
 
