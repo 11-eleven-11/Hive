@@ -28,9 +28,9 @@ const routing = (
   </Router>
 )
 
-const Run = window.Run;
-
-const run = new Run();
+//const Run = window.Run;
+//
+//const run = new Run();
 //const run = new Run({ app: 'HiveBeta', purse: 'KxU7m7v7PoGcXbauzj1CBhAroxbuPCfDqFLcRugFXJviB4a7GxYE', owner: 'KwZG1jV8cELu8xKMJ4jADBG3JWXbRK2oaRAtctdiL7Yqsxnehctq'});
 //
 //const hiveNode = new HiveNode(
@@ -46,41 +46,41 @@ const run = new Run();
 //                    console.log(hiveNodeSync.location, "location hiveNode");
 //                    })
 
-    var url = "https://neongenesis.bitdb.network/q/1HcBPzWoKDL2FhCMbocQmLuFTYsiD73u1j/ewogICJ2IjogMywKICAicSI6IHsKICAgICJmaW5kIjogewogICAgICAib3V0LnMyIjogInJ1biIsCiAgICAgICJvdXQuczQiOiAiSGl2ZUJldGEiCiAgICB9LAogICAgImxpbWl0IjogMTAwCiAgfQp9";
-    var header = {
-      headers: { key: "1KJPjd3p8khnWZTkjhDYnywLB2yE1w5BmU" }
-    };
-
-    fetch(url, header).then(response => {
-        response.json().then(json => {
-            console.log(json.c);
-            json.c.forEach(loadData)
-        });
-    });
-
-    function loadData(tx) {
-        var txHashClass = tx.tx.h + '_o1';
-
-        run.load(txHashClass).then(obj => {
-            if (obj.name === 'Hive') {
-                loadHive(tx.tx.h + '_o2');
-            } else if (obj.name === 'HiveNode') {
-                loadHiveNode(tx.tx.h + '_o2');
-            }
-        });
-    }
-
-    async function loadHive(location) {
-        console.log('loading hive');
-        const hive = await run.load(location)
-        console.log(hive.description);
-    };
-
-    async function loadHiveNode(location) {
-        console.log('loading hiveNode');
-        const hiveNode = await run.load(location)
-        console.log(hiveNode.description);
-    };
+//    var url = "https://neongenesis.bitdb.network/q/1HcBPzWoKDL2FhCMbocQmLuFTYsiD73u1j/ewogICJ2IjogMywKICAicSI6IHsKICAgICJmaW5kIjogewogICAgICAib3V0LnMyIjogInJ1biIsCiAgICAgICJvdXQuczQiOiAiSGl2ZUJldGEiCiAgICB9LAogICAgImxpbWl0IjogMTAwCiAgfQp9";
+//    var header = {
+//      headers: { key: "1KJPjd3p8khnWZTkjhDYnywLB2yE1w5BmU" }
+//    };
+//
+//    fetch(url, header).then(response => {
+//        response.json().then(json => {
+//            console.log(json.c);
+//            json.c.forEach(loadData)
+//        });
+//    });
+//
+//    function loadData(tx) {
+//        var txHashClass = tx.tx.h + '_o1';
+//
+//        run.load(txHashClass).then(obj => {
+//            if (obj.name === 'Hive') {
+//                loadHive(tx.tx.h + '_o2');
+//            } else if (obj.name === 'HiveNode') {
+//                loadHiveNode(tx.tx.h + '_o2');
+//            }
+//        });
+//    }
+//
+//    async function loadHive(location) {
+//        console.log('loading hive');
+//        const hive = await run.load(location)
+//        console.log(hive.description);
+//    };
+//
+//    async function loadHiveNode(location) {
+//        console.log('loading hiveNode');
+//        const hiveNode = await run.load(location)
+//        console.log(hiveNode.description);
+//    };
 
 //const hiveStateOrigin = '720ce85f4f88309eddc10e680664c73828b18ffcd70a351ad532730ee80603a4_o2';
 //const Run = window.Run;
