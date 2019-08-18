@@ -211,7 +211,11 @@ function App() {
       </Tabs>
     </Paper>
 
-        <Fade in={true}>
+        <Route path="/create-hive" component={CreateHive} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/requests" component={Requests} />
+        <Route path="/followers" component={Followers} />
+        <Route path="/notifications" component={Notifications} />
 
         <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5}}>
         <Grid item xs={3}>
@@ -605,16 +609,10 @@ function App() {
         </Grid>
 
       </Grid>
-      </Fade>
       </main>
     </div>
       
     </div>
-    <Route path="/create-hive" component={CreateHive} />
-    <Route path="/profile" component={Profile} />
-    <Route path="/requests" component={Requests} />
-    <Route path="/followers" component={Followers} />
-    <Route path="/notifications" component={Notifications} />
   </Router>
   );
 }
