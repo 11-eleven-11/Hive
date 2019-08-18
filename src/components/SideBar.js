@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: 'rgba(255,255,255,0.4)'
+    backgroundColor: 'rgba(217,225,224,0.75)'
   },
   code: {
     padding: theme.spacing(2),
