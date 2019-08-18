@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/NavBar';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -44,13 +45,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import * as firebase from 'firebase';
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-import CreateHive from "./components/createhive";
-import Profile from "./components/profile";
-import Requests from "./components/requests";
-import Followers from "./components/followers";
-import Notifications from "./components/notifications";
 
 var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -139,27 +133,27 @@ function App() {
             <ListItemText primary="Google Login" />
           </ListItem>         
           <Divider />
-          <ListItem button component={Link} to="/create-hive">
+          <ListItem button>
             <ListItemIcon> <AddBoxIcon /></ListItemIcon>
             <ListItemText primary="Create Hive" />
           </ListItem>
           <Divider />
-             <ListItem button component={Link} to="/profile">
+             <ListItem button >
             <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
             <ListItemText primary="Profile" />
           </ListItem>
           <Divider />
-          <ListItem button component={Link} to="/requests">
+          <ListItem button>
             <ListItemIcon> <InboxIcon /></ListItemIcon>
             <ListItemText primary="Requests" />
           </ListItem>
           <Divider />
-          <ListItem button component={Link} to="/followers">
+          <ListItem button>
             <ListItemIcon> <PeopleIcon /></ListItemIcon>
             <ListItemText primary="Followers" />
           </ListItem>
           <Divider />
-          <ListItem button component={Link} to="/notifications">
+          <ListItem button>
             <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
             <ListItemText primary="Notifications" />
           </ListItem>
@@ -168,7 +162,6 @@ function App() {
           ;
 
   return (
-    <Router>
     <div className="App">
       <NavBar />
       
@@ -213,12 +206,7 @@ function App() {
       </Tabs>
     </Paper>
 
-        <Route path="/create-hive" component={CreateHive} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/requests" component={Requests} />
-        <Route path="/followers" component={Followers} />
-        <Route path="/notifications" component={Notifications} />
-
+        
         <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108}}>
         <Grid item xs={3}>
            <Card className={classes.card}>
@@ -615,7 +603,6 @@ function App() {
     </div>
       
     </div>
-  </Router>
   );
 }
 
