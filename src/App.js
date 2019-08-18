@@ -73,14 +73,6 @@ const useStyles = makeStyles(theme => ({
   media: {
     height: 200,
   },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-    backgroundColor: 'rgba(255,255,255,0.4)'
-  },
   code: {
     padding: theme.spacing(2),
     color: theme.palette.common.white,
@@ -92,8 +84,6 @@ const useStyles = makeStyles(theme => ({
   },
   block: {},
 }));
-
-const drawerWidth = 240;
 
 function googleLogin (){
   firebase.auth().signInWithPopup(provider).then(function(result) {

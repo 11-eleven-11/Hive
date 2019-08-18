@@ -20,6 +20,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import NavigationIcon from '@material-ui/icons/Navigation';
 import Fade from '@material-ui/core/Fade';
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import AppsIcon from '@material-ui/icons/Apps';
 
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -69,7 +70,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: 'rgba(217,225,224,0.75)'
+    backgroundColor: 'rgba(239,243,242,0.7)'
   },
   code: {
     padding: theme.spacing(2),
@@ -120,14 +121,20 @@ export default function SideBar() {
         anchor="left"
       >
         <div className={classes.toolbar} />
-        <h1 style={{paddingLeft: 5, marginBottom: 8, marginTop: 15}}> Hive </h1>
-        <Divider />
-
+        <Link to="/" style={{ textDecoration: 'none', color: 'black' }}><h1 style={{paddingLeft: 5, marginBottom: 8, marginTop: 15}}> Hive </h1>
+        </Link>
         <List>
           <List><ListItem button onClick={() => googleLogin()}>
             <ListItemIcon> <AndroidIcon /></ListItemIcon>
             <ListItemText primary="Google Login" />
           </ListItem>         
+          <Divider />
+          <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+            <ListItem button>
+              <ListItemIcon> <AppsIcon /></ListItemIcon>
+              <ListItemText primary="Explore" />
+            </ListItem>
+          </Link>
           <Divider />
           <Link to="/create" style={{ textDecoration: 'none', color: 'black' }}>
             <ListItem button>
