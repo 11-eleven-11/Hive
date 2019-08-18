@@ -41,14 +41,14 @@
 }
 
 .root {
-  margin-left: 240;
-  flexGrow: 1;
+  margin-left: 240px;
+  flex-grow: 1;
   display: flex;
-  background-color: 'rgba(50,97,90,0.5)'
+  background-color: rgba(50,97,90,0.5)
 }
 
 .card {
-  max-width: 445,
+  max-width: 445px,
 }
 
 .fab {
@@ -60,14 +60,14 @@
 }
 
 .media {
-  height: 200;
+  height: 200px;
 }
 
 .code {
   /*padding: theme.spacing(2),*/
   /*color: theme.palette.common.white,*/
   background-color: #555;
-  font-family: Roboto Mono;
+  font-family: "Roboto Mono";
   font-weight: 100;
   font-size: 0.875rem;
   /*marginBottom: theme.spacing(3),*/

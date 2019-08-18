@@ -106,7 +106,7 @@ export default class Create extends React.Component {
           </FormControl>
           <br />
               <Input
-                placeholder="Placeholder"
+                placeholder="Satoshis"
                 inputProps={{}}
              />
              <br/>
