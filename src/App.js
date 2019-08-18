@@ -81,7 +81,6 @@ class App extends Component {
 
            fetch(url, header).then(response => {
                response.json().then(json => {
-                   console.log(json.c);
                    json.c.forEach(loadData)
                });
            });
@@ -170,9 +169,7 @@ class App extends Component {
                                                    { hive.name }
                                               </Typography>
                                               <Typography variant="body2" color="textSecondary" component="p">
-                                                  Lizards are a widespread group of squamate reptiles, with over 6,000
-                                                  species, ranging
-                                                  across all continents except Antarctica
+                                                  { hive.description }
                                               </Typography>
                                           </CardContent>
                                       </CardActionArea>
