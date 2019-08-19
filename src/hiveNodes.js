@@ -74,7 +74,31 @@ class HiveNodes extends Component {
             hiveNodeOrigin: hiveOrigin,
             hiveNodePreviousNode: '',
             address: '',
-            privKey: ''
+            privKey: '',
+            graph:{nodes: [
+                        { id: 1, label: "Reddit.com" },
+                        { id: 2, label: "Node 2" },
+                        { id: 3, label: "Node 3" },
+                        { id: 4, label: "Node 4" },
+                        { id: 5, label: "Node 5" },
+                        { id: 6, label: "Fox" },
+                        { id: 7, label: "Coindesk" },
+                        { id: 8, label: "Guardian" },
+                        { id: 9, label: "CNN.com" }
+                      ],
+                      edges: [
+                        { from: 1, to: 2 },
+                        { from: 1, to: 3 },
+                        { from: 2, to: 4 },
+                        { from: 2, to: 5 },
+                        { from: 1, to: 3 },
+                        { from: 3, to: 7 },
+                        { from: 7, to: 8 },
+                        { from: 6, to: 8 },
+                        { from: 7, to: 9 }
+
+                      ]
+                    }
         };
 
     }
@@ -163,6 +187,34 @@ class HiveNodes extends Component {
 
       }
 
+    changeGraph(){
+      console.log("works");
+      this.setState({graph : {nodes: [
+                        { id: 1, label: "Reddit.com" },
+                        { id: 2, label: "Node 2" },
+                        { id: 3, label: "Node 3" },
+                        { id: 4, label: "Node 4" },
+                        { id: 5, label: "Node 5" },
+                        { id: 6, label: "Fox.com" },
+                        { id: 7, label: "Coindesk" },
+                        { id: 8, label: "Guardian" },
+                        { id: 9, label: "CNN.com" }
+                      ],
+                      edges: [
+                        { from: 1, to: 2 },
+                        { from: 1, to: 3 },
+                        { from: 2, to: 4 },
+                        { from: 2, to: 5 },
+                        { from: 1, to: 3 },
+                        { from: 3, to: 7 },
+                        { from: 7, to: 8 },
+                        { from: 6, to: 8 },
+                        { from: 7, to: 1 }
+
+                      ]
+                    }})
+    }
+
     handleChange = (event, newValue) => {
         this.setState({
             value: newValue
@@ -179,6 +231,9 @@ class HiveNodes extends Component {
           owner: this.state.privKey,
           purse: this.state.privKey
         })
+
+
+
 
         const hiveNode = new HiveNode(
                     dev.state.hiveNodeName,
@@ -254,7 +309,7 @@ class HiveNodes extends Component {
 
                           <Grid container spacing={1} xs={4} style={{paddingLeft: 4, minWidth: '26vw'}}>
                               <div>
-                                 <ForceGraph hiveNodes={this.state.hiveNodes} />
+                                 <ForceGraph hiveNodes={this.state.graph} />
                               </div>
                           </Grid>
 
@@ -314,6 +369,10 @@ class HiveNodes extends Component {
                                   </div>
                                   </div>
                               </form>
+
+                              <Button variant="contained" onClick={() => this.changeGraph()}color="default" style={{width: 180}}>
+                                      update
+                                    </Button>
                               </card>
                           </Grid>
                           </Grid>

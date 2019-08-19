@@ -64,11 +64,11 @@ class ForceGraph extends Component {
           shape: "box"
         },
         physics: {
-          enabled: true
+          enabled: false
         },
         interaction: { multiselect: true, dragView: true }
       },
-      graph: graph
+      graph: props.hiveNodes
     };
 
     console.log(this.state, "state!");
