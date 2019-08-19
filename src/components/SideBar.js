@@ -9,6 +9,8 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import StyleIcon from '@material-ui/icons/Style';
+import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
 
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
@@ -21,6 +23,8 @@ import NavigationIcon from '@material-ui/icons/Navigation';
 import Fade from '@material-ui/core/Fade';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import AppsIcon from '@material-ui/icons/Apps';
+import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
+import BookIcon from '@material-ui/icons/Book';
 
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -161,6 +165,15 @@ export default function SideBar() {
           <ListItem button disabled={true}>
             <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
             <ListItemText primary="Notifications" />
+          </ListItem>
+          <Divider />
+          <ListItem button onClick={()=> window.open("https://github.com/Kohze/Hive", "_blank")}>
+            <ListItemIcon> <StyleIcon /></ListItemIcon>
+            <ListItemText primary="Github" />
+          </ListItem>
+          <ListItem button onClick={()=> window.open("http://hive.kohze.com", "_blank")}>
+            <ListItemIcon> <ViewQuiltIcon /></ListItemIcon>
+            <ListItemText primary="Documentation" />
           </ListItem>
           </List>
         </List>
