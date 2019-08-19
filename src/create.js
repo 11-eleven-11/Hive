@@ -19,6 +19,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
 
 export default class Create extends React.Component {
 
@@ -71,7 +72,7 @@ export default class Create extends React.Component {
 
   handleSubmit(event, dev) {
     event.preventDefault();
-    alert('Adding new Hive (name: ' + dev.state.name + ', description: ' + dev.state.description + ', imageUrl: ' + dev.state.image +  ', category: ' + dev.state.category + ', satoshis: ' + dev.state.satoshis + ')');
+    window.swal('Adding new Hive (name: ' + dev.state.name + ', description: ' + dev.state.description + ', imageUrl: ' + dev.state.image +  ', category: ' + dev.state.category + ', satoshis: ' + dev.state.satoshis + ')');
 
     const Run = window.Run;
 
@@ -90,9 +91,9 @@ export default class Create extends React.Component {
             dev.state.image);
 
      hive.sync().then(createdHive => {
-        alert('Hive created, hooray, please wait a bit until you see it on the main page. You might need to wait for the next block (~5 min) to be mined.');
+        window.swal('Hive created, hooray, please wait a bit until you see it on the main page. You might need to wait for the next block (~5 min) to be mined.');
      }).catch(function(rejected) {
-        alert('Error while creating Hive: ' + rejected);
+        window.swal('Error while creating Hive: ' + rejected);
      });
   }
 
