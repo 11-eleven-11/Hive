@@ -123,10 +123,13 @@ export default class Create extends React.Component {
               value={this.state.category}
                 onChange={(e) => this.setState({category : e.target.value})}
                 >
-                  <MenuItem value="Politics">Politics</MenuItem>
                   <MenuItem value="International">International</MenuItem>
-                  <MenuItem value="Technology">Technology</MenuItem>
+                  <MenuItem value="Politics">Politics</MenuItem>
+                  <MenuItem value="Finance">Finance</MenuItem>
                   <MenuItem value="Cryptocurrency">Cryptocurrency</MenuItem>
+                  <MenuItem value="Technology">Technology</MenuItem>
+                  <MenuItem value="Sports">Sports</MenuItem>
+                  <MenuItem value="History">History</MenuItem>
                   <MenuItem value="Other">Other</MenuItem>
             </Select>
           </FormControl>
