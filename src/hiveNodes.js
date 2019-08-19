@@ -254,9 +254,7 @@ class HiveNodes extends Component {
 
                           <Grid container spacing={1} xs={4} style={{paddingLeft: 4, minWidth: '26vw'}}>
                               <div>
-                                {this.state.hiveNodes.map((hive, key) =>
-                                     <ForceGraph hiveNodes={this.state.hiveNodes} />
-                                )}
+                                 <ForceGraph hiveNodes={this.state.hiveNodes} />
                               </div>
                           </Grid>
 
