@@ -74,7 +74,31 @@ class HiveNodes extends Component {
             hiveNodeOrigin: hiveOrigin,
             hiveNodePreviousNode: '',
             address: '',
-            privKey: ''
+            privKey: '',
+            graph:{nodes: [
+                        { id: 1, label: "Reddit.com" },
+                        { id: 2, label: "Node 2" },
+                        { id: 3, label: "Node 3" },
+                        { id: 4, label: "Node 4" },
+                        { id: 5, label: "Node 5" },
+                        { id: 6, label: "Fox" },
+                        { id: 7, label: "Coindesk" },
+                        { id: 8, label: "Guardian" },
+                        { id: 9, label: "CNN.com" }
+                      ],
+                      edges: [
+                        { from: 1, to: 2 },
+                        { from: 1, to: 3 },
+                        { from: 2, to: 4 },
+                        { from: 2, to: 5 },
+                        { from: 1, to: 3 },
+                        { from: 3, to: 7 },
+                        { from: 7, to: 8 },
+                        { from: 6, to: 8 },
+                        { from: 7, to: 9 }
+
+                      ]
+                    }
         };
 
     }
@@ -130,7 +154,11 @@ class HiveNodes extends Component {
 
            fetch(url, header).then(response => {
                response.json().then(json => {
-                   json.c.forEach(loadData)
+                   var list = json.c;
+                   var arrayLength = list.length;
+                   for (var i = 0; i < arrayLength; i++) {
+                        loadData(list[i]);
+                   }
                });
            });
 
@@ -153,7 +181,28 @@ class HiveNodes extends Component {
                const hiveNode = await run.load(location);
                console.log(hiveNodeArray, 'hiveNodeArray')
                hiveNodeArray.push(Object.assign({}, hiveNode));
-               dev.setState({ hiveNodes: hiveNodeArray.filter(hiveNode => hiveNode.hiveOrigin === dev.state.hiveOrigin) });
+               // TODO: we need to set the state after all elements have been loaded
+               var filteredNodes = hiveNodeArray.filter(hiveNode => hiveNode.hiveOrigin === dev.state.hiveOrigin);
+               dev.setState({ hiveNodes: filteredNodes });
+
+               var graph = {
+                           nodes: [],
+                           edges: []
+                       }
+
+               var arrayLength = filteredNodes.length;
+               for (var i = 0; i < arrayLength; i++) {
+                   var hiveNode1 = filteredNodes[i];
+                   graph.nodes.push({
+                       id: hiveNode1.origin, label: hiveNode1.name
+                   });
+
+                   graph.edges.push({
+                       from: hiveNode1.origin, to: hiveNode1.previousNode == null ? hiveNode1.hiveOrigin : hiveNode1.previousNode
+                   });
+               }
+
+             dev.setState({graph : graph});
            };
 
       }
@@ -168,12 +217,16 @@ class HiveNodes extends Component {
         event.preventDefault();
         window.swal('Adding new HiveNode (name: ' + dev.state.hiveNodeName + ', description: ' + dev.state.hiveNodeDescription + ', nodeUrl: ' + dev.state.hiveNodeUrl + ', nodeImageUrl' + dev.state.hiveNodeImage +  ', hiveNodeOrigin: ' + dev.state.hiveNodeOrigin + ', hiveNodePreviousNode: ' + dev.state.hiveNodePreviousNode + ')');
 
+
         const Run = window.Run;
         const run = new Run({
           app: 'HiveBeta',
           owner: this.state.privKey,
           purse: this.state.privKey
         })
+
+
+
 
         const hiveNode = new HiveNode(
                     dev.state.hiveNodeName,
@@ -192,131 +245,130 @@ class HiveNodes extends Component {
       }
 
     render() {
-
         const {value, hiveNodes} = this.state;
-        return (
-          <div className="App">
+            return (
+              <div className="App">
 
-              <div className="root">
-                  <CssBaseline/>
-                  <main className="content">
+                  <div className="root">
+                      <CssBaseline/>
+                      <main className="content">
 
-                  <Grid container style={{paddingLeft: 4, paddingTop: 5, marginTop: 60, display: 'fixed'}}>
-                      <Grid boxShadow={3} container spacing={1} xs={5} style={{paddingLeft: 4, paddingTop: 5}}>
+                      <Grid container style={{paddingLeft: 4, paddingTop: 5, marginTop: 60, display: 'fixed'}}>
+                          <Grid boxShadow={3} container spacing={1} xs={5} style={{paddingLeft: 4, paddingTop: 5}}>
+                            {this.state.hiveNodes.map((hive, key) =>
+                                <Grid item xs={12} style={{minWidth: 500}} className="fadeInDiv">
+                                      <Card className="card">
+                                          <CardActionArea>
+                                          <CardMedia
+                                                className="media"
+                                                image={ hive.image }
+                                                title="Contemplative Reptile"
+                                          />
+                                              <CardContent>
+                                                  <Typography gutterBottom variant="h5" component="h2">
+                                                       { hive.name }
+                                                  </Typography>
+                                                  <Typography variant="body2" color="textSecondary" component="p">
+                                                      { hive.description }
+                                                  </Typography>
+                                              </CardContent>
+                                          </CardActionArea>
+                                          <CardActions style={{float: 'left'}}>
+                                              <Button size="small" color="primary" onClick={(e) => this.setState({hiveNodePreviousNode : hive.origin})}>
+                                                  Add Link
+                                              </Button>
+                                               <Button size="small" color="primary">
+                                                  Comment
+                                              </Button>
+                                                <Button size="small" color="primary">
+                                                  Tip
+                                              </Button>
+                                          </CardActions>
+                                                 <CardActions style={{float: 'right'}}>
+                                              <Button size="small" color="default">
+                                                  12 likes
+                                              </Button>
+                                               <Button size="small" color="default">
+                                                  234 satoshis
+                                              </Button>
+                                                <Button size="small" color="default">
+                                                  3 connections
+                                              </Button>
+                                          </CardActions>
+                                      </Card>
+                                 </Grid>
+                            )}
+                          </Grid>
 
-                        {this.state.hiveNodes.map((hive, key) =>
-                            <Grid item xs={12} style={{minWidth: 500}} className="fadeInDiv">
-                                  <Card className="card">
-                                      <CardActionArea>
-                                      <CardMedia
-                                            className="media"
-                                            image={ hive.image }
-                                            title="Contemplative Reptile"
-                                      />
-                                          <CardContent>
-                                              <Typography gutterBottom style={{textAlign: 'left'}} variant="h5" component="h2">
-                                                   { hive.name }
-                                              </Typography>
-                                              <Typography variant="body2" style={{textAlign: 'left'}} color="textSecondary" component="p">
-                                                  { hive.description }
-                                              </Typography>
-                                          </CardContent>
-                                      </CardActionArea>
-                                      <CardActions style={{float: 'left'}}>
-                                          <Button size="small" color="primary" onClick={(e) => this.setState({hiveNodePreviousNode : hive.origin})}>
-                                              Add Link
-                                          </Button>
-                                           <Button size="small" color="primary">
-                                              Comment
-                                          </Button>
-                                            <Button size="small" color="primary">
-                                              Tip
-                                          </Button>
-                                      </CardActions>
-                                             <CardActions style={{float: 'right'}}>
-                                          <Button size="small" color="default">
-                                              {Math.floor(Math.random() * 20) + 1} likes
-                                          </Button>
-                                           <Button size="small" color="default">
-                                              {Math.floor(Math.random() * 1000) + 1} satoshis
-                                          </Button>
-                                            <Button size="small" color="default">
-                                              {Math.floor(Math.random() * 10) + 1} connections
-                                          </Button>
-                                      </CardActions>
-                                  </Card>
-                             </Grid>
-                        )}
-                      </Grid>
-
-                      <Grid container spacing={1} xs={4} style={{paddingLeft: 4, minWidth: '26vw'}}>
-                          <div>
-                            <ForceGraph />
-                          </div>
-                      </Grid>
-                      <Grid container spacing={0} xs={2} style={{paddingLeft: 4, minWidth: '22vw', float: 'right', backgroundColor: 'rgba(255,255,255,0.5)'}}>
-                          <card boxShadow={3}>
-                            <h2> Add Content </h2>
-                            <form ref="form" onSubmit={(e) => this.handleSubmit(e, this)}>
+                          <Grid container spacing={1} xs={4} style={{paddingLeft: 4, minWidth: '26vw'}}>
                               <div>
-                              <div style={{paddingLeft: 50}}>
-                                   <Input
-                                    className="hiveNodeInput"
-                                      placeholder="Name"
-                                      value={this.state.hiveNodeName}
-                                      onChange={(e) => this.setState({hiveNodeName : e.target.value})}
-                                   />
-                                   <br/>
-                                    <Input
-                                      className="hiveNodeInput"
-                                      placeholder="Description"
-                                       value={this.state.hiveNodeDescription}
-                                      onChange={(e) => this.setState({hiveNodeDescription : e.target.value})}
-                                   />
-                                   <br/>
-                                    <Input
-                                      className="hiveNodeInput"
-                                      placeholder="Image URL"
-                                       value={this.state.hiveNodeImage}
-                                      onChange={(e) => this.setState({hiveNodeImage : e.target.value})}
-                                   />
-                                   <br/>
-                                <br />
-                                    <Input
-                                      className="hiveNodeInput"
-                                      placeholder="URL"
-                                       value={this.state.hiveNodeUrl}
-                                      onChange={(e) => this.setState({hiveNodeUrl : e.target.value})}
-                                   />
-                                   <br/>
-                                    <Input
-                                      className="hiveNodeInput"
-                                      placeholder="Linked Hive Node (Previous Node)"
-                                       value={this.state.hiveNodePreviousNode}
-                                      onChange={(e) => this.setState({hiveNodePreviousNode : e.target.value})}
-                                   />
-                                   <br/>
-                                    <Input
-                                      className="hiveNodeInput"
-                                      placeholder="Hive"
-                                      enabled="false"
-                                       value={this.state.hiveNodeOrigin}
-                                   />
-                                   <br/>
-                                   <br/>
-                               <Button variant="contained" color="default" type="submit" style={{width: 180}}>
-                                  Submit
-                                </Button>
+                                 <ForceGraph hiveNodes={this.state.graph} />
                               </div>
-                              </div>
-                          </form>
-                          </card>
-                      </Grid>
-                      </Grid>
-                  </main>
+                          </Grid>
+
+                          <Grid container spacing={0} xs={2} style={{paddingLeft: 4, minWidth: '22vw', float: 'right', backgroundColor: 'rgba(255,255,255,0.5)'}}>
+                              <card boxShadow={3}>
+                                <h2> Add Content </h2>
+                                <form ref="form" onSubmit={(e) => this.handleSubmit(e, this)}>
+                                  <div>
+                                  <div style={{paddingLeft: 50}}>
+                                       <Input
+                                        className="hiveNodeInput"
+                                          placeholder="Name"
+                                          value={this.state.hiveNodeName}
+                                          onChange={(e) => this.setState({hiveNodeName : e.target.value})}
+                                       />
+                                       <br/>
+                                        <Input
+                                          className="hiveNodeInput"
+                                          placeholder="Description"
+                                           value={this.state.hiveNodeDescription}
+                                          onChange={(e) => this.setState({hiveNodeDescription : e.target.value})}
+                                       />
+                                       <br/>
+                                        <Input
+                                          className="hiveNodeInput"
+                                          placeholder="Image URL"
+                                           value={this.state.hiveNodeImage}
+                                          onChange={(e) => this.setState({hiveNodeImage : e.target.value})}
+                                       />
+                                       <br/>
+                                    <br />
+                                        <Input
+                                          className="hiveNodeInput"
+                                          placeholder="URL"
+                                           value={this.state.hiveNodeUrl}
+                                          onChange={(e) => this.setState({hiveNodeUrl : e.target.value})}
+                                       />
+                                       <br/>
+                                        <Input
+                                          className="hiveNodeInput"
+                                          placeholder="Linked Hive Node (Previous Node)"
+                                           value={this.state.hiveNodePreviousNode}
+                                          onChange={(e) => this.setState({hiveNodePreviousNode : e.target.value})}
+                                       />
+                                       <br/>
+                                        <Input
+                                          className="hiveNodeInput"
+                                          placeholder="Hive"
+                                          enabled="false"
+                                           value={this.state.hiveNodeOrigin}
+                                       />
+                                       <br/>
+                                       <br/>
+                                   <Button variant="contained" color="default" type="submit" style={{width: 180}}>
+                                      Submit
+                                    </Button>
+                                  </div>
+                                  </div>
+                              </form>
+                              </card>
+                          </Grid>
+                          </Grid>
+                      </main>
+                  </div>
               </div>
-          </div>
-        );
+            );
     }
 }
 
