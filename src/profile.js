@@ -26,7 +26,6 @@ var QRCode = require('qrcode.react');
 
 export default class Profile extends React.Component {
 
-
   constructor(props) {
     super(props);
     this.state = {
@@ -43,7 +42,6 @@ export default class Profile extends React.Component {
 
     componentDidMount(){
       var user = firebase.auth().currentUser;
-       if (user != null) {
       var Userid = user.uid;
       firebase.database()
           .ref('users/'+Userid)
@@ -70,7 +68,6 @@ export default class Profile extends React.Component {
           }).catch(function (error) {
           console.log(error);
       })
-      }
   }
 
 
@@ -93,7 +90,6 @@ export default class Profile extends React.Component {
     address: address,
     });
   }
-
 
   createKeyPair(){
     var user = firebase.auth().currentUser;
@@ -131,8 +127,6 @@ export default class Profile extends React.Component {
 
   }
 
-
-
   render() {
 
   firebase.auth().onAuthStateChanged(function(user) {
@@ -143,14 +137,10 @@ export default class Profile extends React.Component {
     }
   });
 
-
     var user = firebase.auth().currentUser;
     var name, email, photoUrl, uid, emailVerified;
 
     if (user != null) {
-
-      
-
       name = user.displayName;
       email = user.email;
       uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
@@ -164,8 +154,6 @@ export default class Profile extends React.Component {
         this.setState({uid, email, name})
       }
     }
-
-
 
     return (
         <div style={{marginTop: 60, marginLeft: 240}}> 
@@ -186,12 +174,14 @@ export default class Profile extends React.Component {
           <p> Balance (in satoshis): {this.state.satoshis} </p>
           </div>
           }
+          
           <p> Unique ID: {uid}</p>
           <p> Email: {email} </p>
           <br/>
-          <Button onClick={() => this.deleteAccount()} variant="contained" color="secondary">
+           <Button onClick={() => this.deleteAccount()} variant="contained" color="secondary">
             Delete Account
           </Button>
+
         </div>
         </div>
     );

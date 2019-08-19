@@ -108,6 +108,8 @@ export default function SideBar() {
 
 }
 
+
+       
   const classes = useStyles();
 
   return (
@@ -124,7 +126,7 @@ export default function SideBar() {
         <Link to="/" style={{ textDecoration: 'none', color: 'black' }}><h1 style={{paddingLeft: 20, marginBottom: 8, marginTop: 15}}> Hive </h1>
         </Link>
         <List>
-          <List><ListItem button onClick={() => googleLogin()}>
+          <List><ListItem button  onClick={() => googleLogin()}>
             <ListItemIcon> <AndroidIcon /></ListItemIcon>
             <ListItemText primary="Google Login" />
           </ListItem>         

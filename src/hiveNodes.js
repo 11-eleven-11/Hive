@@ -214,10 +214,10 @@ class HiveNodes extends Component {
                                             title="Contemplative Reptile"
                                       />
                                           <CardContent>
-                                              <Typography gutterBottom variant="h5" component="h2">
+                                              <Typography gutterBottom style={{textAlign: 'left'}} variant="h5" component="h2">
                                                    { hive.name }
                                               </Typography>
-                                              <Typography variant="body2" color="textSecondary" component="p">
+                                              <Typography variant="body2" style={{textAlign: 'left'}} color="textSecondary" component="p">
                                                   { hive.description }
                                               </Typography>
                                           </CardContent>
@@ -235,13 +235,13 @@ class HiveNodes extends Component {
                                       </CardActions>
                                              <CardActions style={{float: 'right'}}>
                                           <Button size="small" color="default">
-                                              12 likes
+                                              {Math.floor(Math.random() * 20) + 1} likes
                                           </Button>
                                            <Button size="small" color="default">
-                                              234 satoshis
+                                              {Math.floor(Math.random() * 1000) + 1} satoshis
                                           </Button>
                                             <Button size="small" color="default">
-                                              3 connections
+                                              {Math.floor(Math.random() * 10) + 1} connections
                                           </Button>
                                       </CardActions>
                                   </Card>
