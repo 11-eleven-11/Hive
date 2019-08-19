@@ -57,16 +57,6 @@ class App extends Component {
     }
 
     async componentDidMount() {
-        var url = "https://genesis.bitdb.network/q/1FnauZ9aUH2Bex6JzdcV4eNX7oLSSEbxtN/ewogICJ2IjogMywKICAicSI6IHsKICAgICJmaW5kIjogeyJvdXQuczEiIDogIk1ldGFWaWJlMiJ9LAogICAgImxpbWl0IjogMTAKICB9Cn0=";
-        var header = {
-          headers: { key: "1KJPjd3p8khnWZTkjhDYnywLB2yE1w5BmU" }
-        };
-
-        const response = await fetch(url, header);
-        const json = await response.json();
-
-        console.log('component did mount');
-
         const hiveArray = [];
 
         const Run = window.Run;
