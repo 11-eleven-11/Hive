@@ -258,7 +258,7 @@ class HiveNodes extends Component {
                             {this.state.hiveNodes.map((hive, key) =>
                                 <Grid item xs={12} style={{minWidth: 500}} className="fadeInDiv">
                                       <Card className="card">
-                                          <CardActionArea>
+                                          <CardActionArea onClick={()=> window.open(hive.url, "_blank")}>
                                           <CardMedia
                                                 className="media"
                                                 image={ hive.image }
