@@ -35,7 +35,7 @@ export default class Profile extends React.Component {
       name: '',
       profileName: '',
       posts: 0,
-      satoshis: 0,
+      satoshis: '',
       privKey: '',
       address: ''
     };

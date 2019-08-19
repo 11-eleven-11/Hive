@@ -121,7 +121,7 @@ export default function SideBar() {
         anchor="left"
       >
         <div className={classes.toolbar} />
-        <Link to="/" style={{ textDecoration: 'none', color: 'black' }}><h1 style={{paddingLeft: 5, marginBottom: 8, marginTop: 15}}> Hive </h1>
+        <Link to="/" style={{ textDecoration: 'none', color: 'black' }}><h1 style={{paddingLeft: 20, marginBottom: 8, marginTop: 15}}> Hive </h1>
         </Link>
         <List>
           <List><ListItem button onClick={() => googleLogin()}>
@@ -135,14 +135,12 @@ export default function SideBar() {
               <ListItemText primary="Explore" />
             </ListItem>
           </Link>
-          <Divider />
           <Link to="/create" style={{ textDecoration: 'none', color: 'black' }}>
             <ListItem button>
               <ListItemIcon> <AddBoxIcon /></ListItemIcon>
               <ListItemText primary="Create Hive" />
             </ListItem>
           </Link>
-          <Divider />
           <Link to="/profile" style={{ textDecoration: 'none', color: 'black' }}>
             <ListItem button >
               <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
@@ -154,17 +152,14 @@ export default function SideBar() {
             <ListItemIcon> <InboxIcon /></ListItemIcon>
             <ListItemText primary="Requests" />
           </ListItem>
-          <Divider />
           <ListItem button>
             <ListItemIcon> <PeopleIcon /></ListItemIcon>
             <ListItemText primary="Followers" />
           </ListItem>
-          <Divider />
           <ListItem button>
             <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
             <ListItemText primary="Notifications" />
           </ListItem>
-          <Divider />
           </List>
         </List>
         

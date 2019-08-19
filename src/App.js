@@ -10,6 +10,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Fade from '@material-ui/core/Fade';
 
 
 import Tabs from '@material-ui/core/Tabs';
@@ -125,10 +126,11 @@ class App extends Component {
                       <Paper className="root" style={{
                           marginLeft: 0,
                           marginRight: 8,
+                          minWidth: 'calc(100vw - 120px)',
                           marginTop: 65,
                           position: 'fixed',
                           zIndex: 9999,
-                          width: '100%',
+                          width: 'calc(100%-240px)',
                           backgroundColor: '#648882',
                           borderRadius: 0
                       }}>
@@ -151,10 +153,10 @@ class App extends Component {
                           </Tabs>
                       </Paper>
 
-                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108, minWidth: '100vw'}}>
-                        {this.state.hives.map((hive, key) =>
-                            <Grid item xs={3} style={{minWidth: 400, maxWidth: 400}}>
-                                  <Card className="card">
+                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108}}>
+                        {this.state.hives.map((hive, key,i) =>
+                            <Grid item xs={3} style={{minWidth: 400, maxWidth: 400}} className="divFadeIn">
+                                  <Card className="card ">
                                       <CardActionArea>
                                           <CardMedia
                                             className="media"

@@ -32,6 +32,21 @@
   }
 }
 
+.divFadeIn {
+  animation: fadeInDiv 2.3s;
+  -webkit-animation: fadeInDiv 2.3s;
+}
+
+@keyframes fadeInDiv {
+  from{opacity: 0 ;}
+  to{opacity: 1 ;}
+}
+
+@-webkit-keyframes fadeInDiv {
+  from{opacity : 0;}
+  to{opacity : 1;}
+}
+
 .title {
   text-align: center,
 }
@@ -45,6 +60,12 @@
   flex-grow: 1;
   display: flex;
   background-color: rgba(50,97,90,0.5)
+}
+
+.hiveNodeInput{
+  text-align: center;
+  margin:  auto;
+  padding:  5px;
 }
 
 .card {

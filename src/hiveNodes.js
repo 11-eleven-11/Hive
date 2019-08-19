@@ -20,6 +20,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import * as firebase from 'firebase';
+import { shadows } from '@material-ui/system';
 
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import FilledInput from '@material-ui/core/FilledInput';
@@ -29,6 +30,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
+import ForceGraph from "./ForceGraph";
 
 import HiveNode from './jigs/HiveNode';
 
@@ -70,9 +72,41 @@ class HiveNodes extends Component {
             hiveNodeUrl: '',
             hiveNodeImage: '',
             hiveNodeOrigin: hiveOrigin,
-            hiveNodePreviousNode: ''
+            hiveNodePreviousNode: '',
+            address: '',
+            privKey: ''
         };
 
+    }
+
+    componentWillMount(){
+      var user = firebase.auth().currentUser;
+      var Userid = user.uid;
+      firebase.database()
+          .ref('users/'+Userid)
+          .once("value", (snapshot) => {
+              if(snapshot.exists()) {
+                  if(snapshot.hasChild('privKey'))
+                    var privKey = snapshot.val().privKey;
+                    this.setState({
+                        privKey: privKey,
+                    })
+                }
+
+                  if(snapshot.hasChild('address')) {
+                    var address = snapshot.val().address;
+                    this.setState({
+                        address: address,
+                    })
+              }
+
+              else {
+                  console.log('value doesnt exist');
+              }
+
+          }).catch(function (error) {
+          console.log(error);
+      })
     }
 
     async componentDidMount() {
@@ -83,13 +117,9 @@ class HiveNodes extends Component {
 
         const response = await fetch(url, header);
         const json = await response.json();
-
-        console.log('component did mount');
-
         const hiveNodeArray = [];
-
         const Run = window.Run;
-        const run = new Run();
+        const run = new Run()
 
        var url = "https://neongenesis.bitdb.network/q/1HcBPzWoKDL2FhCMbocQmLuFTYsiD73u1j/ewogICJ2IjogMywKICAicSI6IHsKICAgICJmaW5kIjogewogICAgICAib3V0LnMyIjogInJ1biIsCiAgICAgICJvdXQuczQiOiAiSGl2ZUJldGEiCiAgICB9LAogICAgImxpbWl0IjogMTAwCiAgfQp9";
            var header = {
@@ -137,7 +167,11 @@ class HiveNodes extends Component {
         alert('Adding new HiveNode (name: ' + dev.state.hiveNodeName + ', description: ' + dev.state.hiveNodeDescription + ', nodeUrl: ' + dev.state.hiveNodeUrl + ', nodeImageUrl' + dev.state.hiveNodeImage +  ', hiveNodeOrigin: ' + dev.state.hiveNodeOrigin + ', hiveNodePreviousNode: ' + dev.state.hiveNodePreviousNode + ')');
 
         const Run = window.Run;
-        const run = new Run();
+        const run = new Run({
+          app: 'HiveBeta',
+          owner: this.state.privKey,
+          purse: this.state.privKey
+        })
 
         const hiveNode = new HiveNode(
                     dev.state.hiveNodeName,
@@ -157,10 +191,6 @@ class HiveNodes extends Component {
 
     render() {
 
-
-
-
-
         const {value, hiveNodes} = this.state;
         return (
           <div className="App">
@@ -169,13 +199,18 @@ class HiveNodes extends Component {
                   <CssBaseline/>
                   <main className="content">
 
+                  <Grid container style={{paddingLeft: 4, paddingTop: 5, marginTop: 60, display: 'fixed'}}>
+                      <Grid boxShadow={3} container spacing={1} xs={5} style={{paddingLeft: 4, paddingTop: 5}}>
 
-                      <Grid container spacing={1} xs={12} style={{paddingLeft: 4, paddingTop: 5, marginTop: 60, minWidth: '50vw'}}>
                         {this.state.hiveNodes.map((hive, key) =>
-                            <Grid item xs={12} style={{minWidth: 400}}>
+                            <Grid item xs={12} style={{minWidth: 500}} className="fadeInDiv">
                                   <Card className="card">
                                       <CardActionArea>
-
+                                      <CardMedia
+                                            className="media"
+                                            image={ hive.image }
+                                            title="Contemplative Reptile"
+                                      />
                                           <CardContent>
                                               <Typography gutterBottom variant="h5" component="h2">
                                                    { hive.name }
@@ -210,24 +245,35 @@ class HiveNodes extends Component {
                                   </Card>
                              </Grid>
                         )}
-
                       </Grid>
-                      <form ref="form" onSubmit={(e) => this.handleSubmit(e, this)}>
-                              <div style={{marginTop: 60, marginLeft: 240}}>
-                              <div style={{paddingLeft: 150, paddingTop: 50}}>
+
+                      <Grid container spacing={1} xs={4} style={{paddingLeft: 4, minWidth: '26vw'}}>
+                          <div>
+                            <ForceGraph />
+                          </div>
+                      </Grid>
+                      <Grid container spacing={0} xs={2} style={{paddingLeft: 4, minWidth: '22vw', float: 'right', backgroundColor: 'rgba(255,255,255,0.5)'}}>
+                          <card boxShadow={3}>
+                            <h2> Add Content </h2>
+                            <form ref="form" onSubmit={(e) => this.handleSubmit(e, this)}>
+                              <div>
+                              <div style={{paddingLeft: 50}}>
                                    <Input
+                                    className="hiveNodeInput"
                                       placeholder="Name"
                                       value={this.state.hiveNodeName}
                                       onChange={(e) => this.setState({hiveNodeName : e.target.value})}
                                    />
                                    <br/>
                                     <Input
+                                      className="hiveNodeInput"
                                       placeholder="Description"
                                        value={this.state.hiveNodeDescription}
                                       onChange={(e) => this.setState({hiveNodeDescription : e.target.value})}
                                    />
                                    <br/>
                                     <Input
+                                      className="hiveNodeInput"
                                       placeholder="Image URL"
                                        value={this.state.hiveNodeImage}
                                       onChange={(e) => this.setState({hiveNodeImage : e.target.value})}
@@ -235,33 +281,38 @@ class HiveNodes extends Component {
                                    <br/>
                                 <br />
                                     <Input
+                                      className="hiveNodeInput"
                                       placeholder="URL"
                                        value={this.state.hiveNodeUrl}
                                       onChange={(e) => this.setState({hiveNodeUrl : e.target.value})}
                                    />
                                    <br/>
                                     <Input
+                                      className="hiveNodeInput"
                                       placeholder="Linked Hive Node (Previous Node)"
                                        value={this.state.hiveNodePreviousNode}
                                       onChange={(e) => this.setState({hiveNodePreviousNode : e.target.value})}
                                    />
                                    <br/>
                                     <Input
+                                      className="hiveNodeInput"
                                       placeholder="Hive"
                                       enabled="false"
                                        value={this.state.hiveNodeOrigin}
                                    />
                                    <br/>
-
-                               <Button variant="contained" color="default" type="submit">
+                                   <br/>
+                               <Button variant="contained" color="default" type="submit" style={{width: 180}}>
                                   Submit
                                 </Button>
                               </div>
                               </div>
                           </form>
+                          </card>
+                      </Grid>
+                      </Grid>
                   </main>
               </div>
-
           </div>
         );
     }
