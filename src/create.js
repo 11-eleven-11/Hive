@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './App.css';
 import * as serviceWorker from './serviceWorker';
 import * as firebase from 'firebase';
 import Hive from './jigs/Hive';
@@ -8,6 +8,8 @@ import HiveNode from './jigs/HiveNode';
 import HiveState from './jigs/HiveState';
 import Input from '@material-ui/core/Input';
 import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+
 
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import FilledInput from '@material-ui/core/FilledInput';
@@ -86,7 +88,7 @@ export default class Create extends React.Component {
             dev.state.image);
 
      hive.sync().then(createdHive => {
-        alert('Hive created, hooray, please wait a bit until you see it on the main page');
+        alert('Hive created, hooray, please wait a bit until you see it on the main page. You might need to wait for the next block (~5 min) to be mined.');
      }).catch(function(rejected) {
         alert('Error while creating Hive: ' + rejected);
      });
@@ -96,31 +98,37 @@ export default class Create extends React.Component {
   render() {
 
     return (
+    <div>
+    <img src="https://prabakaran-group.org/images/header-image-dark.png" width="900" style={{float: 'right', marginRight: 300, marginTop: 120}} />
     <form ref="form" onSubmit={(e) => this.handleSubmit(e, this)}>
         <div style={{marginTop: 60, marginLeft: 240}}> 
         <div style={{paddingLeft: 150, paddingTop: 50}}> 
              <Input
+                style={{padding: 20}}
                 placeholder="Name"
                 value={this.state.name}
                 onChange={(e) => this.setState({name : e.target.value})}
              />
              <br/>
               <Input
+                style={{padding: 20}}
                 placeholder="Description"
-                 value={this.state.description}
+                value={this.state.description}
                 onChange={(e) => this.setState({description : e.target.value})}
              />
              <br/>
               <Input
+                style={{padding: 20}}
                 placeholder="Image URL"
-                 value={this.state.image}
+                value={this.state.image}
                 onChange={(e) => this.setState({image : e.target.value})}
              />
              <br/>
-         <FormControl style={{minWidth: 180}}>
-            <InputLabel htmlFor="age-simple">Category</InputLabel>
+         <FormControl style={{minWidth: 220}}>
+            <InputLabel htmlFor="age-simple" style={{padding: 20}}>Category</InputLabel>
             <Select
-              value={this.state.category}
+                style={{padding: 20}}
+                value={this.state.category}
                 onChange={(e) => this.setState({category : e.target.value})}
                 >
                   <MenuItem value="International">International</MenuItem>
@@ -135,18 +143,20 @@ export default class Create extends React.Component {
           </FormControl>
           <br />
               <Input
+                style={{padding: 20}}
                 placeholder="Satoshis"
-                 value={this.state.satoshis}
+                value={this.state.satoshis}
                 onChange={(e) => this.setState({satoshis : e.target.value})}
              />
              <br/>
 
-         <Button variant="contained" color="default" type="submit">
+         <Button variant="contained" color="default" type="submit" style={{marginTop: 20, width: 180}}>
             Submit
           </Button>
         </div>
         </div>
     </form>
+    </div>
     );
   }
 }

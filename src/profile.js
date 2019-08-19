@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './App.css';
 import * as serviceWorker from './serviceWorker';
 import * as firebase from 'firebase';
 import Hive from './jigs/Hive';

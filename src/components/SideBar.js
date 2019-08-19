@@ -148,15 +148,15 @@ export default function SideBar() {
             </ListItem>
           </Link>
           <Divider />
-          <ListItem button>
+          <ListItem button disabled={true}>
             <ListItemIcon> <InboxIcon /></ListItemIcon>
             <ListItemText primary="Requests" />
           </ListItem>
-          <ListItem button>
+          <ListItem button disabled={true}>
             <ListItemIcon> <PeopleIcon /></ListItemIcon>
             <ListItemText primary="Followers" />
           </ListItem>
-          <ListItem button>
+          <ListItem button disabled={true}>
             <ListItemIcon> <SpeakerNotesIcon /></ListItemIcon>
             <ListItemText primary="Notifications" />
           </ListItem>
