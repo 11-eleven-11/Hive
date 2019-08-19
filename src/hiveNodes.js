@@ -166,7 +166,7 @@ class HiveNodes extends Component {
 
     handleSubmit(event, dev) {
         event.preventDefault();
-        alert('Adding new HiveNode (name: ' + dev.state.hiveNodeName + ', description: ' + dev.state.hiveNodeDescription + ', nodeUrl: ' + dev.state.hiveNodeUrl + ', nodeImageUrl' + dev.state.hiveNodeImage +  ', hiveNodeOrigin: ' + dev.state.hiveNodeOrigin + ', hiveNodePreviousNode: ' + dev.state.hiveNodePreviousNode + ')');
+        window.swal('Adding new HiveNode (name: ' + dev.state.hiveNodeName + ', description: ' + dev.state.hiveNodeDescription + ', nodeUrl: ' + dev.state.hiveNodeUrl + ', nodeImageUrl' + dev.state.hiveNodeImage +  ', hiveNodeOrigin: ' + dev.state.hiveNodeOrigin + ', hiveNodePreviousNode: ' + dev.state.hiveNodePreviousNode + ')');
 
         const Run = window.Run;
         const run = new Run({
@@ -185,9 +185,9 @@ class HiveNodes extends Component {
                     dev.state.hiveNodePreviousNode);
 
          hiveNode.sync().then(createdHiveNode => {
-            alert('HiveNode created, hooray, please wait a bit until you see it on the main page');
+            window.swal('HiveNode created, hooray, please wait a bit until you see it on the main page');
          }).catch(function(rejected) {
-            alert('Error while creating HiveNode: ' + rejected);
+            window.swal('Error while creating HiveNode: ' + rejected);
          });
       }
 
