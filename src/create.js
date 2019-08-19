@@ -38,6 +38,7 @@ export default class Create extends React.Component {
 
   componentDidMount(){
       var user = firebase.auth().currentUser;
+       if (user != null) {
       var Userid = user.uid;
       firebase.database()
           .ref('users/'+Userid)
@@ -64,6 +65,7 @@ export default class Create extends React.Component {
           }).catch(function (error) {
           console.log(error);
       })
+      }
   }
 
 

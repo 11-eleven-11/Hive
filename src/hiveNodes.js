@@ -81,6 +81,7 @@ class HiveNodes extends Component {
 
     componentWillMount(){
       var user = firebase.auth().currentUser;
+      if (user != null) {
       var Userid = user.uid;
       firebase.database()
           .ref('users/'+Userid)
@@ -107,6 +108,7 @@ class HiveNodes extends Component {
           }).catch(function (error) {
           console.log(error);
       })
+      }
     }
 
     async componentDidMount() {
