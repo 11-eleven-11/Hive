@@ -130,7 +130,11 @@ class HiveNodes extends Component {
 
            fetch(url, header).then(response => {
                response.json().then(json => {
-                   json.c.forEach(loadData)
+                   var list = json.c;
+                   var arrayLength = list.length;
+                   for (var i = 0; i < arrayLength; i++) {
+                        loadData(list[i]);
+                   }
                });
            });
 
@@ -193,7 +197,6 @@ class HiveNodes extends Component {
       }
 
     render() {
-
         const {value, hiveNodes} = this.state;
         if (this.state.hiveNodes.length > 0) {
             return (
