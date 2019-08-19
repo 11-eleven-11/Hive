@@ -182,38 +182,30 @@ class HiveNodes extends Component {
                console.log(hiveNodeArray, 'hiveNodeArray')
                hiveNodeArray.push(Object.assign({}, hiveNode));
                // TODO: we need to set the state after all elements have been loaded
-               dev.setState({ hiveNodes: hiveNodeArray.filter(hiveNode => hiveNode.hiveOrigin === dev.state.hiveOrigin) });
+               var filteredNodes = hiveNodeArray.filter(hiveNode => hiveNode.hiveOrigin === dev.state.hiveOrigin);
+               dev.setState({ hiveNodes: filteredNodes });
+
+               var graph = {
+                           nodes: [],
+                           edges: []
+                       }
+
+               var arrayLength = filteredNodes.length;
+               for (var i = 0; i < arrayLength; i++) {
+                   var hiveNode1 = filteredNodes[i];
+                   graph.nodes.push({
+                       id: hiveNode1.origin, label: hiveNode1.name
+                   });
+
+                   graph.edges.push({
+                       from: hiveNode1.origin, to: hiveNode1.previousNode == null ? hiveNode1.hiveOrigin : hiveNode1.previousNode
+                   });
+               }
+
+             dev.setState({graph : graph});
            };
 
       }
-
-    changeGraph(){
-      console.log("works");
-      this.setState({graph : {nodes: [
-                        { id: 1, label: "Reddit.com" },
-                        { id: 2, label: "Node 2" },
-                        { id: 3, label: "Node 3" },
-                        { id: 4, label: "Node 4" },
-                        { id: 5, label: "Node 5" },
-                        { id: 6, label: "Fox.com" },
-                        { id: 7, label: "Coindesk" },
-                        { id: 8, label: "Guardian" },
-                        { id: 9, label: "CNN.com" }
-                      ],
-                      edges: [
-                        { from: 1, to: 2 },
-                        { from: 1, to: 3 },
-                        { from: 2, to: 4 },
-                        { from: 2, to: 5 },
-                        { from: 1, to: 3 },
-                        { from: 3, to: 7 },
-                        { from: 7, to: 8 },
-                        { from: 6, to: 8 },
-                        { from: 7, to: 1 }
-
-                      ]
-                    }})
-    }
 
     handleChange = (event, newValue) => {
         this.setState({
@@ -223,7 +215,8 @@ class HiveNodes extends Component {
 
     handleSubmit(event, dev) {
         event.preventDefault();
-        window.swal('Adding new HiveNode (name: ' + dev.state.hiveNodeName + ', description: ' + dev.state.hiveNodeDescription + ', nodeUrl: ' + dev.state.hiveNodeUrl + ', nodeImageUrl' + dev.state.hiveNodeImage +  ', hiveNodeOrigin: ' + dev.state.hiveNodeOrigin + ', hiveNodePreviousNode: ' + dev.state.hiveNodePreviousNode + ')');
+        alert('Adding new HiveNode (name: ' + dev.state.hiveNodeName + ', description: ' + dev.state.hiveNodeDescription + ', nodeUrl: ' + dev.state.hiveNodeUrl + ', nodeImageUrl' + dev.state.hiveNodeImage +  ', hiveNodeOrigin: ' + dev.state.hiveNodeOrigin + ', hiveNodePreviousNode: ' + dev.state.hiveNodePreviousNode + ')');
+
 
         const Run = window.Run;
         const run = new Run({
@@ -245,9 +238,9 @@ class HiveNodes extends Component {
                     dev.state.hiveNodePreviousNode);
 
          hiveNode.sync().then(createdHiveNode => {
-            window.swal('HiveNode created, hooray, please wait a bit until you see it on the main page');
+            alert('HiveNode created, hooray, please wait a bit until you see it on the main page');
          }).catch(function(rejected) {
-            window.swal('Error while creating HiveNode: ' + rejected);
+            alert('Error while creating HiveNode: ' + rejected);
          });
       }
 
@@ -369,10 +362,6 @@ class HiveNodes extends Component {
                                   </div>
                                   </div>
                               </form>
-
-                              <Button variant="contained" onClick={() => this.changeGraph()}color="default" style={{width: 180}}>
-                                      update
-                                    </Button>
                               </card>
                           </Grid>
                           </Grid>

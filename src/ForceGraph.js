@@ -88,7 +88,7 @@ class ForceGraph extends Component {
     return (
       <div id="graph" style={{ height: "100vh", width: '28vw'}}>
         <Graph
-          graph={this.state.graph}
+          graph={this.props.hiveNodes}
           options={this.state.options}
           events={this.state.events}
         />
