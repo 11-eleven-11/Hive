@@ -9,9 +9,9 @@ A platform that acts as a “beehive” of connecting information - where each i
 
 ### Stacks
 
-- React Starter Kit (Kriasoft - open source)
 - React.js
-- Firebase
+- D3.js / Force-Graph
+- Google Firebase
 - Run (tokenization framework)
 
 ## How to run the app
@@ -21,7 +21,5 @@ A platform that acts as a “beehive” of connecting information - where each i
 
 # Teammembers
 
-Marcel,
 Daniel,
-Robin,
-Komaldeep
+Robin
