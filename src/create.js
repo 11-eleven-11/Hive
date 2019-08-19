@@ -77,7 +77,7 @@ export default class Create extends React.Component {
     const Run = window.Run;
 
     const run = new Run({
-        app: 'HiveBeta',
+        app: 'HiveTest',
         owner: this.state.privKey,
         purse: this.state.privKey
     })

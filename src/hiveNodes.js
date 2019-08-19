@@ -147,7 +147,7 @@ class HiveNodes extends Component {
         const Run = window.Run;
         const run = new Run()
 
-       var url = "https://neongenesis.bitdb.network/q/1HcBPzWoKDL2FhCMbocQmLuFTYsiD73u1j/ewogICJ2IjogMywKICAicSI6IHsKICAgICJmaW5kIjogewogICAgICAib3V0LnMyIjogInJ1biIsCiAgICAgICJvdXQuczQiOiAiSGl2ZUJldGEiCiAgICB9LAogICAgImxpbWl0IjogMTAwCiAgfQp9";
+       var url = "https://genesis.bitdb.network/q/1FnauZ9aUH2Bex6JzdcV4eNX7oLSSEbxtN/ewogICJ2IjogMywKICAicSI6IHsKICAgICJmaW5kIjogeyJvdXQuczIiOiAicnVuIiwgIm91dC5zNCI6IkhpdmVUZXN0In0sCiAgICAibGltaXQiOiAxMAogIH0KfQ==";
            var header = {
              headers: { key: "1KJPjd3p8khnWZTkjhDYnywLB2yE1w5BmU" }
            };
@@ -220,7 +220,7 @@ class HiveNodes extends Component {
 
         const Run = window.Run;
         const run = new Run({
-          app: 'HiveBeta',
+          app: 'HiveTest',
           owner: this.state.privKey,
           purse: this.state.privKey
         })
