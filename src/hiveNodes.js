@@ -123,7 +123,7 @@ class HiveNodes extends Component {
         const Run = window.Run;
         const run = new Run()
 
-       var url = "https://genesis.bitdb.network/q/1FnauZ9aUH2Bex6JzdcV4eNX7oLSSEbxtN/ewogICJ2IjogMywKICAicSI6IHsKICAgICJmaW5kIjogeyJvdXQuczIiOiAicnVuIiwgIm91dC5zNCI6IkhpdmVUZXN0In0sCiAgICAibGltaXQiOiAxMAogIH0KfQ==";
+       var url = "https://genesis.bitdb.network/q/1FnauZ9aUH2Bex6JzdcV4eNX7oLSSEbxtN/ewogICJ2IjogMywKICAicSI6IHsKICAgICJmaW5kIjogeyJvdXQuczIiOiAicnVuIiwgIm91dC5zNCI6IkhpdmVUZXN0In0sCiAgICAibGltaXQiOiAxMDAwCiAgfQp9";
            var header = {
              headers: { key: "1KJPjd3p8khnWZTkjhDYnywLB2yE1w5BmU" }
            };
