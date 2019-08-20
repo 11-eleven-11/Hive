@@ -8,6 +8,7 @@ A platform that acts as a “beehive” of connecting information - where each i
 ### Pages
 
 Documentation Page: http://hive.kohze.com
+
 App Page: https://hive-e330f.firebaseapp.com
 
 ### Stacks
