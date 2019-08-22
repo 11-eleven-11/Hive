@@ -51,7 +51,15 @@ export default class Profile extends React.Component {
                     var privKey = snapshot.val().privKey;
                     this.setState({
                         privKey: privKey,
-                    })
+                    });
+
+                    const Run = window.Run;
+                    const run = new Run({owner: privKey, purse: privKey});
+                    run.purse.balance().then(balance => {
+                        this.setState({
+                            satoshis: balance.toString(),
+                        });
+                    });
                 }
 
                   if(snapshot.hasChild('address')) {
