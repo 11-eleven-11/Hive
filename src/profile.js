@@ -108,9 +108,8 @@ export default class Profile extends React.Component {
 
     console.log(run.owner.privkey.toString());
     console.log(run.owner.address.toString());
-    console.log(run.owner.balance.toString());
 
-    this.setState({privKey: run.owner.privkey.toString(), address: run.owner.address.toString(), satoshis: run.owner.balance.toString()});
+    this.setState({privKey: run.owner.privkey.toString(), address: run.owner.address.toString(), satoshis: 0});
 
     run.load(hiveStateOrigin).then(hiveStateOrigin => {
         console.log(hiveStateOrigin, 'hiveStateOrigin');
