@@ -125,7 +125,7 @@ class App extends Component {
                           borderRadius: 0
                       }}>
                           <Tabs
-                            value={value}
+                            value={false}
                             onChange={this.handleChange}
                             indicatorColor="primary"
                             textColor="default"
@@ -143,9 +143,9 @@ class App extends Component {
                           </Tabs>
                       </Paper>
 
-                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 8, marginTop: 108}}>
+                      <Grid container spacing={1} style={{paddingLeft: 5, paddingTop: 8, marginTop: 108}}>
                         {this.state.hives.map((hive, key,i) =>
-                            <Grid item xs={3} style={{minWidth: 400, maxWidth: 400}} className="divFadeIn">
+                            <Grid item xs={3} key={hive.name} style={{minWidth: 400, maxWidth: 400}} className="divFadeIn">
                                   <Card className="card" >
                                       <CardActionArea >
                                           <CardMedia

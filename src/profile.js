@@ -42,6 +42,7 @@ export default class Profile extends React.Component {
 
     componentDidMount(){
       var user = firebase.auth().currentUser;
+      if(user){
       var Userid = user.uid;
       firebase.database()
           .ref('users/'+Userid)
@@ -75,7 +76,9 @@ export default class Profile extends React.Component {
 
           }).catch(function (error) {
           console.log(error);
-      })
+      })} else {
+            window.swal("Please log in first!");
+          }
   }
 
 

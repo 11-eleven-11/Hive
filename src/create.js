@@ -66,6 +66,8 @@ export default class Create extends React.Component {
           }).catch(function (error) {
           console.log(error);
       })
+      } else {
+        window.swal("Please log in first!");
       }
   }
 

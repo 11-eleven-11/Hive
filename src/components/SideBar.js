@@ -115,6 +115,9 @@ export default function SideBar() {
 
        
   const classes = useStyles();
+  var user = firebase.auth().currentUser;
+  console.log(user);
+
 
   return (
     <div className={classes.root}>
@@ -133,7 +136,8 @@ export default function SideBar() {
           <List><ListItem button  onClick={() => googleLogin()}>
             <ListItemIcon> <AndroidIcon /></ListItemIcon>
             <ListItemText primary="Google Login" />
-          </ListItem>         
+          </ListItem>
+          {user && <p> please login </p>}
           <Divider />
           <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
             <ListItem button>
@@ -142,13 +146,13 @@ export default function SideBar() {
             </ListItem>
           </Link>
           <Link to="/create" style={{ textDecoration: 'none', color: 'black' }}>
-            <ListItem button>
+            <ListItem button disabled={user}>
               <ListItemIcon> <AddBoxIcon /></ListItemIcon>
               <ListItemText primary="Create Hive" />
             </ListItem>
           </Link>
           <Link to="/profile" style={{ textDecoration: 'none', color: 'black' }}>
-            <ListItem button >
+            <ListItem button disabled={user}>
               <ListItemIcon> <AccountBoxIcon /></ListItemIcon>
               <ListItemText primary="Profile" />
             </ListItem>
