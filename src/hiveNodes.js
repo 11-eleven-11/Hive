@@ -76,7 +76,7 @@ class HiveNodes extends Component {
             address: '',
             privKey: '',
             graph:{nodes: [
-                        { id: 1, label: "No HiveNodes found" },
+                        { id: 1, label: "Please Create the first HiveNode" },
                       ],
                       edges: [
                         { from: 1, to: 1 },
@@ -220,16 +220,12 @@ class HiveNodes extends Component {
          });
       }
 
+
+      
+
     render() {
-        const {value, hiveNodes} = this.state;
-            return (
-              <div className="App">
-
-                  <div className="root">
-                      <CssBaseline/>
-                      <main className="content">
-
-                      <Grid container style={{paddingLeft: 4, paddingTop: 5, marginTop: 60, display: 'fixed'}}>
+      console.log(this.state.hiveNodes);
+      const nodeGrid = this.state.hiveNodes.length != 0 ? 
                           <Grid boxShadow={3} container spacing={1} xs={5} style={{paddingLeft: 4, paddingTop: 5}}>
                             {this.state.hiveNodes.map((hive, key) =>
                                 <Grid item xs={12} style={{minWidth: 500}} className="fadeInDiv">
@@ -274,7 +270,17 @@ class HiveNodes extends Component {
                                       </Card>
                                  </Grid>
                             )}
-                          </Grid>
+                          </Grid> : null;
+        const {value, hiveNodes} = this.state;
+            return (
+              <div className="App">
+
+                  <div className="root">
+                      <CssBaseline/>
+                      <main className="content">
+                      <Grid container style={{paddingLeft: 4, paddingTop: 5, marginTop: 60}}>
+
+                          {nodeGrid}
 
                           <Grid container spacing={1} xs={4} style={{paddingLeft: 4, minWidth: '26vw'}}>
                               <div>

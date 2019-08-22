@@ -143,17 +143,17 @@ class App extends Component {
                           </Tabs>
                       </Paper>
 
-                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 5, marginTop: 108}}>
+                      <Grid container spacing={1} xs={12} style={{paddingLeft: 5, paddingTop: 8, marginTop: 108}}>
                         {this.state.hives.map((hive, key,i) =>
                             <Grid item xs={3} style={{minWidth: 400, maxWidth: 400}} className="divFadeIn">
-                                  <Card className="card ">
-                                      <CardActionArea>
+                                  <Card className="card" >
+                                      <CardActionArea >
                                           <CardMedia
                                             className="media"
                                             image={ hive.image }
                                             title="Contemplative Reptile"
                                           />
-                                          <CardContent>
+                                          <CardContent style={{minHeight: 200}}>
                                               <Typography gutterBottom variant="h5" component="h2">
                                                    { hive.name }
                                               </Typography>
