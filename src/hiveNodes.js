@@ -32,6 +32,9 @@ import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import ForceGraph from "./ForceGraph";
 
+import TextField from '@material-ui/core/TextField';
+
+
 import HiveNode from './jigs/HiveNode';
 
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -226,7 +229,7 @@ class HiveNodes extends Component {
     render() {
       console.log(this.state.hiveNodes);
       const nodeGrid = this.state.hiveNodes.length != 0 ? 
-                          <Grid boxShadow={3} container spacing={1} xs={5} style={{paddingLeft: 4, paddingTop: 5}}>
+                          <Grid boxShadow={3} xs={5} style={{paddingLeft: 2, paddingTop: 5}}>
                             {this.state.hiveNodes.map((hive, key) =>
                                 <Grid item xs={12} style={{minWidth: 500}} className="fadeInDiv">
                                       <Card className="card">
@@ -237,7 +240,7 @@ class HiveNodes extends Component {
                                                 title="Contemplative Reptile"
                                           />
                                               <CardContent>
-                                                  <Typography gutterBottom variant="h5" component="h2">
+                                                  <Typography gutterBottom variant="h6" component="h4">
                                                        { hive.name }
                                                   </Typography>
                                                   <Typography variant="body2" color="textSecondary" component="p">
@@ -260,9 +263,6 @@ class HiveNodes extends Component {
                                               <Button size="small" color="default">
                                                   12 likes
                                               </Button>
-                                               <Button size="small" color="default">
-                                                  234 satoshis
-                                              </Button>
                                                 <Button size="small" color="default">
                                                   3 connections
                                               </Button>
@@ -282,63 +282,72 @@ class HiveNodes extends Component {
 
                           {nodeGrid}
 
-                          <Grid container spacing={1} xs={4} style={{paddingLeft: 4, minWidth: '26vw'}}>
+                          <Grid container spacing={1} xs={4} style={{paddingLeft: 4, minWidth: '33%'}}>
                               <div>
                                  <ForceGraph hiveNodes={this.state.graph} />
                               </div>
                           </Grid>
 
-                          <Grid container spacing={0} xs={2} style={{paddingLeft: 4, minWidth: '22vw', float: 'right', backgroundColor: 'rgba(255,255,255,0.5)'}}>
+                          <Grid container spacing={0} xs={2} style={{paddingLeft: 4, minWidth: 200, backgroundColor: 'rgba(255,255,255,0.5)'}}>
                               <card boxShadow={3}>
                                 <h2> Add Content </h2>
                                 <form ref="form" onSubmit={(e) => this.handleSubmit(e, this)}>
                                   <div>
-                                  <div style={{paddingLeft: 50}}>
-                                       <Input
-                                        className="hiveNodeInput"
+                                  <div style={{paddingLeft: 5}}>
+                                       <TextField
+                                          className="hiveNodeInput"
                                           placeholder="Name"
                                           value={this.state.hiveNodeName}
                                           onChange={(e) => this.setState({hiveNodeName : e.target.value})}
                                        />
                                        <br/>
-                                        <Input
+                                        <TextField
                                           className="hiveNodeInput"
                                           placeholder="Description"
-                                           value={this.state.hiveNodeDescription}
+                                          multiline
+                                          value={this.state.hiveNodeDescription}
                                           onChange={(e) => this.setState({hiveNodeDescription : e.target.value})}
                                        />
                                        <br/>
-                                        <Input
+                                        <TextField
                                           className="hiveNodeInput"
                                           placeholder="Image URL"
-                                           value={this.state.hiveNodeImage}
+                                          value={this.state.hiveNodeImage}
                                           onChange={(e) => this.setState({hiveNodeImage : e.target.value})}
                                        />
                                        <br/>
-                                    <br />
-                                        <Input
+                                        <TextField
                                           className="hiveNodeInput"
                                           placeholder="URL"
-                                           value={this.state.hiveNodeUrl}
+                                          value={this.state.hiveNodeUrl}
                                           onChange={(e) => this.setState({hiveNodeUrl : e.target.value})}
                                        />
                                        <br/>
-                                        <Input
+                                       <br/>
+                                        <TextField
+                                          disabled
+                                          id="outlined-name"
+                                          variant="outlined"
+                                          label="Content Link"
                                           className="hiveNodeInput"
-                                          placeholder="Linked Hive Node (Previous Node)"
-                                           value={this.state.hiveNodePreviousNode}
+                                          placeholder="Node Link"
+                                          value={this.state.hiveNodePreviousNode}
                                           onChange={(e) => this.setState({hiveNodePreviousNode : e.target.value})}
                                        />
                                        <br/>
-                                        <Input
+                                       <br/>
+                                        <TextField
+                                          disabled
+                                          id="outlined-name"
+                                          label="Owner ID"
+                                          variant="outlined"
                                           className="hiveNodeInput"
                                           placeholder="Hive"
-                                          enabled="false"
-                                           value={this.state.hiveNodeOrigin}
+                                          value={this.state.hiveNodeOrigin}
                                        />
                                        <br/>
                                        <br/>
-                                   <Button variant="contained" color="default" type="submit" style={{width: 180}}>
+                                    <Button variant="contained" color="default" type="submit" style={{width: 180}}>
                                       Submit
                                     </Button>
                                   </div>

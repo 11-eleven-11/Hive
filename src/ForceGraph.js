@@ -64,7 +64,7 @@ class ForceGraph extends Component {
           shape: "box"
         },
         physics: {
-          enabled: false
+          enabled: true
         },
         interaction: { multiselect: true, dragView: true }
       },

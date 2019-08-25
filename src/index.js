@@ -34,9 +34,9 @@ const routing = (
     <NavBar />
     <SideBar />
         <Route exact path="/" component={App} />
-        <Route exact path="/create" component={Create} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/hivenodes" handler={HiveNodes}>
+            <Route exact path="/create" component={Create} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/hivenodes" handler={HiveNodes}>
             <Route path="/hivenodes/:location" component={HiveNodes}/>
         </Route>
     </div>

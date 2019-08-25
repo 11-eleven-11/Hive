@@ -88,7 +88,7 @@ const useStyles = makeStyles(theme => ({
   block: {},
 }));
 
-const drawerWidth = 240;
+const drawerWidth = 210;
 
 
 export default function SideBar() {

@@ -21,6 +21,10 @@ import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 
+import Hidden from '@material-ui/core/Hidden';
+import withWidth from '@material-ui/core/withWidth';
+import Typography from '@material-ui/core/Typography';
+
 export default class Create extends React.Component {
 
   constructor(props) {
@@ -104,9 +108,12 @@ export default class Create extends React.Component {
 
     return (
     <div>
-    <img src="https://prabakaran-group.org/images/header-image-dark.png" width="900" style={{float: 'right', marginRight: 300, marginTop: 120}} />
+    <Hidden lgDown>
+      <img src="https://prabakaran-group.org/images/header-image-dark.png" width="900" style={{float: 'right', marginRight: 300, marginTop: 120}} />
+    </Hidden>
+
     <form ref="form" onSubmit={(e) => this.handleSubmit(e, this)}>
-        <div style={{marginTop: 60, marginLeft: 240}}> 
+        <div style={{marginTop: 60, marginLeft: 210}}> 
         <div style={{paddingLeft: 150, paddingTop: 50}}> 
              <Input
                 style={{padding: 20}}

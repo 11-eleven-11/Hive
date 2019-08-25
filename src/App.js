@@ -120,7 +120,7 @@ class App extends Component {
                           marginTop: 65,
                           position: 'fixed',
                           zIndex: 9999,
-                          width: 'calc(100%-240px)',
+                          width: 'calc(100%-210px)',
                           backgroundColor: '#648882',
                           borderRadius: 0
                       }}>
@@ -153,8 +153,8 @@ class App extends Component {
                                             image={ hive.image }
                                             title="Contemplative Reptile"
                                           />
-                                          <CardContent style={{minHeight: 200}}>
-                                              <Typography gutterBottom variant="h5" component="h2">
+                                          <CardContent style={{minHeight: 170}}>
+                                              <Typography gutterBottom variant="h5" component="h5">
                                                    { hive.name }
                                               </Typography>
                                               <Typography variant="body2" color="textSecondary" component="p">
