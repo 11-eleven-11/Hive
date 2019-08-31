@@ -68,6 +68,7 @@ class HiveNodes extends Component {
         this.state = {
             hiveOrigin: hiveOrigin,
             hives: [ ],
+            width: (window.innerWidth-210)*0.3,
             hiveNodes: [],
             value: null,
             hiveNodeName: '',
@@ -204,9 +205,6 @@ class HiveNodes extends Component {
           purse: this.state.privKey
         })
 
-
-
-
         const hiveNode = new HiveNode(
                     dev.state.hiveNodeName,
                     dev.state.hiveNodeDescription,
@@ -223,15 +221,12 @@ class HiveNodes extends Component {
          });
       }
 
-
-      
-
     render() {
       console.log(this.state.hiveNodes);
       const nodeGrid = this.state.hiveNodes.length != 0 ? 
-                          <Grid boxShadow={3} xs={5} style={{paddingLeft: 2, paddingTop: 5}}>
+                          <Grid boxShadow={3} style={{paddingLeft: 0, height: '50hv', overflow: 'auto', width: '50%', marginTop: -3}}>
                             {this.state.hiveNodes.map((hive, key) =>
-                                <Grid item xs={12} style={{minWidth: 500}} className="fadeInDiv">
+                                <Grid item xs={12} style={{paddingTop: 3}} className="fadeInDiv">
                                       <Card className="card">
                                           <CardActionArea onClick={()=> window.open(hive.url, "_blank")}>
                                           <CardMedia
@@ -271,25 +266,9 @@ class HiveNodes extends Component {
                                  </Grid>
                             )}
                           </Grid> : null;
-        const {value, hiveNodes} = this.state;
-            return (
-              <div className="App">
 
-                  <div className="root">
-                      <CssBaseline/>
-                      <main className="content">
-                      <Grid container style={{paddingLeft: 4, paddingTop: 5, marginTop: 60}}>
-
-                          {nodeGrid}
-
-                          <Grid container spacing={1} xs={4} style={{paddingLeft: 4, minWidth: '33%'}}>
-                              <div>
-                                 <ForceGraph hiveNodes={this.state.graph} />
-                              </div>
-                          </Grid>
-
-                          <Grid container spacing={0} xs={2} style={{paddingLeft: 4, minWidth: 200, backgroundColor: 'rgba(255,255,255,0.5)'}}>
-                              <card boxShadow={3}>
+        const sideBar = <Grid container style={{paddingLeft: 0, paddingRight: 5, width: '20%', backgroundColor: 'rgba(255,255,255,0.5)'}}>
+                              <card boxShadow={3} style={{margin: 'auto', marginTop: 0}}>
                                 <h2> Add Content </h2>
                                 <form ref="form" onSubmit={(e) => this.handleSubmit(e, this)}>
                                   <div>
@@ -354,7 +333,27 @@ class HiveNodes extends Component {
                                   </div>
                               </form>
                               </card>
+                          </Grid>;
+
+        const {value, hiveNodes} = this.state;
+            return (
+              <div className="App">
+
+                  <div className="root">
+                      <CssBaseline/>
+                      <main className="content">
+                      <Grid container style={{paddingLeft: 0, paddingTop: 5, marginTop: 60, width: '100%'}}>
+
+                          {sideBar}
+                          {nodeGrid}
+
+                          <Grid container style={{marginLeft: 0, width: '30%', backgroundColor: "rgba(255,255,255,0.5)"}}>
+                              <div>
+                                 <ForceGraph hiveNodes={this.state.graph} width={this.state.width} />
+                              </div>
                           </Grid>
+
+                          
                           </Grid>
                       </main>
                   </div>
