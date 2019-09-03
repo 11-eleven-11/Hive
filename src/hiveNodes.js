@@ -68,8 +68,8 @@ class HiveNodes extends Component {
         this.state = {
             hiveOrigin: hiveOrigin,
             hives: [ ],
-            width: (window.innerWidth-210)*0.3,
             hiveNodes: [],
+            showSidebar: false,
             value: null,
             hiveNodeName: '',
             hiveNodeDescription: '',
@@ -87,7 +87,6 @@ class HiveNodes extends Component {
                       ]
                     }
         };
-
     }
 
     componentWillMount(){
@@ -224,7 +223,7 @@ class HiveNodes extends Component {
     render() {
       console.log(this.state.hiveNodes);
       const nodeGrid = this.state.hiveNodes.length != 0 ? 
-                          <Grid boxShadow={3} style={{paddingLeft: 0, height: '50hv', overflow: 'auto', width: '50%', marginTop: -3}}>
+                          <Grid boxShadow={3} style={{paddingLeft: 0, maxHeight: '100hv', overflow: 'auto', width: '50%', marginTop: -3}}>
                             {this.state.hiveNodes.map((hive, key) =>
                                 <Grid item xs={12} style={{paddingTop: 3}} className="fadeInDiv">
                                       <Card className="card">
@@ -244,7 +243,7 @@ class HiveNodes extends Component {
                                               </CardContent>
                                           </CardActionArea>
                                           <CardActions style={{float: 'left'}}>
-                                              <Button size="small" color="primary" onClick={(e) => this.setState({hiveNodePreviousNode : hive.origin})}>
+                                              <Button size="small" color="primary" onClick={(e) => this.setState({hiveNodePreviousNode : hive.origin, showSidebar : true})}>
                                                   Add Link
                                               </Button>
                                                <Button size="small" color="primary">
@@ -256,7 +255,7 @@ class HiveNodes extends Component {
                                           </CardActions>
                                                  <CardActions style={{float: 'right'}}>
                                               <Button size="small" color="default">
-                                                  12 likes
+                                                  12 tips
                                               </Button>
                                                 <Button size="small" color="default">
                                                   3 connections
@@ -342,14 +341,14 @@ class HiveNodes extends Component {
                   <div className="root">
                       <CssBaseline/>
                       <main className="content">
-                      <Grid container style={{paddingLeft: 0, paddingTop: 5, marginTop: 60, width: '100%'}}>
+                      <Grid container style={{paddingLeft: 0, width: '100%'}}>
 
-                          {sideBar}
+                          {this.state.showSidebar && sideBar}
                           {nodeGrid}
 
-                          <Grid container style={{marginLeft: 0, width: '30%', backgroundColor: "rgba(255,255,255,0.5)"}}>
+                          <Grid container style={{marginLeft: 0, width: '30%'}}>
                               <div>
-                                 <ForceGraph hiveNodes={this.state.graph} width={this.state.width} />
+                                 <ForceGraph hiveNodes={this.state.graph} width={this.state.showSidebar ? (window.innerWidth-210)*0.3 : (window.innerWidth-210)*0.5} />
                               </div>
                           </Grid>
 

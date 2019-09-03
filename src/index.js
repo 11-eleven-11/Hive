@@ -31,7 +31,6 @@ var user = firebase.auth().currentUser;
 const routing = (
   <Router>
     <div>
-    <NavBar />
     <SideBar />
         <Route exact path="/" component={App} />
             <Route exact path="/create" component={Create} />

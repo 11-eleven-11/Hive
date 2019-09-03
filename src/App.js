@@ -12,6 +12,12 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Fade from '@material-ui/core/Fade';
 
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -105,6 +111,7 @@ class App extends Component {
 
     render() {
 
+
         const {value, hive} = this.state;
         console.log(hive, 'hive')
         return (
@@ -113,37 +120,52 @@ class App extends Component {
               <div className="root">
                   <CssBaseline/>
                   <main className="content">
-                      <Paper className="root" style={{
-                          marginLeft: 0,
-                          marginRight: 8,
-                          minWidth: 'calc(100vw - 120px)',
-                          marginTop: 65,
-                          position: 'fixed',
-                          zIndex: 9999,
-                          width: 'calc(100%-210px)',
-                          backgroundColor: '#648882',
-                          borderRadius: 0
-                      }}>
-                          <Tabs
-                            value={false}
-                            onChange={this.handleChange}
-                            indicatorColor="primary"
-                            textColor="default"
-                            centered
-                          >
-                              <Tab label="All"/>
-                              <Tab label="International"/>
-                              <Tab label="Politics"/>
-                              <Tab label="Finance"/>
-                              <Tab label="Cryptocurrency"/>
-                              <Tab label="Technology"/>
-                              <Tab label="Sports"/>
-                              <Tab label="History"/>
-                              <Tab label="Other"/>
-                          </Tabs>
-                      </Paper>
+                      
 
-                      <Grid container spacing={1} style={{paddingLeft: 5, paddingTop: 8, marginTop: 108}}>
+                       <Drawer
+                        variant="permanent"
+                        style={{width: 400}}
+                        anchor="right"
+                      >
+                        <div />
+                        
+                        <List>
+                          
+                            <ListItem button>
+                              <ListItemText primary="All" />
+                            </ListItem>
+                            <ListItem button>
+                              <ListItemText primary="International" />
+                            </ListItem>
+                            <ListItem button>
+                              <ListItemText primary="Politics" />
+                            </ListItem>
+                            <ListItem button>
+                              <ListItemText primary="Finance" />
+                            </ListItem>
+                            <ListItem button>
+                              <ListItemText primary="Cryptocurrency" />
+                            </ListItem>
+                            <ListItem button>
+                              <ListItemText primary="Technology" />
+                            </ListItem>
+                            <ListItem button>
+                              <ListItemText primary="Sports" />
+                            </ListItem>
+                            <ListItem button>
+                              <ListItemText primary="History" />
+                            </ListItem>
+                            <ListItem button>
+                              <ListItemText primary="Other" />
+                            </ListItem>
+
+                         
+                          
+                        </List>
+                        
+                      </Drawer>
+
+                      <Grid container spacing={1} style={{paddingLeft: 5, minWidth: 800, paddingTop: 0, marginTop: 0}}>
                         {this.state.hives.map((hive, key,i) =>
                             <Grid item xs={3} key={hive.name} style={{minWidth: 400, maxWidth: 400}} className="divFadeIn">
                                   <Card className="card" >
