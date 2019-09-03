@@ -347,8 +347,8 @@ class HiveNodes extends Component {
                           {nodeGrid}
 
                           <Grid container style={{marginLeft: 0, width: '30%'}}>
-                              <div>
-                                 <ForceGraph hiveNodes={this.state.graph} width={this.state.showSidebar ? (window.innerWidth-210)*0.3 : (window.innerWidth-210)*0.5} />
+                              <div style={{position: 'fixed'}}>
+                                 <ForceGraph style={{position: 'static'}} hiveNodes={this.state.graph} width={this.state.showSidebar ? (window.innerWidth-210)*0.3 : (window.innerWidth-210)*0.5} />
                               </div>
                           </Grid>
 
