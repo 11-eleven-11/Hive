@@ -47,6 +47,24 @@
   to{opacity : 1;}
 }
 
+.newDivFadeIn {
+  animation-delay: 10s;
+  animation: fadeInDiv 4.3s;
+  -webkit-animation: fadeInDiv 4.3s;
+}
+
+@keyframes fadeInDiv {
+  from{opacity: 0 ;}
+  to{opacity: 1 ;}
+}
+
+@-webkit-keyframes fadeInDiv {
+    animation-delay: 1s;
+
+  from{opacity : 0;}
+  to{opacity : 1;}
+}
+
 .title {
   text-align: center,
 }
@@ -59,7 +77,6 @@
   margin-left: 210px;
   flex-grow: 1;
   display: flex;
-  background-color: rgba(50,97,90,0.5)
 }
 
 .hiveNodeInput{

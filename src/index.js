@@ -30,7 +30,7 @@ var user = firebase.auth().currentUser;
 
 const routing = (
   <Router>
-    <div>
+    <div style={{backgroundColor: "rgb(150, 174, 170)", minHeight: "100vh"}}>
     <SideBar />
         <Route exact path="/" component={App} />
             <Route exact path="/create" component={Create} />

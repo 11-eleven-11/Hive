@@ -14,6 +14,10 @@ import Grid from '@material-ui/core/Grid';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
+import Dialog from '@material-ui/core/Dialog';
+import LinearProgress from '@material-ui/core/LinearProgress';
+
+
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -32,8 +36,11 @@ import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
 import ForceGraph from "./ForceGraph";
 
-import TextField from '@material-ui/core/TextField';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
+import TextField from '@material-ui/core/TextField';
 
 import HiveNode from './jigs/HiveNode';
 
@@ -66,6 +73,7 @@ class HiveNodes extends Component {
         var hiveOrigin = document.URL.substring(document.URL.lastIndexOf('/') + 1)
 
         this.state = {
+            loading: true,
             hiveOrigin: hiveOrigin,
             hives: [ ],
             hiveNodes: [],
@@ -184,6 +192,7 @@ class HiveNodes extends Component {
              dev.setState({graph : graph});
            };
 
+          
       }
 
     handleChange = (event, newValue) => {
@@ -265,10 +274,30 @@ class HiveNodes extends Component {
                                  </Grid>
                             )}
                           </Grid> : null;
+        const firstContent = <div className="newDivFadeIn"> add first content <button onClick={() => this.setState({showSidebar: true}) }> add </button> </div>;
 
-        const sideBar = <Grid container style={{paddingLeft: 0, paddingRight: 5, width: '20%', backgroundColor: 'rgba(255,255,255,0.5)'}}>
-                              <card boxShadow={3} style={{margin: 'auto', marginTop: 0}}>
-                                <h2> Add Content </h2>
+
+        const dialogTitle = this.state.hiveNodes.length != 0 ? <h2> Add Content </h2> : <h2> Add First Node </h2>; 
+
+        const dialogModal = <Dialog
+                    fullScreen={false}
+                    open={!this.state.loading && (this.state.showSidebar)}
+                    style={{backgroundColor: 'white', display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'}}
+                    onClose={() => this.setState({showSidebar: false})}
+                    closeAfterTransition
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                      timeout: 500,
+                    }}
+                  >
+                    <Fade in={!this.state.loading && (this.state.showSidebar)}>
+                      <div style={{backgroundColor: 'rgba(255,255,255,0.80)',
+                                  border: '2px solid #000', padding: 30}}
+                      >
+                        <card boxShadow={3} style={{margin: 'auto', marginTop: 0}}>
+                                {dialogTitle}
                                 <form ref="form" onSubmit={(e) => this.handleSubmit(e, this)}>
                                   <div>
                                   <div style={{paddingLeft: 5}}>
@@ -332,29 +361,41 @@ class HiveNodes extends Component {
                                   </div>
                               </form>
                               </card>
+                      </div>
+                    </Fade>
+                  </Dialog>;
+
+        const graph = <Grid container style={{marginLeft: 0, width: '30%'}}>
+                              <div style={{position: 'fixed'}}>
+                                 <ForceGraph style={{position: 'static'}} hiveNodes={this.state.graph} width={(window.innerWidth-210)*0.5} />
+                              </div>
                           </Grid>;
 
         const {value, hiveNodes} = this.state;
+
+        const loader = <LinearProgress style={{width: '100vw'}} />;
+        setTimeout(() => this.setState({loading: false}), 650);
+
             return (
               <div className="App">
 
+
                   <div className="root">
+
                       <CssBaseline/>
                       <main className="content">
+                      {this.state.loading && loader}
+
                       <Grid container style={{paddingLeft: 0, width: '100%'}}>
 
-                          {this.state.showSidebar && sideBar}
-                          {nodeGrid}
-
-                          <Grid container style={{marginLeft: 0, width: '30%'}}>
-                              <div style={{position: 'fixed'}}>
-                                 <ForceGraph style={{position: 'static'}} hiveNodes={this.state.graph} width={this.state.showSidebar ? (window.innerWidth-210)*0.3 : (window.innerWidth-210)*0.5} />
-                              </div>
-                          </Grid>
-
+                          {!this.state.loading && this.state.hiveNodes.length == 0 && firstContent}
+                          {this.state.hiveNodes.length != 0  && !this.state.loading && nodeGrid}
+                          {this.state.hiveNodes.length != 0  && !this.state.loading && graph}
                           
                           </Grid>
                       </main>
+                      {!this.state.loading && (this.state.showSidebar || this.state.hiveNodes.length == 0) && dialogModal}
+
                   </div>
               </div>
             );
