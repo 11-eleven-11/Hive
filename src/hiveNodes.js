@@ -287,10 +287,7 @@ class HiveNodes extends Component {
                             justifyContent: 'center'}}
                     onClose={() => this.setState({showSidebar: false})}
                     closeAfterTransition
-                    BackdropComponent={Backdrop}
-                    BackdropProps={{
-                      timeout: 500,
-                    }}
+                    
                   >
                     <Fade in={!this.state.loading && (this.state.showSidebar)}>
                       <div style={{backgroundColor: 'rgba(255,255,255,0.80)',
